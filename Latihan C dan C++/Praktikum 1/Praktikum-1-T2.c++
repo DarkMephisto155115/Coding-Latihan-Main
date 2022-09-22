@@ -8,7 +8,6 @@ int main()
     int cekhasil;
     cout << "Masukkan data: ";
     cin >> x;
-    cout << "Data mu adalah: " << x;
     cin >> cekhasil;
     return 0;
 }
