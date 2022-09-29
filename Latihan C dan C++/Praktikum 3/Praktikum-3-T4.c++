@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     char grade;
-    int cekhasil;
+    
     cin >> grade;
     switch (grade)
     {
@@ -33,6 +33,6 @@ int main()
         break;
     }
     cout << "Nilai anda adalah " << grade << endl;
-    cin >> cekhasil;
+    system("pause");
     return 0;
 }

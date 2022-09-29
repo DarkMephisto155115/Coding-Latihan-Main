@@ -7,7 +7,6 @@ using namespace std;
 int main()
 {
     char a[30], b[30];
-    int cekhasil;
     cout << "Masukkan nama pertama mu: ";
     cin >> a;
     cout << "Masukkan nama kedua mu: ";
@@ -15,6 +14,6 @@ int main()
     strcat(a, b);
     cout << "Nama lengkap anda: " << a;
     cout << endl;
-    cin >> cekhasil;
+    system("pause");
     return 0;
 }

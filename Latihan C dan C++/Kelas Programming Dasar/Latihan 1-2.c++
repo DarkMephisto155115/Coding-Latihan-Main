@@ -14,7 +14,7 @@ int main()
     // Menyimpan NIM Mahasiswa UMM
     int NIM;
     // Menyimpan no rekening tabungan yang terdiri dari 10 digit
-    int Rekening;
+    long int Rekening;
     // Menyimpan saldo tabungan
     double saldo;
     //Menyimpan hasil perkalian bilangan bulat

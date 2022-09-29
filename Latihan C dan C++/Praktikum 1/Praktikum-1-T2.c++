@@ -5,9 +5,8 @@ using namespace std;
 int main()
 {
     int x;
-    int cekhasil;
     cout << "Masukkan data: ";
     cin >> x;
-    cin >> cekhasil;
+    system("pause");
     return 0;
 }

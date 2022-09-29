@@ -7,7 +7,7 @@ int main()
 {
 
     int nilai;
-    int cekhasil;
+    
     cout << "Masukkan Nilai Anda: ";
     cin >> nilai;
     if (nilai >= 60)
@@ -18,6 +18,6 @@ int main()
     {
         cout << "Maaf anda tidak lulus!!!" << endl;
     }
-    cin >> cekhasil;
+    system("pause");
     return 0;
 }

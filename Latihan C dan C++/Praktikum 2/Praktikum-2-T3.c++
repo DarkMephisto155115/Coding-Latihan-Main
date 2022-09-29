@@ -7,7 +7,7 @@ int main()
     int nilaipertama;
     int nilaikedua;
     int hasil;
-    int teshasil;
+    
     cout
         << "Masukkan Perbandingan \n \n";
     cout << "Masukkan nilai Pertama: ";
@@ -17,6 +17,6 @@ int main()
     hasil = nilaipertama < nilaikedua;
     cout << "Hasil dari perbandingan dari nilai pertama dan kedua adalah "
          << hasil; // 0 = false, 1 = true
-    cin >> teshasil;
+    system("pause");
     return 0;
 }

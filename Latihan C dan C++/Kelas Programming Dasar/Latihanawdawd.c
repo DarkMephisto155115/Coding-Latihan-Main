@@ -11,9 +11,9 @@ int main(){
     printf("Gaji dan Bonus adalah \n");
     bonus = gaji * 0.2;
     gaji_bonus = gaji + bonus;
-    printf("Gaji: %d \n", gaji);
-    printf("Bonus: %d \n", bonus);
-    printf("Gaji+Bonus= %d \n", gaji_bonus);
+    printf("Gaji: Rp.%d \n", gaji);
+    printf("Bonus: Rp.%d \n", bonus);
+    printf("Gaji+Bonus= Rp.%d \n", gaji_bonus);
     system("Pause");
     return 0;
 }
