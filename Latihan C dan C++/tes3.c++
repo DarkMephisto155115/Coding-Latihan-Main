@@ -3,17 +3,11 @@
 using namespace std;
 
 int main(){
+    string nama, name_1,name_2;
+    cin >> name_1 >> name_2;
+    cout << nama;
+    getline(cin, nama);
+    cout << name_1 + " "+ name_2;
 
-    int x;
-    int cekhasil;
-    cout << "Kamu pilih \n1.Aku \n2.Dia \n \n";
-    cin >> x;
-    if (x==1)
-    {
-        cout << "Gay Anying!!! \n";
-    } else{
-        cout << "Ingat kawan Bro before Hoes!!! \n";
-    }
-    cin >> cekhasil;
     return 0;
 }
