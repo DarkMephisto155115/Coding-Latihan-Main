@@ -9,6 +9,7 @@
     "system_error": "c",
     "type_traits": "c",
     "variant": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "unistd.h": "c"
   }
 }

@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 int main (){
     printf("==========================================\n");
@@ -12,7 +15,6 @@ int main (){
     printf("5. \n");
     printf("6. \n");
     printf("Pilih salah satu untuk mengakses \n")
-    scanf("%d", );
-    system("pause");
+    system ("pause");
     return 0;
 }
