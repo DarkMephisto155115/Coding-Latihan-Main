@@ -14,7 +14,7 @@ int main (){
     printf("4. \n");
     printf("5. \n");
     printf("6. \n");
-    printf("Pilih salah satu untuk mengakses \n")
+    printf("Pilih salah satu untuk mengakses \n");
     system ("pause");
     return 0;
 }
