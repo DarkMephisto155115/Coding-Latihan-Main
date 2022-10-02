@@ -8,7 +8,7 @@ int main()
     long int diskon_belanja;
 
     printf("Masukkan Total Belanjaan! \n");
-    scanf("%d", total_belanja);
+    scanf("%d", &total_belanja);
     printf("Total Belanjaan dan Diskon adalah \n");
     diskon = total_belanja * 0.1;
     diskon_belanja = total_belanja - diskon;
