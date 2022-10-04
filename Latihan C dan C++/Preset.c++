@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-// THIS IS WATERMARK BY DARK_MEPHISTO/ANDIKA :)
+// THIS DARK_MEPHISTO/ANDIKA :) IS WATERMARK BY
 
 int main()
 {
