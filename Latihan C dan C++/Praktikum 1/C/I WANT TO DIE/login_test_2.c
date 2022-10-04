@@ -1,21 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <unistd.h> 
- 
+#include <unistd.h>
 
-
-
-
-
- 
-int main() 
-{ 
+int main()
+{
     system("CLS");
     char username_register[50];
     char password_register[50];
     char username_login[50];
     char password_login[50];
+    char *password_reg = password_register;
+    char *username_log = username_login;
     int pilihan;
     printf("==================================================================================================\n");
     printf("\t\t\t\t        Selamat Datang\n");
@@ -31,42 +27,38 @@ int main()
     scanf("%d", &pilihan);
     if (pilihan == 1)
     {
-        printf("Enter your username:\n"); 
-        scanf("%s", username_register); 
- 
-        printf("Enter your password:\n"); 
-        scanf("%s", password_register); 
+        printf("Enter your username:\n");
+        scanf("%s", username_register);
 
-        main();
-    }else if(pilihan==2){
-         printf("Enter your username:\n"); 
-         scanf("%s", username_login); 
- 
-         printf("Enter your password:\n"); 
-         scanf("%s", password_login); 
- 
-        if(strcmp(username_login,username_register)==0 && strcmp(password_login,password_register)==0 || strcmp(username_login, "admin") == 0 && strcmp(password_login, "admin") == 0 ){
-        printf("Login Berhasil!!!");
-        }else{
-        printf("Login Gagal!!!");
+        printf("Enter your password:\n");
+        scanf("%s", password_register);
+
+        return main();
+    }
+    else if (pilihan == 2)
+    {
+        printf("Enter your username:\n");
+        scanf("%s", username_login);
+
+        printf("Enter your password:\n");
+        scanf("%s", password_login);
+        printf("%s", password_register);
+        printf("%s", username_register);
+        if (strcmp(username_login, username_register) == 0 && strcmp(password_login, password_register) == 0 || strcmp(username_login, "admin") == 0 && strcmp(password_login, "admin") == 0)
+        {
+            printf("Login Berhasil!!!");
         }
-    }else{
+        else
+        {
+            printf("Login Gagal!!!");
+        }
+    }
+    else
+    {
         printf("System error");
         main();
     }
- 
-    
-
-
 
     system("pause");
-    return 0; 
- 
-} 
-
-
-
-
-
-
-
+    return 0;
+}
