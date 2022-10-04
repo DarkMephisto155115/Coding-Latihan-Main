@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+// THIS IS WATERMARK BY DARK_MEPHISTO/ANDIKA :)
 struct data_login // Menyimpan data login section S1
 {
     char user_name[15];
@@ -117,12 +118,14 @@ void login_function()
 
     if (strcmp(s1.user_name, "admin") == 0 && strcmp(s1.pass_word, "admin") == 0)
     {
-        printf("\t\t\t\tLogin Berhasil!!! \n");
+        sleep(1);
+        printf("\n\t\t\t\tLogin Berhasil!!! \n");
+        loading_function((char *)"\n\t\t\t\tLogging in", 15);
     }
     else
     {
-        printf("\t\t\t\tLogin Gagal!!! \n");
-        loading_function((char *)"\t\t\t\tRestarting", 15);
+        printf("\n\t\t\t\tLogin Gagal!!! \n");
+        loading_function((char *)"\n\t\t\t\tRestarting", 15);
         main();
     }
 }
