@@ -355,8 +355,8 @@ void rental_game_rental()
     case 1:
     {
         char nama_paket_1[50] = "Paket 1";
-        int harga_sewa_1 = 20000;
-        int lama_sewa_1 = 3;
+        const int harga_sewa_1 = 20000;
+        const int lama_sewa_1 = 3;
         char judul_game_11[50];
         char judul_game_21[50];
         char judul_game_31[50];
@@ -400,8 +400,8 @@ void rental_game_rental()
     case 2:
     {
         char nama_paket_2[50] = "Paket 2";
-        int harga_sewa_2 = 50000;
-        int lama_sewa_2 = 7;
+        const int harga_sewa_2 = 50000;
+        const int lama_sewa_2 = 7;
         char judul_game_12[50];
         char judul_game_22[50];
         char judul_game_32[50];
@@ -445,8 +445,8 @@ void rental_game_rental()
     case 3:
     {
         char nama_paket_3[50] = "Paket 3";
-        int harga_sewa_3 = 80000;
-        int lama_sewa_3 = 14;
+        const int harga_sewa_3 = 80000;
+        const int lama_sewa_3 = 14;
         char judul_game_13[50];
         char judul_game_23[50];
         char judul_game_33[50];
@@ -490,8 +490,8 @@ void rental_game_rental()
     case 4:
     {
         char nama_paket_4[50] = "Sabtu-Minggu";
-        int harga_sewa_4 = 10000;
-        int lama_sewa_4 = 2;
+        const int harga_sewa_4 = 10000;
+        const int lama_sewa_4 = 2;
         char judul_game_14[50];
         printf("Game apa yang ingin kamu sewa?\n");
         scanf("%s", judul_game_14);
@@ -502,8 +502,8 @@ void rental_game_rental()
     case 5:
     {
         char nama_paket_5[50] = "Libur Panjang";
-        int harga_sewa_5 = 150000;
-        int lama_sewa_5 = 30;
+        const int harga_sewa_5 = 150000;
+        const int lama_sewa_5 = 30;
         char judul_game_15[50];
         char judul_game_25[50];
         char judul_game_35[50];
@@ -546,7 +546,7 @@ void rental_game_rental()
     case 6:
     {
         char nama_paket_6[50] = "Personal";
-        int harga_sewa_6 = 8000;
+        const int harga_sewa_6 = 8000;
         int lama_sewa_6;
         char judul_game_16[50];
         char judul_game_26[50];
@@ -1149,8 +1149,8 @@ void rental_film_rental()
     case 1:
     {
         char nama_paket_1[50] = "Paket 1";
-        int harga_sewa_1 = 5000;
-        int lama_sewa_1 = 1;
+        const int harga_sewa_1 = 5000;
+        const int lama_sewa_1 = 1;
         char judul_film_11[50];
         char judul_film_21[50];
         char judul_film_31[50];
@@ -1194,8 +1194,8 @@ void rental_film_rental()
     case 2:
     {
         char nama_paket_2[50] = "Paket 2";
-        int harga_sewa_2 = 12000;
-        int lama_sewa_2 = 3;
+        const int harga_sewa_2 = 12000;
+        const int lama_sewa_2 = 3;
         char judul_film_12[50];
         char judul_film_22[50];
         char judul_film_32[50];
@@ -1239,8 +1239,8 @@ void rental_film_rental()
     case 3:
     {
         char nama_paket_3[50] = "Paket 3";
-        int harga_sewa_3 = 25000;
-        int lama_sewa_3 = 5;
+        const int harga_sewa_3 = 25000;
+        const int lama_sewa_3 = 5;
         char judul_film_13[50];
         char judul_film_23[50];
         char judul_film_33[50];
@@ -1284,7 +1284,7 @@ void rental_film_rental()
     case 4:
     {
         char nama_paket_6[50] = "Personal";
-        int harga_sewa_6 = 8000;
+        const int harga_sewa_6 = 8000;
         int lama_sewa_6;
         char judul_film_16[50];
         char judul_film_26[50];
