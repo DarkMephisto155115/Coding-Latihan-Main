@@ -98,7 +98,6 @@ int main()
     start_menu();
     login_function();
     main_menu();
-
     system("pause");
     start_menu();
     return 0;
@@ -1772,6 +1771,7 @@ void paket_diskon_spesial(){
     printf("=================================================================== \n");
     printf("| Pilih Jenis Paket                                               |\n");
     printf("=================================================================== \n");
+
 }
 
 
