@@ -1,7 +1,8 @@
 #include <stdio.h>
-//Created By Dark_Mephisto :)
+// Created By Dark_Mephisto :)
 
-int main(){
+int main()
+{
     long long int gaji;
     long long int bonus;
     long long int gaji_bonus;

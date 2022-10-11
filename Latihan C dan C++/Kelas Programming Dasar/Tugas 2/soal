@@ -1,0 +1,11 @@
+1. Buatlah fungsi untuk menghitung daya listrik jika diketahui nilai W
+(energi) dan t (waktu) sebagai parameter fungsi. Fungsi akan
+menghitung daya dengan rumus daya (P) = W/t. Fungsi akan
+mengembalikan nilai daya (float). Buat fungsi main untuk
+memanggil fungsi tersebut.
+
+2. Buatlah fungsi untuk menghitung tarif internet berdasarkan durasi
+pemakaian (t) sebagai parameter fungsi. Fungsi akan menghitung
+total biaya pemakaian internet dengan rumus biaya = t*3000.
+Fungsi akan mengembalikan total biaya (float). Buat fungsi main
+untuk memanggil fungsi tsb. 
