@@ -6,20 +6,21 @@ using namespace std;
 
 // Latihan 1
 // a, b, d, f, h, i
-
+int hitung_daya(int x, int y)
+{
+    return (x / y);
+}
 
 int main()
 {
-    //Latihan 2
-    // Menyimpan NIM Mahasiswa UMM
-    int NIM;
-    // Menyimpan no rekening tabungan yang terdiri dari 10 digit
-    long int Rekening;
-    // Menyimpan saldo tabungan
-    double saldo;
-    //Menyimpan hasil perkalian bilangan bulat
-    int hasil;
-    //Menyimpan nilai IP kumulatif
-    float IP_Kumulatif;
-    return 0;
+    int main()
+    {
+        int w = 5; // Energi
+        int t = 4; // Waktu
+        float hasil;
+
+        hasil = hitung_daya(w, t);
+        cout << ("Daya yang diperoleh adalah: %f \n", hasil);
+        return 0;
+    }
 }
