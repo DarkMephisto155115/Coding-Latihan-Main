@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 // THIS IS WATERMARK BY DARK_MEPHISTO/ANDIKA :)
-// Missing Feature Array dan Loop
+// Missing Feature Array dan Loop @andika
 // Missing Loop Only now @andika
 // Idk how loop supposed to work in this project @Dark_Mephisto
 
@@ -58,39 +58,106 @@ struct data_list_film // Menyimpan data list film S4
 };
 // Function declare
 
-void login_function();                                                                                            // Sistem Login
-void start_menu();                                                                                                // UI Start_Menu
-void main_menu();                                                                                                 // UI Main_Menu
-void loading_function(char *myString, size_t lengthMyString);                                                     // Animasi Loading
-void case_switch_menu();                                                                                          // Sistem untuk Main_menu
-void list_film_UI();                                                                                              // UI List Film
-void list_film_1();                                                                                               // Sistem List Film
-void list_film_2();                                                                                               // Sistem List Film 2
-void list_game_UI();                                                                                              // Ui List Game
-void list_game_1();                                                                                               // Sistem List Game
-void list_game_2();                                                                                               // Sistem List Game 2
-void rental_film_menu();                                                                                          // UI Main Menu Rental Game
-void rental_film_harga();                                                                                         // UI Menu Harga Rental Game
-void rental_film_peraturan();                                                                                     // UI Main Peraturan Rental Game
-void rental_film_hasil();                                                                                         // UI Menu Rental Game
-void rental_film_rental();                                                                                        // Sistem Rental Game
-void kalkulasi_rental_film_1(long int, int, char[50], char[50], char[50], char[50]);                              // Sistem Kalkulasi Rental 1 Game
-void kalkulasi_rental_film_2(long int, int, char[50], char[50], char[50], char[50], char[50]);                    // Sistem Kalkulasi Rental 2 Game
-void kalkulasi_rental_film_3(long int, int, char[50], char[50], char[50], char[50], char[50], char[50]);          // Sistem Kalkulasi Rental 3 Game
-void kalkulasi_rental_film_1_personal(long int, int, char[50], char[50], char[50], char[50]);                     // Sistem Kalkulasi Rental 1 Game Paket Personal
-void kalkulasi_rental_film_2_personal(long int, int, char[50], char[50], char[50], char[50], char[50]);           // Sistem Kalkulasi Rental 2 Game Paket Personal
-void kalkulasi_rental_film_3_personal(long int, int, char[50], char[50], char[50], char[50], char[50], char[50]); // Sistem Kalkulasi Rental 3 Game Paket Personal
-void rental_game_menu();                                                                                          // UI Main Menu Rental Game
-void rental_game_harga();                                                                                         // UI Menu Harga Rental Game
-void rental_game_peraturan();                                                                                     // UI Menu Peraturan Rental Game
-void rental_game_hasil();                                                                                         // UI Menu Rental Game
-void rental_game_rental();                                                                                        // Sistem Rental Game
-void kalkulasi_rental_game_1(long int, int, char[50], char[50], char[50], char[50]);                              // Sistem Kalkulasi Rental 1 Film
-void kalkulasi_rental_game_2(long int, int, char[50], char[50], char[50], char[50], char[50]);                    // Sistem Kalkulasi Rental 2 Film
-void kalkulasi_rental_game_3(long int, int, char[50], char[50], char[50], char[50], char[50], char[50]);          // Sistem Kalkulasi Rental 3 Film
-void kalkulasi_rental_game_1_personal(long int, int, char[50], char[50], char[50], char[50]);                     // Sistem Kalkulasi Rental 1 Film Paket Personal
-void kalkulasi_rental_game_2_personal(long int, int, char[50], char[50], char[50], char[50], char[50]);           // Sistem Kalkulasi Rental 2 Film Paket Personal
-void kalkulasi_rental_game_3_personal(long int, int, char[50], char[50], char[50], char[50], char[50], char[50]); // Sistem Kalkulasi Rental 3 Film Paket Personal
+// Sistem Login
+void login_function();
+
+// UI Start_Menu
+void start_menu();
+
+// UI Main_Menu
+void main_menu();
+
+// Animasi Loading
+void loading_function(char *myString, size_t lengthMyString);
+
+// Sistem untuk Main_menu
+void case_switch_menu();
+
+// UI List Film
+void list_film_UI();
+
+// Sistem List Film
+void list_film_1();
+
+// Sistem List Film 2
+void list_film_2();
+
+// Ui List Game
+void list_game_UI();
+
+// Sistem List Game
+void list_game_1();
+
+// Sistem List Game 2
+void list_game_2();
+
+// UI Main Menu Rental Game
+void rental_film_menu();
+
+// UI Menu Harga Rental Game
+void rental_film_harga();
+
+// UI Main Peraturan Rental Game
+void rental_film_peraturan();
+
+// UI Menu Rental Game
+void rental_film_hasil();
+
+// Sistem Rental Game
+void rental_film_rental();
+
+// Sistem Kalkulasi Rental 1 Game
+void kalkulasi_rental_film_1(long int, int, char[50], char[50], char[50], char[50]);
+
+// Sistem Kalkulasi Rental 2 Game
+void kalkulasi_rental_film_2(long int, int, char[50], char[50], char[50], char[50], char[50]);
+
+// Sistem Kalkulasi Rental 3 Game
+void kalkulasi_rental_film_3(long int, int, char[50], char[50], char[50], char[50], char[50], char[50]);
+
+// Sistem Kalkulasi Rental 1 Game Paket Personal
+void kalkulasi_rental_film_1_personal(long int, int, char[50], char[50], char[50], char[50]);
+
+// Sistem Kalkulasi Rental 2 Game Paket Personal
+void kalkulasi_rental_film_2_personal(long int, int, char[50], char[50], char[50], char[50], char[50]);
+
+// Sistem Kalkulasi Rental 3 Game Paket Personal
+void kalkulasi_rental_film_3_personal(long int, int, char[50], char[50], char[50], char[50], char[50], char[50]);
+
+// UI Main Menu Rental Game
+void rental_game_menu();
+
+// UI Menu Harga Rental Game
+void rental_game_harga();
+
+// UI Menu Peraturan Rental Game
+void rental_game_peraturan();
+
+// UI Menu Rental Game
+void rental_game_hasil();
+
+// Sistem Rental Game
+void rental_game_rental();
+
+// Sistem Kalkulasi Rental 1 Film
+void kalkulasi_rental_game_1(long int, int, char[50], char[50], char[50], char[50]);
+
+// Sistem Kalkulasi Rental 2 Film
+void kalkulasi_rental_game_2(long int, int, char[50], char[50], char[50], char[50], char[50]);
+
+// Sistem Kalkulasi Rental 3 Film
+void kalkulasi_rental_game_3(long int, int, char[50], char[50], char[50], char[50], char[50], char[50]);
+
+// Sistem Kalkulasi Rental 1 Film Paket Personal
+void kalkulasi_rental_game_1_personal(long int, int, char[50], char[50], char[50], char[50]);
+
+// Sistem Kalkulasi Rental 2 Film Paket Personal
+void kalkulasi_rental_game_2_personal(long int, int, char[50], char[50], char[50], char[50], char[50]);
+
+// Sistem Kalkulasi Rental 3 Film Paket Personal
+void kalkulasi_rental_game_3_personal(long int, int, char[50], char[50], char[50], char[50], char[50], char[50]);
+
+// Sistem Diskon Spesial
 void diskon_spesial();
 
 // Main-System
@@ -107,7 +174,6 @@ int main()
 
 // Start Menu Function Section: START
 
-// Sistem Login
 void login_function()
 {
     struct data_login s1;
