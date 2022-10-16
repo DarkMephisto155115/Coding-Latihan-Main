@@ -3,6 +3,7 @@
 // THIS IS WATERMARK BY DARK_MEPHISTO/ANDIKA :)
 
 float hitung_daya(float, float); // Define Function
+
 int main()
 {
     int w; // Energi
@@ -18,9 +19,9 @@ int main()
     return 0;
 }
 
-float hitung_daya(float x, float y)
+float hitung_daya(float w, float t)
 {
-    return (x / y);
+    return (w / t);
 }
 
 /*

@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 // THIS IS WATERMARK BY DARK_MEPHISTO/ANDIKA :)
-// Missing Feature Array dan Loop @andika
+// Missing Feature Array and Loop @andika
 // Missing Loop Only now @andika
 // Idk how loop supposed to work in this project @Dark_Mephisto
 
