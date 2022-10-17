@@ -1,13 +1,17 @@
 #include <stdio.h>
 
+int main()
+{
+    int v = 3;
+    int w = 5;
+    if (v++ > 3)
+    {
+        printf("GG \n");
+    }
+    else
+    {
+        printf("NT \n");
+    }
 
-
-int main (){
-    char tes_2 [20];
-    char tes [100] ="anjay mabar";
-    scanf("%s", tes_2);
-    tes  ="anjay 123mabar";
-    printf("%s", tes);
-    printf("%s", tes_2);
-    return 0;
+    printf("%d", v);
 }

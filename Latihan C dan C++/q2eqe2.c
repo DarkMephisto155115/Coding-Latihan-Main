@@ -2,11 +2,13 @@
 
 int main()
 {
-    double hasil_b;
-    double hasil_c;
-    hasil_b = (58 / 60);
-    hasil_c = (43 / 3600);
-    printf("%lf \n", hasil_b);
-    printf("%lf \n", hasil_c);
+    float x = 10;
+    float y = 7;
+    float hasil = x / y;
+    float hasil_b = ((float)58 / 60);
+    float hasil_c = ((float)43 / 3600);
+    printf("%f \n", hasil_b);
+    printf("%f \n", hasil_c);
+    printf("%f \n", hasil);
     return 0;
 }
