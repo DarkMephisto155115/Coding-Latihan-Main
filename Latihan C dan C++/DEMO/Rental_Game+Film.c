@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 // THIS IS WATERMARK BY DARK_MEPHISTO/ANDIKA :)
 // Missing Feature Array and Loop @andika
@@ -187,7 +188,7 @@ void login_function()
     printf("\t\t\t\t");
     scanf("%s", &s1.pass_word);
 
-    if (strcmp(s1.user_name, "admin") == 0 && strcmp(s1.pass_word, "admin") == 0)
+    if (strcmp(s1.user_name, "admin") == 0 && strcmp(s1.pass_word, "admin") == 0) // bool strcmp true=0
     {
         sleep(1);
         printf("\n\t\t\t\tLogin Berhasil!!! \n");
@@ -675,7 +676,7 @@ void rental_game_rental()
     }
 }
 
-void kalkulasi_rental_game_1(long int harga_sewa, int lama_sewa, char nama_paket[50], char nama_game[50], char nama_pinjam_[50], char tanggal_pinjam_[50])
+void kalkulasi_rental_game_1(long int harga_sewa, int lama_sewa, char nama_paket[50], char nama_game[50], char nama_pinjam_[50], char tanggal_pinjam_[50]) // Operation
 {
     system("CLS");
     struct data_rental_game s3;
@@ -811,7 +812,7 @@ void kalkulasi_rental_game_3(long int harga_sewa, int lama_sewa, char nama_paket
     }
 }
 
-void kalkulasi_rental_game_1_personal(long int harga_sewa, int lama_sewa, char nama_paket[50], char nama_game[50], char nama_pinjam_[50], char tanggal_pinjam_[50])
+void kalkulasi_rental_game_1_personal(long int harga_sewa, int lama_sewa, char nama_paket[50], char nama_game[50], char nama_pinjam_[50], char tanggal_pinjam_[50]) // operation
 {
     system("CLS");
     struct data_rental_game s3;
@@ -2040,7 +2041,7 @@ void diskon_spesial()
         printf("==========================================\n");
         printf("|            Nota Pembayaran             |\n");
         printf("|              Rental Film               |\n");
-        printf("==========================================\n");
+        printf("==========================================\n"); // output string
         printf(" Nama : %s ", nama_pinjam);
         printf("Tanggal Pinjam: %s\n", tanggal_pinjam);
         printf(" Jenis Paket: Horror Week End \n");
