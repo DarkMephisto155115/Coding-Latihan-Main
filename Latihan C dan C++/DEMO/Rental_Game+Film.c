@@ -177,24 +177,30 @@ int main()
 
 void login_function()
 {
-    struct data_login s1;
-    fflush(stdin);
+    struct data_login s1;// define struct data_login dengan S1
+    bool cek_login;// bool untuk cek_login
+    fflush(stdin);// flush Input
 
-    printf("\t\t\t\tEnter your username:\n");
-    printf("\t\t\t\t");
-    scanf("%s", &s1.user_name);
+    printf("\t\t\t\tEnter your username:\n");// output string
+    printf("\t\t\t\t");// ??????
+    scanf("%s", &s1.user_name);// input user_name
 
-    printf("\t\t\t\tEnter your password:\n");
-    printf("\t\t\t\t");
-    scanf("%s", &s1.pass_word);
-
-    if (strcmp(s1.user_name, "admin") == 0 && strcmp(s1.pass_word, "admin") == 0) // bool strcmp true=0
+    printf("\t\t\t\tEnter your password:\n");// output string
+    printf("\t\t\t\t");//?????
+    scanf("%s", &s1.pass_word);// input pass_word
+    if (strcmp(s1.user_name, "admin") == 0 && strcmp(s1.pass_word, "admin") == 0) // cek_login
+    {
+        cek_login = true;// True apabila user_name dan pass_word betul
+    }else{
+        cek_login = false;// false apabila user_name dan pass_word salah
+    }
+    if (cek_login == true) // cek_login untuk akses Menu
     {
         sleep(1);
         printf("\n\t\t\t\tLogin Berhasil!!! \n");
         loading_function((char *)"\n\t\t\t\tLogging in", 15);
     }
-    else
+    else// Apabila cek_login salah atau false
     {
         printf("\n\t\t\t\tLogin Gagal!!! \n");
         loading_function((char *)"\n\t\t\t\tRestarting", 15);

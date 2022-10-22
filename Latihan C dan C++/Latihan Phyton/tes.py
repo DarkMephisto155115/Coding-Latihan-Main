@@ -6,3 +6,4 @@ print(b)
 print(c)
 hasil = a + b + c
 print(hasil)
+a
