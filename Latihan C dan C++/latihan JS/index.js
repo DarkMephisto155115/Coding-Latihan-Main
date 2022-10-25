@@ -1,1 +1,3 @@
-document.getElementById("tes").innerText = ("Anjay Mabar");
+anjay_mabar(){
+    document.getElementById("tes")="wkwkwkwwkkwkw";
+}
