@@ -14,7 +14,8 @@ int main(){
     scanf("%d", &b);
     printf ("Masukkan Nilai c:\n");
     scanf("%d", &c);
-    function_deter(a, b, c);
+    int hasil = function_deter(a, b, c);
+    printf("Hasil Determinan: %d\n", hasil);
     system ("pause");
     main();
 }
@@ -22,9 +23,5 @@ int main(){
 
 
 int function_deter(int a, int b, int c){
-    int hasil = (b*b) - (4*a*c) ;
-    printf ("Nilai a: %d \n", a);
-    printf ("Nilai b: %d \n", b);
-    printf ("Nilai c: %d \n", c);
-    printf ("Nilai Determinan: %d \n", hasil);
+    return ((b*b) - (4*a*c));
 }
