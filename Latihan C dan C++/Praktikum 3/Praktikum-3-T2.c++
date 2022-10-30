@@ -7,7 +7,7 @@ int main()
 {
 
     int nilai;
-    
+
     cout << "Masukkan Nilai Anda: ";
     cin >> nilai;
     if (nilai >= 60)
