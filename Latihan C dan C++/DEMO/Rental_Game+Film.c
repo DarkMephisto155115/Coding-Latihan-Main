@@ -177,22 +177,25 @@ int main()
 
 void login_function()
 {
-    struct data_login s1;// define struct data_login dengan S1
-    bool cek_login;// bool untuk cek_login
-    fflush(stdin);// flush Input
+    struct data_login s1; // define struct data_login dengan S1
+    bool cek_login;       // bool untuk cek_login
+    fflush(stdin);        // flush Input
 
-    printf("\t\t\t\tEnter your username:\n");// output string
-    printf("\t\t\t\t");// ??????
-    scanf("%s", &s1.user_name);// input user_name
+    printf("\t\t\t\tEnter your username:\n"); // output string
+    printf("\t\t\t\t");                       // ??????
+    scanf("%s", &s1.user_name);               // input user_name
 
-    printf("\t\t\t\tEnter your password:\n");// output string
-    printf("\t\t\t\t");//?????
-    scanf("%s", &s1.pass_word);// input pass_word
+    printf("\t\t\t\tEnter your password:\n"); // output string
+    printf("\t\t\t\t");                       //?????
+    scanf("%s", &s1.pass_word);               // input pass_word
+
     if (strcmp(s1.user_name, "admin") == 0 && strcmp(s1.pass_word, "admin") == 0) // cek_login
     {
-        cek_login = true;// True apabila user_name dan pass_word betul
-    }else{
-        cek_login = false;// false apabila user_name dan pass_word salah
+        cek_login = true; // True apabila user_name dan pass_word betul
+    }
+    else
+    {
+        cek_login = false; // false apabila user_name dan pass_word salah
     }
     if (cek_login == true) // cek_login untuk akses Menu
     {
@@ -200,7 +203,7 @@ void login_function()
         printf("\n\t\t\t\tLogin Berhasil!!! \n");
         loading_function((char *)"\n\t\t\t\tLogging in", 15);
     }
-    else// Apabila cek_login salah atau false
+    else // Apabila cek_login salah atau false
     {
         printf("\n\t\t\t\tLogin Gagal!!! \n");
         loading_function((char *)"\n\t\t\t\tRestarting", 15);
@@ -251,29 +254,29 @@ void main_menu()
 // Sistem Main Menu
 void case_switch_menu()
 {
-    struct data_main_menu s2;
-    scanf("%d", &s2.plhn_menu);
+    struct data_main_menu s2;   // Define data struch dengan s2
+    scanf("%d", &s2.plhn_menu); // input
     switch (s2.plhn_menu)
     {
-    case 1: // Rental Game
+    case 1: // Call Function Rental Game
         rental_game_menu();
         break;
-    case 2: // List Game
+    case 2: // Call Function List Game
         list_game_UI();
         break;
-    case 3: // Rental Film
+    case 3: // Call Function Rental Film
         rental_film_menu();
         break;
-    case 4: // List Film
+    case 4: // Call Function List Film
         list_film_UI();
         break;
-    case 5: // Menu Diskon Spesial
+    case 5: // Call Function Menu Diskon Spesial
         diskon_spesial();
         break;
-    case 6: // Kembali ke main menu
+    case 6: // Call Function Kembali ke main menu
         main();
         break;
-    case 7: // Exit
+    case 7: // Call Function Exit
         exit(0);
         break;
 
