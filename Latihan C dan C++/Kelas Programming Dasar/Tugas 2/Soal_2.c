@@ -19,7 +19,7 @@ int main()
 
 float total_biaya(float t, float biaya)
 {
-    return (t * biaya);
+    return t * biaya;
 }
 
 /*
