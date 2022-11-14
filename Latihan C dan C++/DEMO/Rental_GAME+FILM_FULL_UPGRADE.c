@@ -12,6 +12,8 @@
 // Yeah, as long as there is loop i think LGTM @Dark_Mephisto
 // global data for login and register @andika
 // well thats was easy i think we played to much anime game to know how to use for loop @dark_mephisto
+// call .\Rental_GAME+FILM_FULL_UPGRADE.exe
+// For fuck sake your login function argument are all over the place thats why it giving me error everytime @andika
 
 /*
 To Do List
@@ -161,6 +163,8 @@ void kalkulasi_rental_game_3(long int, int, int, char[50], char[50], char[50], c
 void diskon_spesial();
 
 // Global Data
+char user_name[20];
+char pass_word[20];
 char user_name_2[20];
 char pass_word_2[20];
 
@@ -244,7 +248,6 @@ int main()
     login_function();
     main_menu();
 
-    system("pause");
     start_menu();
     return 0;
 }
@@ -254,33 +257,38 @@ int main()
 void login_function()
 {
     {
-        char user_name[20];
-        char pass_word[20];
 
         int cek_login; // bool to int untuk cek_login
         int cek_login2;
 
         printf("\t\t\t\tEnter your username:\n"); // output string
         printf("\t\t\t\t");                       // ??????
-        scanf("\t\t\t\t%s", user_name);           // input user_name
-
+        scanf(" %s", user_name);                  // input user_name
         printf("\t\t\t\tEnter your password:\n"); // output string
         printf("\t\t\t\t");                       //?????
-        scanf("\t\t\t\t%s", pass_word);           // input pass_word
+        scanf(" %s", pass_word);                  // input pass_word
         cek_login = cek_login_1(user_name, pass_word);
-        cek_login2 = cek_login_2(user_name, user_name_2, pass_word, pass_word_2);
-        if (cek_login == 1 || cek_login2 == 1) // cek_login untuk akses Menu
+        cek_login2 = cek_login_2(user_name, pass_word, user_name_2, pass_word_2);
+        if (cek_login == 1) // cek_login untuk akses Menu
         {
             sleep(1);
             printf("\n\t\t\t\tLogin Berhasil!!! \n");
             loading_function((char *)"\n\t\t\t\tLogging in", 15);
             main_menu();
         }
+        else if (cek_login2 == 1)
+        {
+            sleep(1);
+            printf("\n\t\t\t\tLogin Berhasil!!! \n");
+            loading_function((char *)"\n\t\t\t\tLogging in", 15);
+            main_menu();
+        }
+
         else // Apabila cek_login salah atau false
         {
             printf("\n\t\t\t\tLogin Gagal!!! \n");
             loading_function((char *)"\n\t\t\t\tRestarting", 15);
-            main();
+            start_menu();
         }
     }
 }
@@ -288,7 +296,7 @@ void login_function()
 void start_menu()
 {
     int pilihan;
-    system("CLS");
+    printf("\e[1;1H\e[2J");
     printf("==================================================================================================\n");
     printf("\t\t\t\t        Selamat Datang\n");
     printf("\t\t\t\t Persewaan Kaset Game dan Film\n");
@@ -300,7 +308,9 @@ void start_menu()
     printf("\t\t\t\tSilahkan Login atau Registrasi\n");
     printf("\t\t\t\t1.Login\n");
     printf("\t\t\t\t2.Registrasi\n");
-    scanf("\t\t\t\t%d", &pilihan);
+    printf("\t\t\t\tMasukkan Salah Satu!\n");
+    printf("\t\t\t\t");
+    scanf("%d", &pilihan);
     switch (pilihan)
     {
     case 1:
@@ -309,12 +319,11 @@ void start_menu()
     case 2:
         printf("\t\t\t\tEnter your username:\n"); // output string
         printf("\t\t\t\t");                       // ??????
-        scanf("\t\t\t\t%s", user_name_2);         // input user_name
-
+        scanf(" %s", user_name_2);                // input user_name
         printf("\t\t\t\tEnter your password:\n"); // output string
         printf("\t\t\t\t");                       //?????
-        scanf("\t\t\t\t%s", pass_word_2);
-        main();
+        scanf(" %s", pass_word_2);
+        start_menu();
         break;
     default:
         break;
