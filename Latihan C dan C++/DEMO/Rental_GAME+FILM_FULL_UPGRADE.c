@@ -17,14 +17,15 @@
 
 /*
 To Do List
-1. rework price calculation function DONE
-2. rework choosing game name DONE?
-3. rework nota
-4. create push array function DONE?? kinda??
-5. write nota to file as data
-6. For Loop ???? DONE
-7. Rework price calculation to function DONE
-8. Use Struct
+1. rework price calculation function [DONE]
+2. rework choosing game name [DONE]?
+3. rework nota[]
+4. create push array function [DONE]?? kinda??
+5. write nota to file as data[]
+6. For Loop ???? [DONE]
+7. Rework price calculation to function [DONE]
+8. Use Struct[]
+9. Simple login system [DONE]
 
 */
 
@@ -247,7 +248,6 @@ int main()
     start_menu();
     login_function();
     main_menu();
-
     start_menu();
     return 0;
 }
