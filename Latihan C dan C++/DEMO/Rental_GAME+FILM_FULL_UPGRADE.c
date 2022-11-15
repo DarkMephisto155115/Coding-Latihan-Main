@@ -29,11 +29,6 @@ To Do List
 
 */
 
-struct data_login // Menyimpan data login section S1
-{
-    char user_name[15];
-    char pass_word[15];
-};
 
 struct data_main_menu // Menyimpan data main menu section S2
 {
@@ -258,7 +253,7 @@ void login_function()
 {
     {
 
-        int cek_login; // bool to int untuk cek_login
+        int cek_login;
         int cek_login2;
 
         printf("\t\t\t\tEnter your username:\n"); // output string
@@ -317,11 +312,11 @@ void start_menu()
         login_function();
         break;
     case 2:
-        printf("\t\t\t\tEnter your username:\n"); // output string
-        printf("\t\t\t\t");                       // ??????
-        scanf(" %s", user_name_2);                // input user_name
-        printf("\t\t\t\tEnter your password:\n"); // output string
-        printf("\t\t\t\t");                       //?????
+        printf("\t\t\t\tEnter your username:\n");
+        printf("\t\t\t\t");
+        scanf(" %s", user_name_2);
+        printf("\t\t\t\tEnter your password:\n");
+        printf("\t\t\t\t");
         scanf(" %s", pass_word_2);
         start_menu();
         break;
@@ -544,10 +539,10 @@ void rental_game_rental()
     {
         char nama_paket_1[50] = "Paket 1";
         const int harga_sewa_1 = 7000; // 21.000
-        const int lama_sewa_1 = 3;
+        const int lama_sewa_1 = 3; // lama sewa
         printf("Berapa banyak game yang ingin disewa?\n");
-        scanf("%d", &banyak_sewa_game);
-        for (i = 0; i <= (banyak_sewa_game - 1); i++)
+        scanf("%d", &banyak_sewa_game); // input banyak sewa
+        for (i = 0; i <= (banyak_sewa_game - 1); i++) //loop input game
         {
             printf("Masukkan game yang ingin disewa! \n");
             scanf(" %[^\n]s", judul_game[i]);
