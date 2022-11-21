@@ -1037,10 +1037,10 @@ void rental_film_menu()
         main_menu();
         break;
     default:
-        break;
         printf("Input Salah\n");
         loading_function((char *)"Restarting", 11);
         rental_film_menu();
+        break;
     }
 } // Sistem Rental Film
 
