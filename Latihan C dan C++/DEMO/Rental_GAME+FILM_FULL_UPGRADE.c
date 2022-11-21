@@ -29,7 +29,6 @@ To Do List
 
 */
 
-
 struct data_main_menu // Menyimpan data main menu section S2
 {
     int plhn_menu;
@@ -539,10 +538,10 @@ void rental_game_rental()
     {
         char nama_paket_1[50] = "Paket 1";
         const int harga_sewa_1 = 7000; // 21.000
-        const int lama_sewa_1 = 3; // lama sewa
+        const int lama_sewa_1 = 3;     // lama sewa
         printf("Berapa banyak game yang ingin disewa?\n");
-        scanf("%d", &banyak_sewa_game); // input banyak sewa
-        for (i = 0; i <= (banyak_sewa_game - 1); i++) //loop input game
+        scanf("%d", &banyak_sewa_game);               // input banyak sewa
+        for (i = 0; i <= (banyak_sewa_game - 1); i++) // loop input game
         {
             printf("Masukkan game yang ingin disewa! \n");
             scanf(" %[^\n]s", judul_game[i]);
@@ -1185,7 +1184,6 @@ void rental_film_rental()
         }
         if (banyak_sewa_film == 1)
         {
-
             kalkulasi_rental_film_1(harga_sewa_2, lama_sewa_2, banyak_sewa_film, nama_paket_2, judul_film[0], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_film, nama_pinjam, tanggal_pinjam)
         }
         else if (banyak_sewa_film == 2)

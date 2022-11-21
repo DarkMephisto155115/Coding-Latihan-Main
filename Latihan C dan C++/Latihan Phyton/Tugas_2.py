@@ -6,6 +6,7 @@ while i <= max:
     password = input("Masukkan password anda: ")
     if username == "Daspro" and password == "PPL4s!k":
         print("Selamat, Anda berhasil login!")
+        break
     else:
         if counter == 0:
             print("Coba lagi besok")
