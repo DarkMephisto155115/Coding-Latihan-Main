@@ -424,14 +424,11 @@ void rental_game_menu()
         main_menu();
         break;
     default:
-        break;
         printf("Input Salah\n");
         loading_function((char *)"Restarting", 11);
         rental_game_menu();
+        break;
     }
-    printf("Input Salah\n");
-    loading_function((char *)"Restarting", 11);
-    rental_game_menu();
 }
 
 void rental_game_harga()
