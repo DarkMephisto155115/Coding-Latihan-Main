@@ -504,6 +504,8 @@ void rental_game_rental()
     char tanggal_pinjam[50];
     int banyak_sewa_game;
     char judul_game[3][50];
+    const long int harga_lama_sewa [6][2] = {{7000, 3}, {6000, 7}, {5000, 14}, {5000, 2}, {4000, 30}, {8000, 0}};
+    char nama_paket[6][50] = {"Paket 1", "Paket 2", "Paket 3", "Paket Sabtu-Minggu", "Paket Libur Panjang", "Paket Personal"};
     int i;
     printf("============================== \n");
     printf("|            Data            |\n");
@@ -524,7 +526,7 @@ void rental_game_rental()
     printf("====================================================================\n");
     printf("1. Paket 1: 21k Setiap Game 3 Hari  \n");
     printf("2. Paket 2: 50k Setiap Game 7 Hari\n");
-    printf("3. Paket 2: 80k Setiap Game 14 Hari\n");
+    printf("3. Paket 3: 80k Setiap Game 14 Hari\n");
     printf("4. Paket Sabtu-Minggu: 10k Untuk 1 Game (Maksimal 1 Game) \n");
     printf("5. Paket Libur Panjang: 150k Setiap Game 30 Hari\n");
     printf("6. Personal: 10k Untuk Sehari Setiap 1 Game (Maksimal 30 Hari)\n");
