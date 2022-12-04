@@ -728,7 +728,7 @@ void rental_game_rental()
     }
 }
 
-void kalkulasi_rental_game_1(long int harga_sewa, int lama_sewa, int banyak_sewa_game, char nama_paket[50], char nama_game[50], char nama_pinjam_[50], char tanggal_pinjam_[50]) // Operation
+void kalkulasi_rental_game(long int harga_sewa, int lama_sewa, int banyak_sewa_game, char nama_paket[50], char nama_game[50], char nama_pinjam_[50], char tanggal_pinjam_[50]) // Operation
 {
     printf("\e[1;1H\e[2J");
     struct data_rental_game s3;
@@ -746,93 +746,11 @@ void kalkulasi_rental_game_1(long int harga_sewa, int lama_sewa, int banyak_sewa
     printf(" Jenis Paket: %s \n", nama_paket);
     printf(" Lama Pinjam: %d Hari\n", lama_sewa);
     printf(" Banyak Game Yang Disewa: %d\n", banyak_sewa_game);
-    printf(" Game Yang Dipilih: %s \n", nama_game);
-    printf(" Harga Sewa: Rp. %ld \n", biaya);
-    printf(" Diskon: %ld\n", diskon);
-    printf(" Total Biaya: Rp. %ld\n", total_biaya);
-    printf("==========================================\n");
-    printf("1. Kembali Ke Main Menu                  |\n");
-    printf("2. Exit                                  |\n");
-    printf("==========================================\n");
-    scanf("%d", &pilihan);
-    if (pilihan == 1)
+    for (int i = 0; i < banyak_sewa_game; i++)
     {
-        main_menu();
+        printf("Game Yang Dipilih: %s", nama_game[i]);
+        printf(", ");
     }
-    else if (pilihan == 2)
-    {
-        exit(0);
-    }
-    else
-    {
-        printf("Input Salah\n");
-        loading_function((char *)"Kembali Ke Main Menu", 21);
-        main_menu();
-    }
-}
-
-void kalkulasi_rental_game_2(long int harga_sewa, int lama_sewa, int banyak_sewa_game, char nama_paket[50], char nama_game_1[50], char nama_game_2[50], char nama_pinjam[50], char tanggal_pinjam[50])
-{
-    printf("\e[1;1H\e[2J");
-    struct data_rental_game s3;
-    int pilihan;
-    long int biaya = (harga_sewa * banyak_sewa_game) * lama_sewa;
-    long int diskon = Kalkulasi_Diskon(harga_sewa, lama_sewa, banyak_sewa_game);
-    long int total_biaya = Kalkulasi_Biaya(harga_sewa, lama_sewa, banyak_sewa_game);
-
-    printf("==========================================\n");
-    printf("|            Nota Pembayaran             |\n");
-    printf("|              Rental Game               |\n");
-    printf("==========================================\n");
-    printf(" Nama : %s ", nama_pinjam);
-    printf("Tanggal Pinjam: %s\n", tanggal_pinjam);
-    printf(" Jenis Paket: %s \n", nama_paket);
-    printf(" Lama Pinjam: %d Hari\n", lama_sewa);
-    printf(" Banyak Game Yang Disewa: %d\n", banyak_sewa_game);
-    printf(" Game Yang Dipilih: %s, %s \n", nama_game_1, nama_game_2);
-    printf(" Harga Sewa: Rp. %ld \n", biaya);
-    printf(" Diskon: %ld\n", diskon);
-    printf(" Total Biaya: Rp. %ld\n", total_biaya);
-    printf("==========================================\n");
-    printf("1. Kembali Ke Main Menu                  |\n");
-    printf("2. Exit                                  |\n");
-    printf("==========================================\n");
-    scanf("%d", &pilihan);
-    if (pilihan == 1)
-    {
-        main_menu();
-    }
-    else if (pilihan == 2)
-    {
-        exit(0);
-    }
-    else
-    {
-        printf("Input Salah\n");
-        loading_function((char *)"Kembali Ke Main Menu", 21);
-        main_menu();
-    }
-}
-
-void kalkulasi_rental_game_3(long int harga_sewa, int lama_sewa, int banyak_sewa_game, char nama_paket[50], char nama_game_1[50], char nama_game_2[50], char nama_game_3[50], char nama_pinjam[50], char tanggal_pinjam[50])
-{
-    printf("\e[1;1H\e[2J");
-    struct data_rental_game s3;
-    int pilihan;
-    long int biaya = (harga_sewa * banyak_sewa_game) * lama_sewa;
-    long int diskon = Kalkulasi_Diskon(harga_sewa, lama_sewa, banyak_sewa_game);
-    long int total_biaya = Kalkulasi_Biaya(harga_sewa, lama_sewa, banyak_sewa_game);
-
-    printf("==========================================\n");
-    printf("|            Nota Pembayaran             |\n");
-    printf("|              Rental Game               |\n");
-    printf("==========================================\n");
-    printf(" Nama : %s ", nama_pinjam);
-    printf("Tanggal Pinjam: %s\n", tanggal_pinjam);
-    printf(" Jenis Paket: %s \n", nama_paket);
-    printf(" Lama Pinjam: %d Hari\n", lama_sewa);
-    printf(" Banyak Game Yang Disewa: %d\n", banyak_sewa_game);
-    printf(" Game Yang Dipilih: %s, %s, %s \n", nama_game_1, nama_game_2, nama_game_3);
     printf(" Harga Sewa: Rp. %ld \n", biaya);
     printf(" Diskon: %ld\n", diskon);
     printf(" Total Biaya: Rp. %ld\n", total_biaya);

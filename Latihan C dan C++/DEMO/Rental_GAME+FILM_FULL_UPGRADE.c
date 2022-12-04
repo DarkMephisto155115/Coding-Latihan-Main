@@ -543,6 +543,10 @@ void rental_game_rental()
         scanf("%d", &banyak_sewa_game); // input banyak sewa
         for (i = 0; i <= (banyak_sewa_game - 1); i++) //loop input game
         {
+            if (banyak_sewa_game >= 4)
+            {
+                break;
+            }
             printf("Masukkan game yang ingin disewa! \n");
             scanf(" %[^\n]s", judul_game[i]);
         }
@@ -577,6 +581,10 @@ void rental_game_rental()
         scanf("%d", &banyak_sewa_game);
         for (i = 0; i <= (banyak_sewa_game - 1); i++)
         {
+            if (banyak_sewa_game >= 4)
+            {
+                break;
+            }
             printf("Masukkan game yang ingin disewa! \n");
             scanf(" %[^\n]s", judul_game[i]);
         }
@@ -611,6 +619,10 @@ void rental_game_rental()
         scanf("%d", &banyak_sewa_game);
         for (i = 0; i <= (banyak_sewa_game - 1); i++)
         {
+            if (banyak_sewa_game >= 4)
+            {
+                break;
+            }
             printf("Masukkan game yang ingin disewa! \n");
             scanf(" %[^\n]s", judul_game[i]);
         }
@@ -656,6 +668,10 @@ void rental_game_rental()
         scanf("%d", &banyak_sewa_game);
         for (i = 0; i <= (banyak_sewa_game - 1); i++)
         {
+            if (banyak_sewa_game >= 4)
+            {
+                break;
+            }
             printf("Masukkan game yang ingin disewa! \n");
             scanf(" %[^\n]s", judul_game[i]);
         }
@@ -691,6 +707,10 @@ void rental_game_rental()
         scanf("%d", &banyak_sewa_game);
         for (i = 0; i <= (banyak_sewa_game - 1); i++)
         {
+            if (banyak_sewa_game >= 4)
+            {
+                break;
+            }
             printf("Masukkan game yang ingin disewa! \n");
             scanf(" %[^\n]s", judul_game[i]);
         }
@@ -1145,6 +1165,10 @@ void rental_film_rental()
         scanf("%d", &banyak_sewa_film);
         for (i = 0; i <= (banyak_sewa_film - 1); i++)
         {
+            if (banyak_sewa_film >= 4)
+            {
+                break;
+            }
             printf("Masukkan game yang ingin disewa! \n");
             scanf(" %[^\n]s", judul_film[i]);
         }
@@ -1179,6 +1203,10 @@ void rental_film_rental()
         scanf("%d", &banyak_sewa_film);
         for (i = 0; i <= (banyak_sewa_film - 1); i++)
         {
+            if (banyak_sewa_film >= 4)
+            {
+                break;
+            }
             printf("Masukkan game yang ingin disewa! \n");
             scanf(" %[^\n]s", judul_film[i]);
         }
@@ -1214,6 +1242,10 @@ void rental_film_rental()
         scanf("%d", &banyak_sewa_film);
         for (i = 0; i <= (banyak_sewa_film - 1); i++)
         {
+            if (banyak_sewa_film >= 4)
+            {
+                break;
+            }
             printf("Masukkan game yang ingin disewa! \n");
             scanf(" %[^\n]s", judul_film[i]);
         }
@@ -1251,6 +1283,10 @@ void rental_film_rental()
         scanf("%d", &banyak_sewa_film);
         for (i = 0; i <= (banyak_sewa_film - 1); i++)
         {
+            if (banyak_sewa_film >= 4)
+            {
+                break;
+            }
             printf("Masukkan game yang ingin disewa! \n");
             scanf(" %[^\n]s", judul_film[i]);
         }
