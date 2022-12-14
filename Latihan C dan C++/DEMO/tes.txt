@@ -1,0 +1,14 @@
+==========================================
+|            Nota Pembayaran             |
+|              Rental Game               |
+==========================================
+ Nama : Andika
+ Tanggal Pinjam: 10-12-2022
+ Jenis Paket: Libur Panjang
+ Lama Pinjam: 30 Hari
+ Banyak Game Yang Disewa: 3
+ Game yang dipilih: 123, 123, 123
+ Harga Sewa: Rp. 360000 
+ Diskon: 72000
+ Total Biaya: Rp. 288000
+==========================================

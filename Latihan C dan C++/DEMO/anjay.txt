@@ -1,0 +1,15 @@
+==========================================
+|            Nota Pembayaran             |
+|              Rental Game               |
+==========================================
+ Nama : adniak
+ 
+ Tanggal Pinjam: awd
+ Jenis Paket: Paket 1 
+ Lama Pinjam: 3 Hari
+ Banyak Game Yang Disewa: 2
+ Game yang dipilih: qwd, qdw
+ Harga Sewa: Rp. 42000 
+ Diskon: 4200
+ Total Biaya: Rp. 37800
+==========================================

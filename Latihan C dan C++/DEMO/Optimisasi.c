@@ -4,16 +4,79 @@
 #include <unistd.h>
 #include <stdbool.h>
 
-// THIS IS WATERMARK BY DARK_MEPHISTO/ANDIKA :)
-// Missing Feature Array and Loop @andika
-// Missing Loop Only now @andika
-// Idk how loop supposed to work in this project @Dark_Mephisto
-// wait we can create array push with loop @andika
-// Yeah, as long as there is loop i think LGTM @Dark_Mephisto
-// global data for login and register @andika
-// well thats was easy i think we played to much anime game to know how to use for loop @dark_mephisto
-// call .\Rental_GAME+FILM_FULL_UPGRADE.exe
-// For fuck sake your login function argument are all over the place thats why it giving me error everytime @andika
+// Clear Display Start
+#ifdef _WIN32
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+
+void ClearScreen()
+{
+    HANDLE hStdOut;
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    DWORD count;
+    DWORD cellCount;
+    COORD homeCoords = {0, 0};
+
+    hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (hStdOut == INVALID_HANDLE_VALUE)
+        return;
+
+    /* Get the number of cells in the current buffer */
+    if (!GetConsoleScreenBufferInfo(hStdOut, &csbi))
+        return;
+    cellCount = csbi.dwSize.X * csbi.dwSize.Y;
+
+    /* Fill the entire buffer with spaces */
+    if (!FillConsoleOutputCharacter(
+            hStdOut,
+            (TCHAR)' ',
+            cellCount,
+            homeCoords,
+            &count))
+        return;
+
+    /* Fill the entire buffer with the current colors and attributes */
+    if (!FillConsoleOutputAttribute(
+            hStdOut,
+            csbi.wAttributes,
+            cellCount,
+            homeCoords,
+            &count))
+        return;
+
+    /* Move the cursor home */
+    SetConsoleCursorPosition(hStdOut, homeCoords);
+}
+
+#else // !_WIN32
+#include <unistd.h>
+#include <term.h>
+
+void ClearScreen()
+{
+    if (!cur_term)
+    {
+        int result;
+        setupterm(NULL, STDOUT_FILENO, &result);
+        if (result <= 0)
+            return;
+    }
+
+    putp(tigetstr("clear"));
+}
+#endif
+// Clear Display End
+
+//  THIS IS WATERMARK BY DARK_MEPHISTO/ANDIKA :)
+//  Missing Feature Array and Loop @andika
+//  Missing Loop Only now @andika
+//  Idk how loop supposed to work in this project @Dark_Mephisto
+//  wait we can create array push with loop @andika
+//  Yeah, as long as there is loop i think LGTM @Dark_Mephisto
+//  global data for login and register @andika
+//  well thats was easy i think we played to much anime game to know how to use for loop @dark_mephisto
+//  call .\Rental_GAME+FILM_FULL_UPGRADE.exe
+//  For fuck sake your login function argument are all over the place thats why it giving me error everytime @andika
 
 /*
 To Do List
@@ -31,49 +94,6 @@ To Do List
 
 */
 
-
-struct data_main_menu // Menyimpan data main menu section S2
-{
-    int plhn_menu;
-    int plhn_list_game;
-    int plhn_list_film;
-    int plhn_rental_game;
-    int plhn_rental_film;
-};
-
-struct data_rental_game // Menyimpan data rental game S3
-{
-    char nama_pinjam[20];
-    char tanggal_pinjam[20];
-    int plhn_game_plh_pkt;
-    long int harga_paket;
-    int lama_paket;
-};
-
-struct data_rental_film // Menyimpan data rental game S3
-{
-    char nama_pinjam[20];
-    char tanggal_pinjam[20];
-    int plhn_film_plh_pkt;
-    long int harga_paket;
-    int lama_paket;
-};
-
-struct data_list_game // Menyimpan data list game S4
-{
-    int plhn_game;
-    char game_dipilih_1[50];
-    char game_dipilih_2[50];
-    char game_dipilih_3[50];
-};
-
-struct data_list_film // Menyimpan data list film S4
-{
-    int plhn_film;
-    char film_dipilih_1[50];
-    char film_dipilih_2[50];
-    char film_dipilih_3[50];
-};
 // Function declare
 
 // Sistem Login
@@ -149,13 +169,7 @@ void rental_game_hasil();
 void rental_game_rental();
 
 // Sistem Kalkulasi Rental 1 Game
-void kalkulasi_rental_game_1(long int, int, int, char[50], char[50], char[50], char[50]);
-
-// Sistem Kalkulasi Rental 2 Game
-void kalkulasi_rental_game_2(long int, int, int, char[50], char[50], char[50], char[50], char[50]);
-
-// Sistem Kalkulasi Rental 3 Game
-void kalkulasi_rental_game_3(long int, int, int, char[50], char[50], char[50], char[50], char[50], char[50]);
+void kalkulasi_rental_game(long int, int, int, char[50], char *[][50], char[], char[50]);
 
 // Sistem Diskon Spesial
 void diskon_spesial();
@@ -258,12 +272,12 @@ void login_function()
         int cek_login;
         int cek_login2;
 
-        printf("\t\t\t\tEnter your username:\n"); // output string
-        printf("\t\t\t\t");                       // ??????
-        scanf(" %s", user_name);                  // input user_name
-        printf("\t\t\t\tEnter your password:\n"); // output string
-        printf("\t\t\t\t");                       //?????
-        scanf(" %s", pass_word);                  // input pass_word
+        printf("\n\t\t\t\tEnter your username:\n"); // output string
+        printf("\t\t\t\t");                         // ??????
+        scanf(" %s", user_name);                    // input user_name
+        printf("\t\t\t\tEnter your password:\n");   // output string
+        printf("\t\t\t\t");                         //?????
+        scanf(" %s", pass_word);                    // input pass_word
         cek_login = cek_login_1(user_name, pass_word);
         cek_login2 = cek_login_2(user_name, pass_word, user_name_2, pass_word_2);
         if (cek_login == 1) // cek_login untuk akses Menu
@@ -292,8 +306,8 @@ void login_function()
 
 void start_menu()
 {
+    ClearScreen();
     int pilihan;
-    printf("\e[1;1H\e[2J");
     printf("==================================================================================================\n");
     printf("\t\t\t\t        Selamat Datang\n");
     printf("\t\t\t\t Persewaan Kaset Game dan Film\n");
@@ -314,7 +328,7 @@ void start_menu()
         login_function();
         break;
     case 2:
-        printf("\t\t\t\tEnter your username:\n");
+        printf("\n\t\t\t\tEnter your username:\n");
         printf("\t\t\t\t");
         scanf(" %s", user_name_2);
         printf("\t\t\t\tEnter your password:\n");
@@ -334,7 +348,7 @@ void start_menu()
 // UI Main Menu
 void main_menu()
 {
-    printf("\e[1;1H\e[2J");
+    ClearScreen();
     printf("==========================================\n");
     printf("|               Main Menu                |\n");
     printf("|          Rental Game dan Film          |\n");
@@ -355,9 +369,9 @@ void main_menu()
 // Sistem Main Menu
 void case_switch_menu()
 {
-    struct data_main_menu s2;   // Define data struch dengan s2
-    scanf("%d", &s2.plhn_menu); // input
-    switch (s2.plhn_menu)
+    int pilihan;
+    scanf("%d", &pilihan); // input
+    switch (pilihan)
     {
     case 1: // Call Function Rental Game
         rental_game_menu();
@@ -398,7 +412,7 @@ void case_switch_menu()
 // UI+Sistem Menu Rental Game
 void rental_game_menu()
 {
-    printf("\e[1;1H\e[2J");
+    ClearScreen();
     int pilihan;
     printf("==========================================\n");
     printf("|               Main Menu                |\n");
@@ -436,18 +450,18 @@ void rental_game_menu()
 
 void rental_game_harga()
 {
-    printf("\e[1;1H\e[2J");
+    ClearScreen();
     int pilihan;
     printf("====================================================================\n");
     printf("|                                Harga                             |\n");
     printf("|                             Rental Game                          |\n");
     printf("====================================================================\n");
     printf("1. Paket 1: 21k Setiap Game 3 Hari  \n");
-    printf("2. Paket 2: 42k Setiap Game 7 Hari\n");
-    printf("3. Paket 2: 70k Setiap Game 14 Hari\n");
+    printf("2. Paket 2: 50k Setiap Game 7 Hari\n");
+    printf("3. Paket 2: 80k Setiap Game 14 Hari\n");
     printf("4. Paket Sabtu-Minggu: 10k Untuk 1 Game (Maksimal 1 Game) \n");
-    printf("5. Paket Libur Panjang: 120k Setiap Game 30 Hari\n");
-    printf("6. Personal: 8k Untuk Sehari Setiap 1 Game (Maksimal 30 Hari)\n");
+    printf("5. Paket Libur Panjang: 150k Setiap Game 30 Hari\n");
+    printf("6. Personal: 10k Untuk Sehari Setiap 1 Game (Maksimal 30 Hari)\n");
     printf("====================================================================\n");
     printf("1. Kembali Ke Menu                                                 |\n");
     printf("====================================================================\n");
@@ -466,7 +480,7 @@ void rental_game_harga()
 
 void rental_game_peraturan()
 {
-    printf("\e[1;1H\e[2J");
+    ClearScreen();
     int pilihan;
     printf("=====================================================================================================\n");
     printf("|                                                Peraturan                                          |\n");
@@ -475,7 +489,7 @@ void rental_game_peraturan()
     printf("1. Dilarang Merusak Kaset Game (Apabila terbukti melakukan akan dikenakan sanksi 2X harga game) \n");
     printf("2. Jaga Kaset Game Agar Tidak Lecet \n");
     printf("3. Apabila Telat Mengembalikan Akan Dikenakan Sanksi 20K Setiap Hari\n");
-    printf("4. Maksimal Penyewaan 3 Game Secara Bersamaan\n");
+    printf("4. Apabila Terjadi Error Bukan Tnaggung Jawab Kami\n");
     printf("5. Tidak Bisa Menyewa Game Yang Sama Apabila Sudah Pernah Disewa Sebelum Waktu Cooldown Habis\n");
     printf("Pilih salah satu untuk mengakses \n");
     printf("=====================================================================================================\n");
@@ -497,16 +511,14 @@ void rental_game_peraturan()
 // Main Sistem Rental Game
 void rental_game_rental()
 {
-    struct data_rental_game s3;
-    struct data_list_game s4;
-    printf("\e[1;1H\e[2J");
+    ClearScreen();
     char nama_pinjam[50];
     char tanggal_pinjam[50];
     int banyak_sewa_game;
-    char judul_game[3][50];
-    const long int harga_lama_sewa [6][2] = {{7000, 3}, {6000, 7}, {5000, 14}, {5000, 2}, {4000, 30}, {8000, 0}};
+    const long int harga_lama_sewa[6][2] = {{7000, 3}, {6000, 7}, {5000, 14}, {5000, 2}, {4000, 30}, {8000, 0}};
     char nama_paket[6][50] = {"Paket 1", "Paket 2", "Paket 3", "Paket Sabtu-Minggu", "Paket Libur Panjang", "Paket Personal"};
     int i;
+    int pilihan;
     printf("============================== \n");
     printf("|            Data            |\n");
     printf("|        Rental Game         |\n");
@@ -519,7 +531,7 @@ void rental_game_rental()
     fgets(nama_pinjam, 50, stdin);
     printf("Masukkan Tanggal Pinjam: \n");
     scanf("%s", tanggal_pinjam);
-    printf("\e[1;1H\e[2J");
+    ClearScreen();
     printf("====================================================================\n");
     printf("|                                Harga                             |\n");
     printf("|                             Rental Game                          |\n");
@@ -533,187 +545,62 @@ void rental_game_rental()
     printf("=================================================================== \n");
     printf("Pilih Jenis Paket                                                 |\n");
     printf("=================================================================== \n");
-    scanf("%d", &s3.plhn_game_plh_pkt);
-    switch (s3.plhn_game_plh_pkt)
+    scanf("%d", &pilihan);
+    printf("Berapa banyak game yang ingin disewa?\n");
+    scanf("%d", &banyak_sewa_game);
+    char *judul_game[banyak_sewa_game][50];
+    if (pilihan == 4)
     {
-    case 1:
+        printf("Masukkan game yang ingin disewa! \n");
+        scanf(" %[^\n]s", judul_game[i]);
+    }
+    else
     {
-        char nama_paket_1[50] = "Paket 1";
-        const int harga_sewa_1 = 7000; // 21.000
-        const int lama_sewa_1 = 3; // lama sewa
-        printf("Berapa banyak game yang ingin disewa?\n");
-        scanf("%d", &banyak_sewa_game); // input banyak sewa
-        for (i = 0; i <= (banyak_sewa_game - 1); i++) //loop input game
+        for (i = 0; i <= (banyak_sewa_game - 1); i++)
         {
             printf("Masukkan game yang ingin disewa! \n");
             scanf(" %[^\n]s", judul_game[i]);
         }
-        if (banyak_sewa_game == 1)
-        {
-            kalkulasi_rental_game_1(harga_sewa_1, lama_sewa_1, banyak_sewa_game, nama_paket_1, judul_game[0], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_game, nama_pinjam, tanggal_pinjam)
-        }
-        else if (banyak_sewa_game == 2)
-        {
-            kalkulasi_rental_game_2(harga_sewa_1, lama_sewa_1, banyak_sewa_game, nama_paket_1, judul_game[0], judul_game[1], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_game_1, nama_game_2, nama_pinjam, tanggal_pinjam)
-        }
-        else if (banyak_sewa_game == 3)
-        {
-            kalkulasi_rental_game_3(harga_sewa_1, lama_sewa_1, banyak_sewa_game, nama_paket_1, judul_game[0], judul_game[1], judul_game[2], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_game_1,nama_game_2,nama_game_3, nama_pinjam, tanggal_pinjam)
-        }
-        else
-        {
-            printf("Input Salah\n");
-            loading_function((char *)"Restarting", 11);
-            rental_game_rental();
-        }
+    }
+    switch (pilihan)
+    {
+    case 1:
+    {
+        kalkulasi_rental_game(harga_lama_sewa[0][0], harga_lama_sewa[0][1], banyak_sewa_game, nama_paket[0], judul_game, nama_pinjam, tanggal_pinjam);
     }
 
     break;
 
     case 2:
     {
-        char nama_paket_2[50] = "Paket 2";
-        const int harga_sewa_2 = 6000; // 42.000
-        const int lama_sewa_2 = 7;
-        printf("Berapa banyak game yang ingin disewa?\n");
-        scanf("%d", &banyak_sewa_game);
-        for (i = 0; i <= (banyak_sewa_game - 1); i++)
-        {
-            printf("Masukkan game yang ingin disewa! \n");
-            scanf(" %[^\n]s", judul_game[i]);
-        }
-        if (banyak_sewa_game == 1)
-        {
-            kalkulasi_rental_game_1(harga_sewa_2, lama_sewa_2, banyak_sewa_game, nama_paket_2, judul_game[0], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_game, nama_pinjam, tanggal_pinjam)
-        }
-        else if (banyak_sewa_game == 2)
-        {
-            kalkulasi_rental_game_2(harga_sewa_2, lama_sewa_2, banyak_sewa_game, nama_paket_2, judul_game[0], judul_game[1], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_game_1, nama_game_2, nama_pinjam, tanggal_pinjam)
-        }
-        else if (banyak_sewa_game == 3)
-        {
-            kalkulasi_rental_game_3(harga_sewa_2, lama_sewa_2, banyak_sewa_game, nama_paket_2, judul_game[0], judul_game[1], judul_game[2], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_game_1,nama_game_2,nama_game_3, nama_pinjam, tanggal_pinjam)
-        }
-        else
-        {
-            printf("Input Salah\n");
-            loading_function((char *)"Restarting", 11);
-            rental_game_rental();
-        }
+        kalkulasi_rental_game(harga_lama_sewa[1][0], harga_lama_sewa[1][1], banyak_sewa_game, nama_paket[1], judul_game, nama_pinjam, tanggal_pinjam);
     }
 
     break;
 
     case 3:
     {
-        char nama_paket_3[50] = "Paket 3";
-        const int harga_sewa_3 = 5000; // 70.000
-        const int lama_sewa_3 = 14;
-        printf("Berapa banyak game yang ingin disewa?\n");
-        scanf("%d", &banyak_sewa_game);
-        for (i = 0; i <= (banyak_sewa_game - 1); i++)
-        {
-            printf("Masukkan game yang ingin disewa! \n");
-            scanf(" %[^\n]s", judul_game[i]);
-        }
-        if (banyak_sewa_game == 1)
-        {
-            kalkulasi_rental_game_1(harga_sewa_3, lama_sewa_3, banyak_sewa_game, nama_paket_3, judul_game[0], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_game, nama_pinjam, tanggal_pinjam)
-        }
-        else if (banyak_sewa_game == 2)
-        {
-            kalkulasi_rental_game_2(harga_sewa_3, lama_sewa_3, banyak_sewa_game, nama_paket_3, judul_game[0], judul_game[1], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_game_1, nama_game_2, nama_pinjam, tanggal_pinjam)
-        }
-        else if (banyak_sewa_game == 3)
-        {
-            kalkulasi_rental_game_3(harga_sewa_3, lama_sewa_3, banyak_sewa_game, nama_paket_3, judul_game[0], judul_game[1], judul_game[2], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_game_1,nama_game_2,nama_game_3, nama_pinjam, tanggal_pinjam)
-        }
-        else
-        {
-            printf("Input Salah\n");
-            loading_function((char *)"Restarting", 11);
-            rental_game_rental();
-        }
+        kalkulasi_rental_game(harga_lama_sewa[2][0], harga_lama_sewa[2][1], banyak_sewa_game, nama_paket[2], judul_game, nama_pinjam, tanggal_pinjam);
     }
 
     break;
 
     case 4:
     {
-        char nama_paket_4[50] = "Sabtu-Minggu";
-        const int harga_sewa_4 = 5000; // 10.000
-        const int lama_sewa_4 = 2;
-        printf("Game apa yang ingin kamu sewa?\n");
-        scanf(" %[^\n]s", judul_game[0]);
-        kalkulasi_rental_game_1(harga_sewa_4, lama_sewa_4, banyak_sewa_game, nama_paket_4, judul_game[0], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_game, nama_pinjam, tanggal_pinjam)
-        break;
+        kalkulasi_rental_game(harga_lama_sewa[3][0], harga_lama_sewa[3][1], banyak_sewa_game, nama_paket[3], judul_game, nama_pinjam, tanggal_pinjam);
     }
-
+    break;
     case 5:
     {
-        char nama_paket_5[50] = "Libur Panjang";
-        const int harga_sewa_5 = 4000; // 120.000
-        const int lama_sewa_5 = 30;
-        printf("Berapa banyak game yang ingin disewa?\n");
-        scanf("%d", &banyak_sewa_game);
-        for (i = 0; i <= (banyak_sewa_game - 1); i++)
-        {
-            printf("Masukkan game yang ingin disewa! \n");
-            scanf(" %[^\n]s", judul_game[i]);
-        }
-        if (banyak_sewa_game == 1)
-        {
-            kalkulasi_rental_game_1(harga_sewa_5, lama_sewa_5, banyak_sewa_game, nama_paket_5, judul_game[0], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_game, nama_pinjam, tanggal_pinjam)
-        }
-        else if (banyak_sewa_game == 2)
-        {
-            kalkulasi_rental_game_2(harga_sewa_5, lama_sewa_5, banyak_sewa_game, nama_paket_5, judul_game[0], judul_game[1], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_game_1, nama_game_2, nama_pinjam, tanggal_pinjam)
-        }
-        else if (banyak_sewa_game == 3)
-        {
-            kalkulasi_rental_game_3(harga_sewa_5, lama_sewa_5, banyak_sewa_game, nama_paket_5, judul_game[0], judul_game[1], judul_game[2], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_game_1,nama_game_2,nama_game_3, nama_pinjam, tanggal_pinjam)
-        }
-        else
-        {
-            printf("Input Salah\n");
-            loading_function((char *)"Restarting", 11);
-            rental_game_rental();
-        }
+        kalkulasi_rental_game(harga_lama_sewa[4][0], harga_lama_sewa[4][1], banyak_sewa_game, nama_paket[4], judul_game, nama_pinjam, tanggal_pinjam);
     }
 
     break;
     case 6:
     {
-        char nama_paket_6[50] = "Personal";
-        const int harga_sewa_6 = 8000;
-        int lama_sewa_6;
         printf("Berapa lama durasi sewa? \n");
-        scanf("%d", &lama_sewa_6);
-        printf("Berapa banyak game yang ingin disewa?\n");
-        scanf("%d", &banyak_sewa_game);
-        for (i = 0; i <= (banyak_sewa_game - 1); i++)
-        {
-            printf("Masukkan game yang ingin disewa! \n");
-            scanf(" %[^\n]s", judul_game[i]);
-        }
-        if (banyak_sewa_game == 1)
-        {
-            kalkulasi_rental_game_1(harga_sewa_6, lama_sewa_6, banyak_sewa_game, nama_paket_6, judul_game[0], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_game, nama_pinjam, tanggal_pinjam)
-        }
-        else if (banyak_sewa_game == 2)
-        {
-            kalkulasi_rental_game_2(harga_sewa_6, lama_sewa_6, banyak_sewa_game, nama_paket_6, judul_game[0], judul_game[1], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_game_1, nama_game_2, nama_pinjam, tanggal_pinjam)
-        }
-        else if (banyak_sewa_game == 3)
-        {
-            kalkulasi_rental_game_3(harga_sewa_6, lama_sewa_6, banyak_sewa_game, nama_paket_6, judul_game[0], judul_game[1], judul_game[2], nama_pinjam, tanggal_pinjam); //(harga_sewa, lama_sewa, nama_paket, nama_game_1,nama_game_2,nama_game_3, nama_pinjam, tanggal_pinjam)
-        }
-        else
-        {
-            printf("Input Salah\n");
-            loading_function((char *)"Restarting", 11);
-            rental_game_rental();
-        }
+        scanf("%d", &harga_lama_sewa[5][1]);
+        kalkulasi_rental_game(harga_lama_sewa[5][0], harga_lama_sewa[5][1], banyak_sewa_game, nama_paket[5], judul_game, nama_pinjam, tanggal_pinjam);
     }
 
     break;
@@ -728,42 +615,97 @@ void rental_game_rental()
     }
 }
 
-void kalkulasi_rental_game(long int harga_sewa, int lama_sewa, int banyak_sewa_game, char nama_paket[50], char nama_game[50], char nama_pinjam_[50], char tanggal_pinjam_[50]) // Operation
+void kalkulasi_rental_game(long int harga_sewa, int lama_sewa, int banyak_sewa_game, char nama_paket[50], char *nama_game[][50], char nama_pinjam_[], char tanggal_pinjam_[50]) // Operation
 {
-    printf("\e[1;1H\e[2J");
-    struct data_rental_game s3;
+    ClearScreen();
+    int i = 0;
     int pilihan;
     long int biaya = (harga_sewa * banyak_sewa_game) * lama_sewa;
     long int diskon = Kalkulasi_Diskon(harga_sewa, lama_sewa, banyak_sewa_game);
     long int total_biaya = Kalkulasi_Biaya(harga_sewa, lama_sewa, banyak_sewa_game);
-
     printf("==========================================\n");
     printf("|            Nota Pembayaran             |\n");
     printf("|              Rental Game               |\n");
     printf("==========================================\n");
-    printf(" Nama : %s ", nama_pinjam_);
-    printf("Tanggal Pinjam: %s\n", tanggal_pinjam_);
-    printf(" Jenis Paket: %s \n", nama_paket);
+    printf(" Nama: %s", nama_pinjam_);
+    printf(" Tanggal Pinjam: %s\n", tanggal_pinjam_);
+    printf(" Jenis Paket: %s\n", nama_paket);
     printf(" Lama Pinjam: %d Hari\n", lama_sewa);
     printf(" Banyak Game Yang Disewa: %d\n", banyak_sewa_game);
-    for (int i = 0; i < banyak_sewa_game; i++)
+    printf(" Game Yang Dipilih: ");
+    for (i = 0; i < banyak_sewa_game; i++)
     {
-        printf("Game Yang Dipilih: %s", nama_game[i]);
-        printf(", ");
+        printf("%s", nama_game[i]);
+        if (i < (banyak_sewa_game - 1))
+        {
+            printf(", ");
+        }
     }
+    printf(".");
+    printf("\n");
     printf(" Harga Sewa: Rp. %ld \n", biaya);
     printf(" Diskon: %ld\n", diskon);
     printf(" Total Biaya: Rp. %ld\n", total_biaya);
     printf("==========================================\n");
-    printf("1. Kembali Ke Main Menu                  |\n");
-    printf("2. Exit                                  |\n");
+    printf("1. Save File                             |\n");
+    printf("2. Kembali Ke Main Menu                  |\n");
+    printf("3. Exit                                  |\n");
     printf("==========================================\n");
+
     scanf("%d", &pilihan);
     if (pilihan == 1)
     {
+        // file print
+        printf("Masukkan Nama File:\n");
+        char gmfname[30];
+        scanf(" %[^\n]s", gmfname);
+        strcat(gmfname, ".txt");
+        FILE *gamef;
+        gamef = fopen(gmfname, "a");
+        if (gamef == NULL)
+        {
+            loading_function("\nFile gagal dibuat", 18);
+        }
+        else
+        {
+            loading_function("\nSaving Data", 14);
+        }
+
+        fprintf(gamef, "==========================================\n");
+        fprintf(gamef, "|            Nota Pembayaran             |\n");
+        fprintf(gamef, "|              Rental Game               |\n");
+        fprintf(gamef, "==========================================\n");
+        fprintf(gamef, " Nama : %s", nama_pinjam_);
+        fprintf(gamef, " Tanggal Pinjam: %s\n", tanggal_pinjam_);
+        fprintf(gamef, " Jenis Paket: %s\n", nama_paket);
+        fprintf(gamef, " Lama Pinjam: %d Hari\n", lama_sewa);
+        fprintf(gamef, " Banyak Game Yang Disewa: %d\n", banyak_sewa_game);
+        fprintf(gamef, " Game yang dipilih: ");
+        for (i = 0; i < banyak_sewa_game; i++)
+        {
+            fprintf(gamef, "%s", nama_game[i]);
+            if (i < (banyak_sewa_game - 1))
+            {
+                fprintf(gamef, ", ");
+            }
+        }
+        fprintf(gamef, "\n");
+        fprintf(gamef, " Harga Sewa: Rp. %ld \n", biaya);
+        fprintf(gamef, " Diskon: %ld\n", diskon);
+        fprintf(gamef, " Total Biaya: Rp. %ld\n", total_biaya);
+        fprintf(gamef, "==========================================\n");
+        if (gamef != NULL)
+        {
+            loading_function("Data Saved", 14);
+        }
+        fclose(gamef);
         main_menu();
     }
     else if (pilihan == 2)
+    {
+        main_menu();
+    }
+    else if (pilihan == 3)
     {
         exit(0);
     }
@@ -781,9 +723,8 @@ void kalkulasi_rental_game(long int harga_sewa, int lama_sewa, int banyak_sewa_g
 
 void list_game_UI()
 {
-    printf("\e[1;1H\e[2J");
-
-    struct data_main_menu s2;
+    ClearScreen();
+    int pilihan;
     printf("==========================================\n");
     printf("|               List Game                |\n");
     printf("|             Yang Tersedia              |\n");
@@ -804,8 +745,8 @@ void list_game_UI()
     printf("2. Sebelumnya                            |\n");
     printf("3. Kembali Ke Menu                       |\n");
     printf("==========================================\n");
-    scanf("%d", &s2.plhn_list_game);
-    switch (s2.plhn_list_game)
+    scanf("%d", &pilihan);
+    switch (pilihan)
     {
     case 1:
         list_game_1();
@@ -828,9 +769,8 @@ void list_game_UI()
 
 void list_game_1()
 {
-    printf("\e[1;1H\e[2J");
-
-    struct data_main_menu s2;
+    ClearScreen();
+    int pilihan;
     printf("==========================================\n");
     printf("|               List Game                |\n");
     printf("|             Yang Tersedia              |\n");
@@ -851,8 +791,8 @@ void list_game_1()
     printf("2. Sebelumnya                            |\n");
     printf("3. Kembali Ke Menu                       |\n");
     printf("==========================================\n");
-    scanf("%d", &s2.plhn_list_game);
-    switch (s2.plhn_list_game)
+    scanf("%d", &pilihan);
+    switch (pilihan)
     {
     case 1:
         list_game_2();
@@ -875,9 +815,8 @@ void list_game_1()
 
 void list_game_2()
 {
-    printf("\e[1;1H\e[2J");
-
-    struct data_main_menu s2;
+    ClearScreen();
+    int pilihan;
     printf("==========================================\n");
     printf("|               List Game                |\n");
     printf("|             Yang Tersedia              |\n");
@@ -898,8 +837,8 @@ void list_game_2()
     printf("2. Sebelumnya                            |\n");
     printf("3. Kembali Ke Menu                       |\n");
     printf("==========================================\n");
-    scanf("%d", &s2.plhn_list_game);
-    switch (s2.plhn_list_game)
+    scanf("%d", &pilihan);
+    switch (pilihan)
     {
     case 1:
         list_game_2();
@@ -927,8 +866,7 @@ void list_game_2()
 // UI+Sistem Menu Rental Film
 void rental_film_menu()
 {
-    printf("\e[1;1H\e[2J");
-
+    ClearScreen();
     int pilihan;
     printf("==========================================\n");
     printf("|               Main Menu                |\n");
@@ -966,8 +904,7 @@ void rental_film_menu()
 
 void rental_film_harga()
 {
-    printf("\e[1;1H\e[2J");
-
+    ClearScreen();
     int pilihan;
     printf("====================================================================\n");
     printf("|                                Harga                             |\n");
@@ -995,8 +932,7 @@ void rental_film_harga()
 
 void rental_film_peraturan()
 {
-    printf("\e[1;1H\e[2J");
-
+    ClearScreen();
     int pilihan;
     printf("=====================================================================================================\n");
     printf("|                                                Peraturan                                          |\n");
@@ -1025,13 +961,13 @@ void rental_film_peraturan()
 
 void rental_film_rental()
 {
-    struct data_rental_film s3;
-    struct data_list_film s4;
+    ClearScreen();
     char nama_pinjam[50];
     char tanggal_pinjam[50];
     int banyak_sewa_film;
     char judul_film[3][50];
     int i;
+    int pilihan;
     printf("Masukkan Nama Peminjam: \n");
     int c;
     /* discard all characters up to and including newline */
@@ -1052,9 +988,9 @@ void rental_film_rental()
     printf("=================================================================== \n");
     printf("Pilih Jenis Paket                                                 |\n");
     printf("=================================================================== \n");
-    scanf("%d", &s3.plhn_film_plh_pkt);
+    scanf("%d", &pilihan);
     printf("\e[1;1H\e[2J");
-    switch (s3.plhn_film_plh_pkt)
+    switch (pilihan)
     {
     case 1:
     {
@@ -1209,8 +1145,7 @@ void rental_film_rental()
 
 void kalkulasi_rental_film_1(long int harga_sewa, int lama_sewa, int banyak_sewa_film, char nama_paket[10], char nama_film[50], char nama_pinjam_[50], char tanggal_pinjam_[50])
 {
-    printf("\e[1;1H\e[2J");
-    struct data_rental_film s3;
+    ClearScreen();
     int pilihan;
     long int biaya = (harga_sewa * banyak_sewa_film) * lama_sewa;
     long int diskon = Kalkulasi_Diskon(harga_sewa, lama_sewa, banyak_sewa_film);
@@ -1252,8 +1187,7 @@ void kalkulasi_rental_film_1(long int harga_sewa, int lama_sewa, int banyak_sewa
 
 void kalkulasi_rental_film_2(long int harga_sewa, int lama_sewa, int banyak_sewa_film, char nama_paket[10], char nama_film_1[50], char nama_film_2[50], char nama_pinjam[50], char tanggal_pinjam[50])
 {
-    printf("\e[1;1H\e[2J");
-    struct data_rental_film s3;
+    ClearScreen();
     int pilihan;
     long int biaya = (harga_sewa * banyak_sewa_film) * lama_sewa;
     long int diskon = Kalkulasi_Diskon(harga_sewa, lama_sewa, banyak_sewa_film);
@@ -1295,8 +1229,7 @@ void kalkulasi_rental_film_2(long int harga_sewa, int lama_sewa, int banyak_sewa
 
 void kalkulasi_rental_film_3(long int harga_sewa, int lama_sewa, int banyak_sewa_film, char nama_paket[10], char nama_film_1[50], char nama_film_2[50], char nama_film_3[50], char nama_pinjam[50], char tanggal_pinjam[50])
 {
-    printf("\e[1;1H\e[2J");
-    struct data_rental_film s3;
+    ClearScreen();
     int pilihan;
     long int biaya = (harga_sewa * banyak_sewa_film) * lama_sewa;
     long int diskon = Kalkulasi_Diskon(harga_sewa, lama_sewa, banyak_sewa_film);
@@ -1341,9 +1274,8 @@ void kalkulasi_rental_film_3(long int harga_sewa, int lama_sewa, int banyak_sewa
 
 void list_film_UI()
 {
-    printf("\e[1;1H\e[2J");
-
-    struct data_main_menu s2;
+    ClearScreen();
+    int pilihan;
     printf("==========================================\n");
     printf("|               List Film                |\n");
     printf("|             Yang Tersedia              |\n");
@@ -1364,8 +1296,8 @@ void list_film_UI()
     printf("2. Sebelumnya                            |\n");
     printf("3. Kembali Ke Menu                       |\n");
     printf("==========================================\n");
-    scanf("%d", &s2.plhn_list_film);
-    switch (s2.plhn_list_film)
+    scanf("%d", &pilihan);
+    switch (pilihan)
     {
     case 1:
         list_film_1();
@@ -1388,9 +1320,8 @@ void list_film_UI()
 
 void list_film_1()
 {
-    printf("\e[1;1H\e[2J");
-
-    struct data_main_menu s2;
+    ClearScreen();
+    int pilihan;
     printf("==========================================\n");
     printf("|               List Film                |\n");
     printf("|             Yang Tersedia              |\n");
@@ -1411,8 +1342,8 @@ void list_film_1()
     printf("2. Sebelumnya                            |\n");
     printf("3. Kembali Ke Menu                       |\n");
     printf("==========================================\n");
-    scanf("%d", &s2.plhn_list_film);
-    switch (s2.plhn_list_film)
+    scanf("%d", &pilihan);
+    switch (pilihan)
     {
     case 1:
         list_film_2();
@@ -1435,9 +1366,8 @@ void list_film_1()
 
 void list_film_2()
 {
-    printf("\e[1;1H\e[2J");
-
-    struct data_main_menu s2;
+    ClearScreen();
+    int pilihan;
     printf("==========================================\n");
     printf("|               List Film                |\n");
     printf("|             Yang Tersedia              |\n");
@@ -1458,8 +1388,8 @@ void list_film_2()
     printf("2. Sebelumnya                            |\n");
     printf("3. Kembali Ke Menu                       |\n");
     printf("==========================================\n");
-    scanf("%d", &s2.plhn_list_film);
-    switch (s2.plhn_list_film)
+    scanf("%d", &pilihan);
+    switch (pilihan)
     {
     case 1:
         list_film_2();
@@ -1485,7 +1415,7 @@ void list_film_2()
 // Diskon Special Function: START
 void diskon_spesial()
 {
-    printf("\e[1;1H\e[2J");
+    ClearScreen();
     char nama_pinjam[50];
     char tanggal_pinjam[50];
     int pilihan_menu;
@@ -1518,7 +1448,7 @@ void diskon_spesial()
     {
     case 1:
     {
-        printf("\e[1;1H\e[2J");
+        ClearScreen();
         int pilihan;
         printf("==========================================\n");
         printf("|            Nota Pembayaran             |\n");
@@ -1554,7 +1484,7 @@ void diskon_spesial()
     break;
     case 2:
     {
-        printf("\e[1;1H\e[2J");
+        ClearScreen();
         int pilihan;
         printf("==========================================\n");
         printf("|            Nota Pembayaran             |\n");
@@ -1590,7 +1520,7 @@ void diskon_spesial()
     break;
     case 3:
     {
-        printf("\e[1;1H\e[2J");
+        ClearScreen();
         int pilihan;
         int pilihan_game_1;
         int pilihan_game_2;
@@ -1652,7 +1582,7 @@ void diskon_spesial()
     break;
     case 4:
     {
-        printf("\e[1;1H\e[2J");
+        ClearScreen();
         int pilihan;
         int pilihan_film_1;
         int pilihan_film_2;
