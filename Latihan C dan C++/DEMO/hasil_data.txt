@@ -1,0 +1,14 @@
+==========================================
+|            Nota Pembayaran             |
+|              Rental Game               |
+==========================================
+ Nama : Andika Salsabilah
+ Tanggal Pinjam: 10/04/2022
+ Jenis Paket: Paket 1
+ Lama Pinjam: 3 Hari
+ Banyak Game Yang Disewa: 4
+ Game yang dipilih: awdawd, awdawd, awdawd, awdawd
+ Harga Sewa: Rp. 84000 
+ Diskon: 16800
+ Total Biaya: Rp. 67200
+==========================================
