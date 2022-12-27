@@ -82,15 +82,15 @@ void ClearScreen()
 To Do List
 1. rework price calculation function [DONE]
 2. rework choosing game name [DONE]?
-3. rework nota[]
+3. rework nota[Done]
 4. create push array function [DONE]?? kinda??
-5. write nota to file as data[]
+5. write nota to file as data[Done]
 6. For Loop ???? [DONE]
 7. Rework price calculation to function [DONE]
 9. Simple login system [DONE]
-10. disable 3 limit
-11. more simple function
-12. more array
+10. disable 3 limit[Done]
+11. more simple function[Done]
+12. more array[DONE]
 
 */
 
