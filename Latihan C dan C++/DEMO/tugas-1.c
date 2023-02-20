@@ -14,17 +14,25 @@ int main()
     }
     else
     {
-        for (i = 0; i < 29; i++)
+        printf("Masukkan kata yang dicari: ");
+        scanf(" %s", kata_2);
+        while (!feof(KATA))
         {
 
             fscanf(KATA, "%s", kata[i]);
             printf("%s\n", kata[i]);
-            if (strcmp(kata[i], "down") == 0)
+            if (strcmp(kata[i], kata_2) == 0)
             {
-                printf("DATA DITEMUKAN");
+                printf("DATA DITEMUKAN \n");
                 break;
             }
+            i++;
+        }
+        if (strcmp(kata[i], kata_2) != 0)
+        {
+            printf("DATA TIDAK DITEMUKAN \n");
         }
     }
+    fclose(KATA);
     return 0;
 }

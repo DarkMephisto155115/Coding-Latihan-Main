@@ -9,6 +9,7 @@ int main()
     int i;
     float rata2;
     int total = 0;
+    int jumlah_data = 0;
     FILE *NOMOR;
     NOMOR = fopen("nilai.txt", "r");
     if (NOMOR == NULL)
@@ -22,10 +23,13 @@ int main()
             fscanf(NOMOR, "%d", &angka);
             printf("%d\n", angka);
             total += angka;
+            jumlah_data++;
         }
-        rata2 = (total / 30);
+        rata2 = ((float)total / (float)jumlah_data);
         printf("Total: %d\n", total);
+        printf("Jumlah data: %d\n", jumlah_data);
         printf("Rata-Rata: %0.2f\n", rata2);
     }
+    fclose(NOMOR);
     return 0;
 }
