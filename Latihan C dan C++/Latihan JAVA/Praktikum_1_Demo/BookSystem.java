@@ -174,12 +174,12 @@ public class BookSystem {
 
         if (noTelp.isEmpty() == false) {
             String noTelpCode = noTelp.substring(noTelp.lastIndexOf("+") + 1, 3);
-            // contains domain
+            // contains phoneCode
             if (noTelpCode.equals(phoneCode) == true) {
                 isValid = true;
             }
         }
-        // did not contains domain
+        // did not contains phoneCode
         return isValid;
     }
 
@@ -224,9 +224,9 @@ public class BookSystem {
                 System.out.println("\nAlamat tidak boleh kosong!!!\n");
             }
         }
-
+        // Inisialisasi data
         book.init(nama, email, noTelp, alamat);
-
+        // ????????
         while (true) {
             book.bookRoom();
             pilihan = sc.nextInt();
@@ -234,3 +234,5 @@ public class BookSystem {
         }
     }
 }
+
+// I WANT TO DIE, MAS BRO.
