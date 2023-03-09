@@ -6,6 +6,8 @@ public class BookSystem {
     private String alamat;
     private String email;
     private int[][] room = { { 0, 101, 1000000 }, { 0, 102, 2500000 }, { 1, 103, 2000000 } };
+    private boolean loop = true;
+
     Scanner sc = new Scanner(System.in);
 
     // nama
@@ -49,6 +51,7 @@ public class BookSystem {
         return room;
     }
 
+    // Inisialisasi Data
     void init(String nama, String email, String noTelp, String alamat) {
         setNama(nama);
         setEmail(email);
@@ -56,6 +59,7 @@ public class BookSystem {
         setAlamat(alamat);
     }
 
+    // display Data
     String dispPerson(String dataDiakses) {
         String data = "";
         if (dataDiakses == "nama") {
@@ -72,20 +76,22 @@ public class BookSystem {
         return data;
     }
 
+    // Display Room
     void bookRoom() {
         System.out.println("\nTower At The End Of The World Hotel");
+        int[][] roomArr = getRoom();
         // 0=True == available
-        if (room[0][0] == 0) {
+        if (roomArr[0][0] == 0) {
             System.out.println("1. No. 101");
         } else {
             System.out.println("1. No. 101 (Tidak tersedia)");
         }
-        if (room[1][0] == 0) {
+        if (roomArr[1][0] == 0) {
             System.out.println("2. No. 102");
         } else {
             System.out.println("2. No. 102 (Tidak tersedia)");
         }
-        if (room[2][0] == 0) {
+        if (roomArr[2][0] == 0) {
             System.out.println("3. No. 103");
         } else {
             System.out.println("3. No. 103 (Tidak tersedia)");
@@ -93,34 +99,37 @@ public class BookSystem {
         System.out.println("Pilih kamar yang tersedia : ");
     }
 
+    // display payment dan data
     void doPayment(int noRoom) {
         // 0=True == available
         noRoom = noRoom - 1;
         int uangTunai;
+        int[][] roomArr = getRoom();
         String pilihan = "";
         String pilihan2 = "";
-        if (room[noRoom][0] == 0) {
+        if (roomArr[noRoom][0] == 0) {
             System.out.println("\n======================");
             System.out.println("Pembayaran Kamar");
+            System.out.println("======================");
             System.out.println("Nama : " + dispPerson("nama"));
             System.out.println("No Telp : " + dispPerson("noTelp"));
             System.out.println("Alamat : " + dispPerson("alamat"));
             System.out.println("Email : " + dispPerson("email"));
-            System.out.println("No Kamar : " + room[noRoom][1]);
-            System.out.println("Harga Kamar : " + room[noRoom][2]);
+            System.out.println("No Kamar : " + roomArr[noRoom][1]);
+            System.out.println("Harga Kamar : " + roomArr[noRoom][2]);
             System.out.println("======================");
             System.out.println("Masukkan Uang Tunai : ");
             uangTunai = sc.nextInt();
-            if (uangTunai > room[noRoom][2]) {
+            if (uangTunai > roomArr[noRoom][2]) {
                 System.out.println("\nUang Lebih!!!");
-                System.out.println("Uang Kembalian: " + (uangTunai - room[noRoom][2]));
-            } else if (uangTunai == room[noRoom][2]) {
+                System.out.println("Uang Kembalian: " + (uangTunai - roomArr[noRoom][2]));
+            } else if (uangTunai == roomArr[noRoom][2]) {
                 System.out.println("\nUang Pas!!!");
-            } else if (uangTunai < room[noRoom][2]) {
+            } else if (uangTunai < roomArr[noRoom][2]) {
                 System.out.println("\nUang Kurang!!!");
-                System.out.println("Hutang : " + (room[noRoom][2] - uangTunai));
+                System.out.println("Hutang : " + (roomArr[noRoom][2] - uangTunai));
             }
-            System.out.println("\nKamar berhasil dipesan");
+            System.out.println("\nKamar berhasil dipesan\n");
             this.room[noRoom][0] = 1;
             System.out.println("Ingin memesan kamar lagi? (y/n)");
             sc.nextLine();
@@ -128,19 +137,21 @@ public class BookSystem {
             if (pilihan2.equals("y") == true || pilihan2.equals("Y") == true) {
                 this.bookRoom();
             } else {
-                System.exit(0);
+                mainLoopSet(false);
             }
         } else {
             System.out.println("\nMohon maaf, kamar tidak tersedia");
             System.out.println("\nIngin memesan kamar lagi? (y/n)");
             pilihan = sc.nextLine();
             if (pilihan.equals("y") == true || pilihan.equals("Y") == true) {
+                mainLoopSet(true);
             } else {
-                System.exit(0);
+                mainLoopSet(false);
             }
         }
     }
 
+    // Domain Checker
     boolean isContainValidDomain(String email) {
         boolean isValid = false;
         String domain1 = "gmail.com";
@@ -158,6 +169,7 @@ public class BookSystem {
         return isValid;
     }
 
+    // Nama Checker
     boolean nameCheck(String nama) {
         if (nama.matches(".*\\d.*")) {
             // contains a number
@@ -168,6 +180,7 @@ public class BookSystem {
         }
     }
 
+    // Phone code checker
     boolean iscontainValidPhoneCode(String noTelp) {
         boolean isValid = false;
         String phoneCode = "62";
@@ -183,6 +196,19 @@ public class BookSystem {
         return isValid;
     }
 
+    void mainLoopSet(boolean bool) {
+        if (bool == true) {
+            this.loop = bool;
+        } else {
+            this.loop = bool;
+        }
+    }
+
+    boolean mainLoopGet() {
+        return this.loop;
+    }
+
+    // Main
     public static void main(String[] args) {
         BookSystem book = new BookSystem();
         Scanner sc = new Scanner(System.in);
@@ -191,7 +217,9 @@ public class BookSystem {
         String noTelp = "";
         String alamat = "";
         int pilihan;
-
+        boolean roomLoop = true;
+        System.out.println("Selamat datang di hotel kami");
+        System.out.println("Silahkan Registrasi\n");
         // Input nama & num checker
         while (book.nameCheck(nama) == true || nama.isEmpty() == true) {
             System.out.println("Masukkan Nama : ");
@@ -228,10 +256,16 @@ public class BookSystem {
         book.init(nama, email, noTelp, alamat);
         // ????????
         while (true) {
+            roomLoop = book.mainLoopGet();
+            if (roomLoop == false) {
+                break;
+            }
             book.bookRoom();
             pilihan = sc.nextInt();
             book.doPayment(pilihan);
         }
+        System.out.println("\nTerima Kasih sudah datang!!!");
+        sc.close();
     }
 }
 
