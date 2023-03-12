@@ -1,6 +1,6 @@
 import java.util.Scanner;
-import java.lang.System;
 import java.lang.String;
+import java.util.regex.*;
 
 public class BookSystem {
     private String nama;
@@ -168,7 +168,7 @@ public class BookSystem {
 
     // Display Room
     void bookRoom() {
-        System.out.println("\nTower At The End Of The World Hotel");
+        System.out.println("\nAdministrator's Ground One Hotel");
         int[][] roomArr = getRoom();
         // 0=True == available
         System.out.println("=====================================");
@@ -183,11 +183,14 @@ public class BookSystem {
             }
         }
         System.out.println("Pilih kamar yang tersedia : ");
-        int pilihan = sc.nextInt();
-        if (pilihan <= 5 || pilihan >= 1) {
-            doPayment(pilihan);
-        } else {
-            System.out.println("Kamar tidak ditemukan!!!");
+        try {
+            int pilihan = sc.nextInt();
+            if (pilihan < 5 || pilihan >= 1) {
+                doPayment(pilihan);
+            }
+        } catch (Exception e) {
+            System.out.println("\nKamar tidak ditemukan!!!");
+            bookRoom();
         }
 
     }

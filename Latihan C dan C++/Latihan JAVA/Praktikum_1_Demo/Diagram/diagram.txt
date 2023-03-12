@@ -1,0 +1,25 @@
+- nama: String  
+- nim: String  
+- jurusan: String    
+- indeksNilai: String[][]
+- ipNilai: double[]
+- nilaiIPK: double
+=======================
++ getNama()     
++ setNama(nama: String)
++ getNim()       
++ setNim(nim: String)
++ getJurusan()   
++ setJurusan(jurusan: String) 
++ getindeksNilai()  
++ setIndeksNilai (String[][])
++ getIpNilai()
++ setIpNilai(double[])
++ getNilaiIPK()
++ setNilaiIPK(double)
++ init()
++ dispPerson()
++ ipConv()
++ hitungIPK()
++ KategoriIP()
++ Main()    
