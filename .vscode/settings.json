@@ -74,5 +74,6 @@
     "latihan_2_2c": "c",
     "latihan_2_1": "c"
   },
-  "C_Cpp.errorSquiggles": "Disabled"
+  "C_Cpp.errorSquiggles": "Disabled",
+  "java.debug.settings.onBuildFailureProceed": true
 }
