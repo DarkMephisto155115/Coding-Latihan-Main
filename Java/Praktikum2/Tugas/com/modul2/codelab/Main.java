@@ -1,7 +1,6 @@
 package Tugas.com.modul2.codelab;
 
 import Tugas.com.modul2.codelab.Aritmatics.*;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -36,6 +35,7 @@ public class Main {
         z = 3;
         System.out.println("Hasil dari " + x + " / " + y + " Adalah : " + bagi.operation(x, y));
         System.out.println("Hasil dari " + x + " / " + y + " / " + z + " Adalah : " + bagi.operation(x, y, z));
+        System.out.println("\n");
     }
 
 }

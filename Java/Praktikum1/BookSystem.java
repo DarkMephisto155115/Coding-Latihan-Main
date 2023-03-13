@@ -1,6 +1,5 @@
 import java.util.Scanner;
 import java.lang.String;
-import java.util.regex.*;
 
 public class BookSystem {
     private String nama;
@@ -63,7 +62,7 @@ public class BookSystem {
     }
 
     // Domain Checker
-    boolean isContainValidDomain(String email) {        
+    boolean isContainValidDomain(String email) {
         boolean isValid = false;
         String domain1 = "gmail.com";
         String domain2 = "webmail.umm.ac.id";

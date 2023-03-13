@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tes</title>
+  </head>
+  <body>
+    <script>
+      function genap_ganjil() {
+        var inputEl = document.getElementById("input-el").value;
+        console.log(inputEl);
+        if (inputEl % 2 == 0) {
+          // Genap
+          console.log("Genap");
+          document.getElementById("display-hasil").innerText = "Adalah Bilangan Genap";
+        } else if (inputEl % 2 == 1) {
+          // Ganjil
+          console.log("Ganjil");
+          document.getElementById("display-hasil").innerText = "Adalah Bilangan Ganjil";
+        }
+      }
+    </script>
+    <h1>Masukkan Angka</h1>
+    <input type="number" id="input-el" />
+    <button id="input-btn" onclick="genap_ganjil()">Ok</button>
+    <h2 id="display-hasil"></h2>
+  </body>
+</html>
