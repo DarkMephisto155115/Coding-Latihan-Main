@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.lang.String;
-
+import java.util.regex.*;
 public class BookSystem {
     private String nama;
     private String noTelp;
@@ -9,6 +9,7 @@ public class BookSystem {
     private int[][] room = { { 0, 101, 1000000 }, { 0, 102, 2000000 }, { 1, 103, 2500000 }, { 1, 104, 2000000 },
             { 0, 105, 1500000 } };
     private int uangTunai;
+
     Scanner sc = new Scanner(System.in);
 
     // nama
@@ -64,14 +65,15 @@ public class BookSystem {
     // Domain Checker
     boolean isContainValidDomain(String email) {
         boolean isValid = false;
-        String domain1 = "gmail.com";
-        String domain2 = "webmail.umm.ac.id";
+
         if (email.isEmpty() == false) {
-            String domainEmail = email.substring(email.lastIndexOf("@") + 1);
+            String emailRegex = "^[\\w!#$%&amp;'+/=?`{|}~^-]+(?:\\.[\\w!#$%&amp;'+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+            Pattern emailPattern = Pattern.compile(emailRegex);
+            Matcher emailMatcher = emailPattern.matcher(email);
+            boolean emailIsValid = emailMatcher.matches();
+
             // contains domain
-            if (domainEmail.equals(domain1) == true) {
-                isValid = true;
-            } else if (domainEmail.equals(domain2) == true) {
+            if (emailIsValid == true) {
                 isValid = true;
             }
         }
@@ -93,17 +95,17 @@ public class BookSystem {
     // Phone code checker
     boolean iscontainValidPhoneCode(String noTelp) {
         boolean isValid = false;
-        String phoneCode = "62";
 
         if (noTelp.isEmpty() == false) {
-            String noTelpCode = noTelp.substring(noTelp.lastIndexOf("+") + 1, 3);
-            String noTelpNoCode = noTelp.substring(noTelp.lastIndexOf("+") + 1);
+            String phoneRegex = "^\\+62[0-9]{9,}$";
+            Pattern phonePattern = Pattern.compile(phoneRegex);
+            Matcher phoneMatcher = phonePattern.matcher(noTelp);
+            boolean phoneIsValid = phoneMatcher.matches();
             // contains phoneCode
-            if (noTelpNoCode.matches("^[0-9]+$")) {
-                if (noTelpCode.equals(phoneCode) == true) {
+            if (phoneIsValid== true) {
                     isValid = true;
-                }
             }
+
 
         }
         // did not contains phoneCode
