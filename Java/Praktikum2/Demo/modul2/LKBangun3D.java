@@ -1,34 +1,29 @@
 package Demo.modul2;
 
 public class LKBangun3D {
-    private double luas;
-    private double keliling;
+    private double volume;
 
-    public void infoBangun() {
-
-    }
-
-    public void hitungKeliling() {
+    public void infoBangun(double x) {
 
     }
 
-    public void hitungLuas() {
+    public void infoBangun(double x, double y) {
 
     }
 
-    public double getLuas() {
-        return luas;
+    public void infoBangun(double x, double y, double z) {
+
     }
 
-    public void setLuas(double luas) {
-        this.luas = luas;
+    public void hitungVolume() {
+
     }
 
-    public double getKeliling() {
-        return keliling;
+    public double getVolume() {
+        return volume;
     }
 
-    public void setKeliling(double keliling) {
-        this.keliling = keliling;
+    public void setVolume(double volume) {
+        this.volume = volume;
     }
 }
