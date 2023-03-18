@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class SearchMyString {
     private char maxChar;
     private char minChar;
+    private int countMaxChar;
+    private int countMinChar;
     private String stringYangDicari;
 
     public SearchMyString(String string) {
@@ -12,7 +14,8 @@ public class SearchMyString {
         this.stringYangDicari = string;
         this.maxChar = getMaxChar();
         this.minChar = getMinChar();
-
+        this.countMaxChar = SearchChar(maxChar);
+        this.countMinChar = SearchChar(minChar);
     }
 
     public void setMaxChar(char maxChar) {
@@ -43,6 +46,22 @@ public class SearchMyString {
         return min;
     }
 
+    public void setCountMaxChar(int countMaxChar) {
+        this.countMaxChar = countMaxChar;
+    }
+
+    public int getCountMaxChar() {
+        return countMaxChar;
+    }
+
+    public void setCountMinChar(int countMinChar) {
+        this.countMinChar = countMinChar;
+    }
+
+    public int getCountMinChar() {
+        return countMinChar;
+    }
+
     public int SearchChar(char x) {
         int count = 0;
         for (int i = 0; i < this.stringYangDicari.length(); i++) {
@@ -55,13 +74,16 @@ public class SearchMyString {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("================================");
+        System.out.println("\tSearch My String");
+        System.out.println("================================");
         System.out.println("Masukkan Kalimat : ");
         SearchMyString sMyString = new SearchMyString(sc.nextLine());
         System.out.println("Masukkan Huruf Yang Ingin Dihitung : ");
         int count = sMyString.SearchChar(sc.nextLine().charAt(0));
-        System.out.println("Max char : " + sMyString.maxChar);
-        System.out.println("Min char : " + sMyString.minChar);
-        System.out.println("Banyak huruf yang dicari : " + count);
+        System.out.println("Max char : " + sMyString.maxChar + " Muncul : " + sMyString.countMaxChar);
+        System.out.println("Min char : " + sMyString.minChar + " Muncul : " + sMyString.countMinChar);
+        System.out.println("Banyak Huruf Yang Ingin Dihitung : " + count);
         sc.close();
     }
 }
