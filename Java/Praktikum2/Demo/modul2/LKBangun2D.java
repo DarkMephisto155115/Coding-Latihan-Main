@@ -1,32 +1,32 @@
 package Demo.modul2;
 
 public class LKBangun2D {
-    private double luas;
-    private double keliling;
+    protected double luas;
+    protected double keliling;
 
-    public void infoBangun(double x) {
-
-    }
-
-    public void infoBangun(double x, double y) {
+    protected void infoBangun(double x) {
 
     }
 
-    public void infoBangun(double x, double y, double z) {
+    protected void infoBangun(double x, double y) {
 
     }
 
-    public void hitungKeliling() {
+    protected void infoBangun(double x, double y, double z) {
+
     }
 
-    public void hitungLuas() {
+    protected void hitungKeliling() {
     }
 
-    public double getLuas() {
+    protected void hitungLuas() {
+    }
+
+    protected double getLuas() {
         return luas;
     }
 
-    public void setLuas(double luas) {
+    protected void setLuas(double luas) {
         this.luas = luas;
     }
 

@@ -8,9 +8,26 @@ import java.lang.System;
 
 public class Main {
     Scanner sc = new Scanner(System.in);
+    public int pilihanMenu;
+    public String pilihanStr;
+
+    public void setPilihanMenu(int pilihanMenu) {
+        this.pilihanMenu = pilihanMenu;
+    }
+
+    public int getPilihanMenu() {
+        return pilihanMenu;
+    }
+
+    public void setPilihanStr(String pilihanStr) {
+        this.pilihanStr = pilihanStr;
+    }
+
+    public String getPilihanStr() {
+        return pilihanStr;
+    }
 
     public void MainMenu() {
-        int pilihan = 0;
         System.out.println("====================================");
         System.out.println("\t Selamat Di Aplikasi");
         System.out.println("   Mathematics Malignant Anihilation");
@@ -21,12 +38,12 @@ public class Main {
         System.out.println("0. Exit");
         System.out.println("Pilih menu : ");
         try {
-            pilihan = sc.nextInt();
+            setPilihanMenu(sc.nextInt());
         } catch (Exception e) {
             System.out.println("\nInput Salah\n");
             MainMenu();
         }
-        switch (pilihan) {
+        switch (getPilihanMenu()) {
             case 1:
                 hitung2D();
                 break;
@@ -44,7 +61,6 @@ public class Main {
     }
 
     public void hitung2D() {
-        String menu;
         System.out.println("\nAplikasi Penghitung Luas dan Keliling Bangun Datar");
         System.out.println("1. Persegi");
         System.out.println("2. Persegi Panjang");
@@ -54,8 +70,13 @@ public class Main {
         System.out.println("6. Belah Ketupat");
         System.out.println("0. Kembali");
         System.out.println("Pilih bangun datar yang ingin di hitung : ");
-        int pilihan = sc.nextInt();
-        switch (pilihan) {
+        try {
+            setPilihanMenu(sc.nextInt());
+        } catch (Exception e) {
+            System.out.println("\nInput Salah\n");
+            hitung2D();
+        }
+        switch (getPilihanMenu()) {
             case 1:
                 Persegi persegi = new Persegi();
                 System.out.println("\nMasukkan Sisi : ");
@@ -126,10 +147,10 @@ public class Main {
         }
         System.out.println("Kembali ke menu ? (y/n) : ");
         sc.nextLine();
-        menu = sc.nextLine();
-        if (menu.equals("y") || menu.equals("Y")) {
+        setPilihanStr(sc.nextLine());
+        if (getPilihanStr().equals("y") || getPilihanStr().equals("Y")) {
             hitung2D();
-        } else if (menu.equals("n") || menu.equals("N")) {
+        } else if (getPilihanStr().equals("n") || getPilihanStr().equals("N")) {
             System.exit(0);
         } else {
             System.out.println("Input Salah!!!, kembali ke main menu");
@@ -138,7 +159,6 @@ public class Main {
     }
 
     public void hitung3D() {
-        String menu;
         System.out.println("\nAplikasi Penghitung Volume Bangun Ruang");
         System.out.println("1. Kubus");
         System.out.println("2. Balok");
@@ -147,8 +167,13 @@ public class Main {
         System.out.println("5. Kerucut");
         System.out.println("0. Kembali");
         System.out.println("Pilih bangun ruang yang ingin di hitung : ");
-        int pilihan = sc.nextInt();
-        switch (pilihan) {
+        try {
+            setPilihanMenu(sc.nextInt());
+        } catch (Exception e) {
+            System.out.println("\nInput Salah\n");
+            hitung3D();
+        }
+        switch (getPilihanMenu()) {
             case 1:
                 Kubus kubus = new Kubus();
                 System.out.println("\nMasukkan Rusuk : ");
@@ -180,7 +205,6 @@ public class Main {
                 Bola bola = new Bola();
                 System.out.println("\nMasukkan Jari-jari : ");
                 double jariJari = sc.nextDouble();
-                bola.setJariJari(jariJari);
                 bola.infoBangun(jariJari);
                 bola.hitungVolume();
                 break;
@@ -203,10 +227,10 @@ public class Main {
         }
         System.out.println("Kembali ke menu ? (y/n) : ");
         sc.nextLine();
-        menu = sc.nextLine();
-        if (menu.equals("y") || menu.equals("Y")) {
+        setPilihanStr(sc.nextLine());
+        if (getPilihanStr().equals("y") || getPilihanStr().equals("Y")) {
             hitung3D();
-        } else if (menu.equals("n") || menu.equals("N")) {
+        } else if (getPilihanStr().equals("n") || getPilihanStr().equals("N")) {
             System.exit(0);
         } else {
             System.out.println("Input Salah!!!, kembali ke main menu");

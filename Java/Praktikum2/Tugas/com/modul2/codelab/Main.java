@@ -19,7 +19,7 @@ public class Main {
         x = 10;
         y = 2;
         z = 3;
-        System.out.println("Hasil dari " + x + " - " + y + " Adalah : " + kurang.operation(3, 2));
+        System.out.println("Hasil dari " + x + " - " + y + " Adalah : " + kurang.operation(x, y));
         System.out.println("Hasil dari " + x + " - " + y + " - " + z + " Adalah : " + kurang.operation(x, y, z));
 
         System.out.println("\nPerkalian");

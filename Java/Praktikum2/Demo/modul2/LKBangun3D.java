@@ -1,29 +1,29 @@
 package Demo.modul2;
 
 public class LKBangun3D {
-    private double volume;
+    protected double volume;
 
-    public void infoBangun(double x) {
-
-    }
-
-    public void infoBangun(double x, double y) {
+    protected void infoBangun(double x) {
 
     }
 
-    public void infoBangun(double x, double y, double z) {
+    protected void infoBangun(double x, double y) {
 
     }
 
-    public void hitungVolume() {
+    protected void infoBangun(double x, double y, double z) {
 
     }
 
-    public double getVolume() {
+    protected void hitungVolume() {
+
+    }
+
+    protected double getVolume() {
         return volume;
     }
 
-    public void setVolume(double volume) {
+    protected void setVolume(double volume) {
         this.volume = volume;
     }
 }
