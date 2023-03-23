@@ -10,6 +10,7 @@ public class Main {
     Scanner sc = new Scanner(System.in);
 
     public void MainMenu() {
+        int pilihan = 0;
         System.out.println("====================================");
         System.out.println("\t Selamat Di Aplikasi");
         System.out.println("   Mathematics Malignant Anihilation");
@@ -19,7 +20,12 @@ public class Main {
         System.out.println("2. Menghitung Bangun 3 Dimensi");
         System.out.println("0. Exit");
         System.out.println("Pilih menu : ");
-        int pilihan = sc.nextInt();
+        try {
+            pilihan = sc.nextInt();
+        } catch (Exception e) {
+            System.out.println("\nInput Salah\n");
+            MainMenu();
+        }
         switch (pilihan) {
             case 1:
                 hitung2D();

@@ -33,7 +33,7 @@ public class Segitiga extends LKBangun2D {
 
     @Override
     public void hitungKeliling() {
-        double keliling = (alas + alas + alas);
+        double keliling = Math.sqrt((tinggi * tinggi) + (alas + alas));
         super.setKeliling(keliling);
         System.out.println("Keliling dari Bangun Segitiga tersebut adalah " + super.getKeliling());
     }
