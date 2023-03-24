@@ -4,7 +4,7 @@ import Demo.modul2.*;
 
 public class Lingkaran extends LKBangun2D {
     private double jariJari;
-    private double phi = (double) 22 / 7;
+    private double phi = Math.PI;
 
     public void setJariJari(double jariJari) {
         this.jariJari = jariJari;
@@ -23,7 +23,7 @@ public class Lingkaran extends LKBangun2D {
 
     @Override
     public void hitungKeliling() {
-        double keliling = 2 * phi * jariJari;
+        double keliling = (double) 2 * phi * jariJari;
         super.setKeliling(keliling);
         System.out.println("Keliling dari Bangun Lingkaran tersebut adalah " + super.getKeliling());
     }

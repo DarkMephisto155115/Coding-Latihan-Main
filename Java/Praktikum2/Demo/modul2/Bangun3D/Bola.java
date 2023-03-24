@@ -4,7 +4,7 @@ import Demo.modul2.*;
 
 public class Bola extends LKBangun3D {
     private double jariJari;
-    private double phi = (double) 22 / 7;
+    private double phi = Math.PI;
 
     public void setJariJari(double jariJari) {
         this.jariJari = jariJari;

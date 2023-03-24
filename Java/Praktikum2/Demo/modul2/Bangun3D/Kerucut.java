@@ -5,7 +5,7 @@ import Demo.modul2.*;
 public class Kerucut extends LKBangun3D {
     private double jariJari;
     private double tinggi;
-    private double phi = (double) 22 / 7;
+    private double phi = Math.PI;
 
     public void setJariJari(double jariJari) {
         this.jariJari = jariJari;

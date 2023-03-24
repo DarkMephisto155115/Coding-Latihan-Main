@@ -27,6 +27,14 @@ public class Main {
         return pilihanStr;
     }
 
+    public void amimir() {
+        System.exit(0);
+    }
+
+    public void aduhMasBro() {
+        System.out.println("\nInput Salah\n");
+    }
+
     public void MainMenu() {
         System.out.println("====================================");
         System.out.println("\t Selamat Di Aplikasi");
@@ -40,7 +48,7 @@ public class Main {
         try {
             setPilihanMenu(sc.nextInt());
         } catch (Exception e) {
-            System.out.println("\nInput Salah\n");
+            aduhMasBro();
             MainMenu();
         }
         switch (getPilihanMenu()) {
@@ -51,10 +59,10 @@ public class Main {
                 hitung3D();
                 break;
             case 0:
-                System.exit(0);
+                amimir();
                 break;
             default:
-                System.out.println("Input Salah!!!");
+                aduhMasBro();
                 MainMenu();
                 break;
         }
@@ -73,7 +81,7 @@ public class Main {
         try {
             setPilihanMenu(sc.nextInt());
         } catch (Exception e) {
-            System.out.println("\nInput Salah\n");
+            aduhMasBro();
             hitung2D();
         }
         switch (getPilihanMenu()) {
@@ -113,6 +121,7 @@ public class Main {
                 lingkaran.infoBangun(jariJari);
                 lingkaran.hitungLuas();
                 lingkaran.hitungKeliling();
+                break;
             case 5:
                 JajarGenjang jajarGenjang = new JajarGenjang();
                 System.out.println("\nMasukkan Alas : ");
@@ -141,7 +150,7 @@ public class Main {
                 MainMenu();
                 break;
             default:
-                System.out.println("Input Salah!!!");
+                aduhMasBro();
                 hitung2D();
                 break;
         }
@@ -151,7 +160,7 @@ public class Main {
         if (getPilihanStr().equals("y") || getPilihanStr().equals("Y")) {
             hitung2D();
         } else if (getPilihanStr().equals("n") || getPilihanStr().equals("N")) {
-            System.exit(0);
+            amimir();
         } else {
             System.out.println("Input Salah!!!, kembali ke main menu");
             MainMenu();
@@ -170,7 +179,7 @@ public class Main {
         try {
             setPilihanMenu(sc.nextInt());
         } catch (Exception e) {
-            System.out.println("\nInput Salah\n");
+            aduhMasBro();
             hitung3D();
         }
         switch (getPilihanMenu()) {
@@ -221,7 +230,7 @@ public class Main {
                 MainMenu();
                 break;
             default:
-                System.out.println("Input Salah!!!");
+                aduhMasBro();
                 hitung3D();
                 break;
         }
@@ -231,7 +240,7 @@ public class Main {
         if (getPilihanStr().equals("y") || getPilihanStr().equals("Y")) {
             hitung3D();
         } else if (getPilihanStr().equals("n") || getPilihanStr().equals("N")) {
-            System.exit(0);
+            amimir();
         } else {
             System.out.println("Input Salah!!!, kembali ke main menu");
             MainMenu();
@@ -239,6 +248,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        System.out.println("🅰🆆🅸🅺🆆🅾🅺");
         Main main = new Main();
         main.MainMenu();
     }
