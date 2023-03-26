@@ -1,7 +1,7 @@
 package Demo.modul2;
 
-import Demo.modul2.Bangun2D.*;
-import Demo.modul2.Bangun3D.*;
+import Demo.modul2.bangun2D.*;
+import Demo.modul2.bangun3D.*;
 
 import java.util.Scanner;
 import java.lang.System;
@@ -112,7 +112,6 @@ public class Main {
                 segitiga.infoBangun(alas, tinggi);
                 segitiga.hitungLuas();
                 segitiga.hitungKeliling();
-                System.out.println("Kembali ke menu ? (y/n) : ");
                 break;
             case 4:
                 Lingkaran lingkaran = new Lingkaran();
@@ -248,7 +247,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        System.out.println("🅰🆆🅸🅺🆆🅾🅺");
         Main main = new Main();
         main.MainMenu();
     }

@@ -1,10 +1,10 @@
-package Demo.modul2.Bangun2D;
+package Demo.modul2.bangun2D;
 
-import Demo.modul2.*;
+import Demo.modul2.LKBangun2D;
 
 public class Lingkaran extends LKBangun2D {
     private double jariJari;
-    private double phi = Math.PI;
+    private static double phi = Math.PI;
 
     public void setJariJari(double jariJari) {
         this.jariJari = jariJari;

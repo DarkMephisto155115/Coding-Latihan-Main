@@ -1,6 +1,6 @@
-package Demo.modul2.Bangun2D;
+package Demo.modul2.bangun2D;
 
-import Demo.modul2.*;
+import Demo.modul2.LKBangun2D;
 
 public class JajarGenjang extends LKBangun2D {
     private double alas;

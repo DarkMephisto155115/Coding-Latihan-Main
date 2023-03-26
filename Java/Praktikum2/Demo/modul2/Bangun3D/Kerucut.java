@@ -1,11 +1,11 @@
-package Demo.modul2.Bangun3D;
+package Demo.modul2.bangun3D;
 
-import Demo.modul2.*;
+import Demo.modul2.LKBangun3D;
 
 public class Kerucut extends LKBangun3D {
     private double jariJari;
     private double tinggi;
-    private double phi = Math.PI;
+    private static double phi = Math.PI;
 
     public void setJariJari(double jariJari) {
         this.jariJari = jariJari;

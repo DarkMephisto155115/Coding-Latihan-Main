@@ -1,6 +1,6 @@
-package Demo.modul2.Bangun3D;
+package Demo.modul2.bangun3D;
 
-import Demo.modul2.*;
+import Demo.modul2.LKBangun3D;
 
 public class Kubus extends LKBangun3D {
     private double rusuk;

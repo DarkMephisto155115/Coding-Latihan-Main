@@ -30,11 +30,11 @@ public class LKBangun2D {
         this.luas = luas;
     }
 
-    public double getKeliling() {
+    protected double getKeliling() {
         return keliling;
     }
 
-    public void setKeliling(double keliling) {
+    protected void setKeliling(double keliling) {
         this.keliling = keliling;
     }
 }
