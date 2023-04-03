@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.lang.String;
 import java.util.regex.*;
+
 public class BookSystem {
     private String nama;
     private String noTelp;
@@ -102,10 +103,9 @@ public class BookSystem {
             Matcher phoneMatcher = phonePattern.matcher(noTelp);
             boolean phoneIsValid = phoneMatcher.matches();
             // contains phoneCode
-            if (phoneIsValid== true) {
-                    isValid = true;
+            if (phoneIsValid == true) {
+                isValid = true;
             }
-
 
         }
         // did not contains phoneCode
