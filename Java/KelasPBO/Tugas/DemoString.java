@@ -48,7 +48,7 @@ public class DemoString {
         if(kata.indexOf(x) != -1){
             System.out.println("Ketemu --> "+ ""+ kata.indexOf(x));
         }else{
-            System.out.println(""+ kata.indexOf(x)+"--> Tidak Ketemu");
+            System.out.println(""+ x+"--> Tidak Ketemu");
         }
 
 
