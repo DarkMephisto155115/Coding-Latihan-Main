@@ -60,6 +60,10 @@ public class User {
         this.password = password;
     }
 
+    public boolean isAdmin() {
+        return admin;
+    }
+
     // Feature / Method
     public void login() {
         System.out.print("Masukkan username : ");
@@ -266,10 +270,6 @@ public class User {
             isValid = true;
         }
         return isValid;
-    }
-
-    public boolean isAdmin() {
-        return admin;
     }
 
     // Main
