@@ -6,8 +6,8 @@ public class User {
     Scanner sc = new Scanner(System.in);
     private boolean admin;
     private int userIndex;
-    public Object[][] userDB = { { "admin", "admin", 0, true }, { "tes", "tes", 1, true },
-            { "123", "123", 1, false } };
+    public Object[][] userDB = { { "admin", "admin", 0, true }, { "202110370311147", "UMM_a2021", 1, true },
+            { "202110370311145", "UMM_a2021", 1, false } };
     private String username;
     private String password;
     private int pilihan;
@@ -238,7 +238,7 @@ public class User {
 
     public boolean isPassSymbols(String Pass) {
         boolean isValid = false;
-        if (Pass.matches(".*[^a-zA-Z0-9 ].*")) {
+        if (Pass.matches(".*[^a-zA-Z0-9].*")) {
             // Enek simbol
             isValid = true;
         }
