@@ -64,6 +64,68 @@ public class User {
         return admin;
     }
 
+    // Checker
+
+    public boolean isPassSymbols(String Pass) {
+        boolean isValid = false;
+        if (Pass.matches(".*[^a-zA-Z0-9].*")) {
+            // Enek simbol
+            isValid = true;
+        }
+        return isValid;
+    }
+
+    public boolean isPassDigit(String Pass) {
+        boolean isValid = false;
+        if (Pass.matches(".*\\d.*")) {
+            // Enek nomere
+            isValid = true;
+        }
+        return isValid;
+    }
+
+    public boolean isPassUpperCase(String Pass) {
+        boolean isValid = false;
+        if (Pass.matches(".*[A-Z].*")) {
+            // Enek Uppercase e
+            isValid = true;
+        }
+        return isValid;
+    }
+
+    public boolean isPassLowerCase(String Pass) {
+        boolean isValid = false;
+        if (Pass.matches(".*[a-z].*")) {
+            // Enek Lowercase e
+            isValid = true;
+        }
+        return isValid;
+    }
+
+    public boolean isPassPasswordCheck(String Pass) {
+        if (isPassDigit(Pass) && isPassUpperCase(Pass) && isPassLowerCase(Pass) && isPassSymbols(Pass)) {
+            return true;
+        } else {
+            System.out.println("");
+            if (!isPassUpperCase(Pass)) {
+                System.out.println("Password Harus Memiliki Huruf Besar!!!");
+            }
+            if (!isPassLowerCase(Pass)) {
+                System.out.println("Password Harus Memiliki Huruf Kecil!!!");
+            }
+            if (!isPassDigit(Pass)) {
+                System.out.println("Password Harus Memiliki Angka!!!");
+            }
+            if (!isPassSymbols(Pass)) {
+                System.out.println("Password Harus Memiliki Simbol!!!");
+            }
+
+            System.out.println("");
+            return false;
+        }
+
+    }
+
     // Feature / Method
     public void login() {
         System.out.print("Masukkan username : ");
@@ -209,67 +271,6 @@ public class User {
                 dashboard();
             }
         }
-    }
-
-    // Checker
-    public boolean isPassPasswordCheck(String Pass) {
-        if (isPassDigit(Pass) && isPassUpperCase(Pass) && isPassLowerCase(Pass) && isPassSymbols(Pass)) {
-            return true;
-        } else {
-            System.out.println("");
-            if (!isPassUpperCase(Pass)) {
-                System.out.println("Password Harus Memiliki Huruf Besar!!!");
-            }
-            if (!isPassLowerCase(Pass)) {
-                System.out.println("Password Harus Memiliki Huruf Kecil!!!");
-            }
-            if (!isPassDigit(Pass)) {
-                System.out.println("Password Harus Memiliki Angka!!!");
-            }
-            if (!isPassSymbols(Pass)) {
-                System.out.println("Password Harus Memiliki Simbol!!!");
-            }
-
-            System.out.println("");
-            return false;
-        }
-
-    }
-
-    public boolean isPassSymbols(String Pass) {
-        boolean isValid = false;
-        if (Pass.matches(".*[^a-zA-Z0-9].*")) {
-            // Enek simbol
-            isValid = true;
-        }
-        return isValid;
-    }
-
-    public boolean isPassDigit(String Pass) {
-        boolean isValid = false;
-        if (Pass.matches(".*\\d.*")) {
-            // Enek nomere
-            isValid = true;
-        }
-        return isValid;
-    }
-
-    public boolean isPassUpperCase(String Pass) {
-        boolean isValid = false;
-        if (Pass.matches(".*[A-Z].*")) {
-            // Enek Uppercase e
-            isValid = true;
-        }
-        return isValid;
-    }
-
-    public boolean isPassLowerCase(String Pass) {
-        boolean isValid = false;
-        if (Pass.matches(".*[a-z].*")) {
-            // Enek Lowercase e
-            isValid = true;
-        }
-        return isValid;
     }
 
     // Main
