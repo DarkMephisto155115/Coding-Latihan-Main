@@ -40,10 +40,12 @@ public class User {
         this.pilihan = pilihan;
     }
 
+    // Pilihan
     public int getPilihan() {
         return pilihan;
     }
 
+    // Username
     public String getUsername() {
         return username;
     }
@@ -52,6 +54,7 @@ public class User {
         this.username = username;
     }
 
+    // Password
     public String getPassword() {
         return password;
     }
@@ -60,6 +63,7 @@ public class User {
         this.password = password;
     }
 
+    // Admin Status
     public boolean isAdmin() {
         return admin;
     }
@@ -179,7 +183,7 @@ public class User {
                     break;
 
                 default:
-                    System.out.println("Input Salah!!!");
+                    System.out.println("\nInput Salah!!!\n");
                     dashboard();
                     break;
             }
@@ -200,7 +204,7 @@ public class User {
                     break;
 
                 default:
-                    System.out.println("Input Salah!!!");
+                    System.out.println("\nInput Salah!!!\n");
                     dashboard();
                     break;
             }
@@ -221,14 +225,16 @@ public class User {
                     switch (pilihan) {
                         case 1:
                             setUserDB(true, i, 3);
+                            System.out.println("\nStatus berhasil diubah!!!\n");
                             dashboard();
                             break;
                         case 2:
                             setUserDB(false, i, 3);
+                            System.out.println("\nStatus berhasil diubah!!!\n");
                             dashboard();
                             break;
                         default:
-                            System.out.println("Input Salah!!!");
+                            System.out.println("\nInput Salah!!!\n");
                             dashboard();
                             break;
                     }
@@ -251,8 +257,10 @@ public class User {
                     setPassword(sc.next());
                     if (isPassPasswordCheck(getPassword())) {
                         setUserDB((Object) getPassword(), i, 1);
+                        System.out.println("\nPassword berhasil diubah!!!\n");
                         dashboard();
                     } else {
+                        System.out.println("\nPassword gagal diubah!!!\n");
                         dashboard();
                     }
                 } else if (i >= userDB.length - 1) {
@@ -266,8 +274,10 @@ public class User {
             setPassword(sc.next());
             if (isPassPasswordCheck(getPassword())) {
                 setUserDB((Object) getPassword(), getUserIndex(), 1);
+                System.out.println("\nPassword berhasil diubah!!!\n");
                 dashboard();
             } else {
+                System.out.println("\nPassword gagal diubah!!!\n");
                 dashboard();
             }
         }
