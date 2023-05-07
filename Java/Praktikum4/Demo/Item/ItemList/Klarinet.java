@@ -5,10 +5,10 @@ import Java.Praktikum4.Demo.Item.Item;
 
 public class Klarinet extends Item implements AlatMusik {
     public void innit() {
-        setNamaBarang("Gitar");
-        setBrand("Yamaho");
+        setNamaBarang("Klarinet");
+        setBrand("Buffet Crampon");
         setModel("YCL-221");
-        setPrice(1_000_000);
+        setPrice(2_000_000);
         setOnSale(false);
         setDiscount(MAX_DISCOUNT);
     }

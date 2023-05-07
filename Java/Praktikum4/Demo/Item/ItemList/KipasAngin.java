@@ -8,7 +8,7 @@ public class KipasAngin extends Item implements AlatElektronik {
         setNamaBarang("Kipas Angin");
         setBrand("Niko");
         setModel("NK 903");
-        setPrice(1_000_000);
+        setPrice(200_000);
         setOnSale(false);
         setDiscount(MAX_DISCOUNT);
     }

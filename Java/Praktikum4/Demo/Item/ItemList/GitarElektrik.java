@@ -10,7 +10,7 @@ public class GitarElektrik extends Item implements AlatMusik, AlatElektronik {
         setBrand("Yamaho");
         setModel("RX-0");
         setPrice(1_000_000);
-        setOnSale(false);
+        setOnSale(true);
         setDiscount(AlatMusik.MAX_DISCOUNT);
     }
 

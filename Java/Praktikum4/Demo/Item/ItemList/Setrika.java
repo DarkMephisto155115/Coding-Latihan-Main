@@ -5,10 +5,10 @@ import Java.Praktikum4.Demo.Item.Item;
 
 public class Setrika extends Item implements AlatElektronik {
     public void innit() {
-        setNamaBarang("Gitar");
-        setBrand("Yamaho");
-        setModel("Yamaho Gitar Akustik F310");
-        setPrice(1_000_000);
+        setNamaBarang("Setrika");
+        setBrand("Philips");
+        setModel("GC1418");
+        setPrice(350_000);
         setOnSale(false);
         setDiscount(MAX_DISCOUNT);
     }

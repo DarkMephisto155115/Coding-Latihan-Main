@@ -5,10 +5,10 @@ import Java.Praktikum4.Demo.Item.Item;
 
 public class Ukulele extends Item implements AlatMusik {
     public void innit() {
-        setNamaBarang("Gitar");
-        setBrand("Yamaho");
-        setModel("Yamaho Gitar Akustik F310");
-        setPrice(1_000_000);
+        setNamaBarang("Ukulele");
+        setBrand("Mahalo Suprano");
+        setModel("-");
+        setPrice(250_000);
         setOnSale(false);
         setDiscount(MAX_DISCOUNT);
     }

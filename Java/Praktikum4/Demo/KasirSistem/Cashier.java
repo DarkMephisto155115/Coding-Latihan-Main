@@ -10,7 +10,11 @@ public class Cashier {
 
     public void addPrice(double price) {
         currentPrice = price;
-        total += price;
+        setTotal(this.total += price);
+    }
+
+    public double getCurrentDiscount(int i) {
+        return currentDiscount[i];
     }
 
     public void addDisc(double memberDiscount, double voucherDiscount) {
@@ -27,8 +31,15 @@ public class Cashier {
         return totalDiscount;
     }
 
+    public void setTotalDiscount(double totalDiscount) {
+        this.totalDiscount = totalDiscount;
+    }
+
     public double getTotal() {
         return total;
     }
 
+    private void setTotal(double total) {
+        this.total = total;
+    }
 }

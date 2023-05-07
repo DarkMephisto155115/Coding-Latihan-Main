@@ -1,21 +1,15 @@
 package Java.Praktikum4.Demo;
 
-import java.util.Scanner;
 import java.text.DecimalFormat;
-import java.util.*;
 import java.text.NumberFormat;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
-import Java.Praktikum4.Demo.Item.ItemList.Excalibur;
-import Java.Praktikum4.Demo.Item.ItemList.Gitar;
-import Java.Praktikum4.Demo.Item.ItemList.GitarElektrik;
-import Java.Praktikum4.Demo.Item.ItemList.KipasAngin;
-import Java.Praktikum4.Demo.Item.ItemList.Klarinet;
-import Java.Praktikum4.Demo.Item.ItemList.PcGaming;
-import Java.Praktikum4.Demo.Item.ItemList.Piano;
-import Java.Praktikum4.Demo.Item.ItemList.Setrika;
-import Java.Praktikum4.Demo.Item.ItemList.Televisi;
-import Java.Praktikum4.Demo.Item.ItemList.Ukulele;
+import Java.Praktikum4.Demo.Item.ItemList.*;
+import Java.Praktikum4.Demo.KasirSistem.*;
 import Java.Praktikum4.Demo.Membership.Karyawan;
 import Java.Praktikum4.Demo.Membership.Pelanggan;
 
@@ -32,6 +26,11 @@ public class Main {
     private String memberType;
     private double memberDisc;
     private double uangDibayarkan;
+
+    // Setter, Getter
+    public List<String> getListBarang() {
+        return listBarang;
+    }
 
     public void setUangDibayarkan(double uangDibayarkan) {
         this.uangDibayarkan = uangDibayarkan;
@@ -89,6 +88,7 @@ public class Main {
         return pilihan;
     }
 
+    // Method
     public void loginMenu() {
         System.out.println("===========================================");
         System.out.println("|\t\t\t\t\t  |");
@@ -114,7 +114,7 @@ public class Main {
                 setNama(sc.next());
                 Karyawan karyawan = new Karyawan(getNama());
                 setMemberDisc(karyawan.getDISCOUNT());
-                setMemberType("Karyawan");
+                setMemberType(karyawan.getMemberType());
                 break;
             case 0:
                 System.exit(0);
@@ -186,7 +186,7 @@ public class Main {
                 setPilihanStr(sc.next());
                 if (getPilihanStr().equals("y")) {
                     cashier.addPrice(gitarElektrik.getDiscountedPrice());
-                    listBarang.add(gitarElektrik.namaBarang);
+                    listBarang.add(gitarElektrik.getNamaBarang());
                 } else {
                     menuBeliBarang();
                 }
@@ -201,7 +201,7 @@ public class Main {
                 setPilihanStr(sc.next());
                 if (getPilihanStr().equals("y")) {
                     cashier.addPrice(piano.getDiscountedPrice());
-                    listBarang.add(piano.namaBarang);
+                    listBarang.add(piano.getNamaBarang());
                 } else {
                     menuBeliBarang();
                 }
@@ -216,7 +216,7 @@ public class Main {
                 setPilihanStr(sc.next());
                 if (getPilihanStr().equals("y")) {
                     cashier.addPrice(gitar.getDiscountedPrice());
-                    listBarang.add(gitar.namaBarang);
+                    listBarang.add(gitar.getNamaBarang());
                 } else {
                     menuBeliBarang();
                 }
@@ -231,7 +231,7 @@ public class Main {
                 setPilihanStr(sc.next());
                 if (getPilihanStr().equals("y")) {
                     cashier.addPrice(ukulele.getDiscountedPrice());
-                    listBarang.add(ukulele.namaBarang);
+                    listBarang.add(ukulele.getNamaBarang());
                 } else {
                     menuBeliBarang();
                 }
@@ -246,7 +246,7 @@ public class Main {
                 setPilihanStr(sc.next());
                 if (getPilihanStr().equals("y")) {
                     cashier.addPrice(klarinet.getDiscountedPrice());
-                    listBarang.add(klarinet.namaBarang);
+                    listBarang.add(klarinet.getNamaBarang());
                 } else {
                     menuBeliBarang();
                 }
@@ -261,7 +261,7 @@ public class Main {
                 setPilihanStr(sc.next());
                 if (getPilihanStr().equals("y")) {
                     cashier.addPrice(kipasAngin.getDiscountedPrice());
-                    listBarang.add(kipasAngin.namaBarang);
+                    listBarang.add(kipasAngin.getNamaBarang());
                 } else {
                     menuBeliBarang();
                 }
@@ -276,7 +276,7 @@ public class Main {
                 setPilihanStr(sc.next());
                 if (getPilihanStr().equals("y")) {
                     cashier.addPrice(pcGaming.getDiscountedPrice());
-                    listBarang.add(pcGaming.namaBarang);
+                    listBarang.add(pcGaming.getNamaBarang());
                 } else {
                     menuBeliBarang();
                 }
@@ -291,7 +291,7 @@ public class Main {
                 setPilihanStr(sc.next());
                 if (getPilihanStr().equals("y")) {
                     cashier.addPrice(televisi.getDiscountedPrice());
-                    listBarang.add(televisi.namaBarang);
+                    listBarang.add(televisi.getNamaBarang());
                 } else {
                     menuBeliBarang();
                 }
@@ -306,7 +306,7 @@ public class Main {
                 setPilihanStr(sc.next());
                 if (getPilihanStr().equals("y")) {
                     cashier.addPrice(setrika.getDiscountedPrice());
-                    listBarang.add(setrika.namaBarang);
+                    listBarang.add(setrika.getNamaBarang());
                 } else {
                     menuBeliBarang();
                 }
@@ -319,9 +319,9 @@ public class Main {
                 System.out.println("===========================================");
                 System.out.print("Pilih Salah Satu : ");
                 setPilihanStr(sc.next());
-                if (getPilihanStr().equals("y")) {
+                if (getPilihanStr().equalsIgnoreCase("y")) {
                     cashier.addPrice(excalibur.getDiscountedPrice());
-                    listBarang.add(excalibur.namaBarang);
+                    listBarang.add(excalibur.getNamaBarang());
                 } else {
                     menuBeliBarang();
                 }
@@ -344,7 +344,7 @@ public class Main {
         System.out.println("===========================================");
         System.out.print("Pilih Salah Satu : ");
         setPilihanStr(sc.next());
-        if (getPilihanStr().equals("y")) {
+        if (getPilihanStr().equalsIgnoreCase("y")) {
             menuBeliBarang();
         } else {
             menuPembayaran();
@@ -380,10 +380,12 @@ public class Main {
                     System.out.println("Nama Pembeli : " + getNama());
                     System.out.println("Tier Membreship : " + getMemberType());
                     System.out.println("Banyak barang dibeli : " + getI());
-                    System.out.println("Barang yang dibeli : " + listBarang);
+                    System.out.println("Barang yang dibeli : " + getListBarang());
                     System.out.println("Total Harga : " + currencyFormatter.format(cashier.getTotal()));
                     System.out.println("Voucher aktif : " + cashier.vouchers[i2].getCode());
-                    System.out.println("Diskon Member + Voucher : " + df.format(cashier.getTotalDiscount()));
+                    System.out.println("Diskon Member + Voucher : " + df.format(cashier.getCurrentDiscount(0)) + " + "
+                            + df.format(cashier.getCurrentDiscount(1)) + " = "
+                            + df.format(cashier.getTotalDiscount()));
                     System.out.println(
                             "Total harga setelah diskon : "
                                     + currencyFormatter
@@ -403,6 +405,7 @@ public class Main {
             }
 
         } else {
+            cashier.setTotalDiscount(getMemberDisc());
             System.out.println("\n===========================================");
             System.out.println("|\t\t\t\t\t  |");
             System.out.println("| \t Informasi Pembelian\t\t  |");
@@ -411,23 +414,26 @@ public class Main {
             System.out.println("Nama Pembeli : " + getNama());
             System.out.println("Tier Membreship : " + getMemberType());
             System.out.println("Banyak barang dibeli : " + getI());
-            System.out.println("Barang yang dibeli : " + listBarang);
+            System.out.println("Barang yang dibeli : " + getListBarang());
             System.out.println("Total Harga : " + currencyFormatter.format(cashier.getTotal()));
-            System.out.println("Diskon Member : " + df.format(getMemberDisc()));
+            System.out.println("Diskon Member : " + df.format(cashier.getTotalDiscount()));
             System.out.println(
                     "Total harga setelah diskon : "
-                            + currencyFormatter.format(cashier.getTotal() - (cashier.getTotal() * getMemberDisc())));
+                            + currencyFormatter
+                                    .format(cashier.getTotal() - (cashier.getTotal() * cashier.getTotalDiscount())));
             System.out.print("Total yang dibayarkan : ");
             setUangDibayarkan(sc.nextDouble());
             System.out.println("Uang Kembalian : " + currencyFormatter
-                    .format(getUangDibayarkan() - (cashier.getTotal() - (cashier.getTotal() * getMemberDisc()))));
+                    .format(getUangDibayarkan()
+                            - (cashier.getTotal() - (cashier.getTotal() * cashier.getTotalDiscount()))));
         }
         System.out.println("===========================================");
         System.out.println("|Terima Kasih Telah Membeli\t\t  |");
         System.out.println("|Kembali ke menu (y/n)\t\t\t  |");
         System.out.println("===========================================");
         setPilihanStr(sc.next());
-        if (getPilihanStr().equals("y")) {
+        if (getPilihanStr().equalsIgnoreCase("y")) {
+            setI(0);
             listBarang.clear();
             mainMenu();
         } else {

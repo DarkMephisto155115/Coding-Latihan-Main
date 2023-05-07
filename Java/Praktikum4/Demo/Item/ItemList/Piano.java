@@ -8,8 +8,8 @@ public class Piano extends Item implements AlatElektronik, AlatMusik {
     public void innit() {
         setNamaBarang("Piano");
         setBrand("Yamaho");
-        setModel("Yamaho Gitar Akustik F310");
-        setPrice(1_000_000);
+        setModel("P53");
+        setPrice(4_900_000);
         setOnSale(false);
         setDiscount(AlatMusik.MAX_DISCOUNT);
     }
