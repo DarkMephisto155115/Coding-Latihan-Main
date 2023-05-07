@@ -1,11 +1,27 @@
 package Java.Praktikum4.Demo.Item;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.text.DecimalFormat;
+
 public abstract class Item {
+    public String namaBarang;
     public String brand;
     public String model;
     public int price;
     public boolean onSale;
     public double discount;
+
+    Locale locale = new Locale.Builder().setLanguage("id").setRegion("ID").build();
+    NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
+
+    public void setNamaBarang(String namaBarang) {
+        this.namaBarang = namaBarang;
+    }
+
+    public String getNamaBarang() {
+        return namaBarang;
+    }
 
     public void setBrand(String brand) {
         this.brand = brand;
@@ -47,11 +63,32 @@ public abstract class Item {
         return discount;
     }
 
-    public int getDiscountedPrice() {
-        return 0;
+    public double getDiscountedPrice() {
+        if (onSale) {
+            return (getPrice() - (getPrice() * getDiscount()));
+        } else {
+            return getPrice();
+        }
+
     }
 
     public void deskripsiBarang() {
-
+        DecimalFormat df = new DecimalFormat("#%");
+        System.out.println("===========================================");
+        System.out.println("|\t\t\t\t\t  |");
+        System.out.println("| \t    Deskripsi Barang\t\t  |");
+        System.out.println("|\t\t\t\t\t  |");
+        System.out.println("===========================================");
+        System.out.println("Nama Barang : " + getNamaBarang());
+        System.out.println("Brand : " + getBrand());
+        System.out.println("Model Barang : " + getModel());
+        System.out.println("Harga Barang : " + currencyFormatter.format(getPrice()));
+        if (isOnSale()) {
+            System.out.println("Status Diskon : " + df.format(getDiscount()));
+            System.out.println("Harga setelah diskon : " + currencyFormatter.format(getDiscountedPrice()));
+        } else {
+            System.out.println("Status Diskon : Tidak ada Diskon");
+        }
     }
+
 }

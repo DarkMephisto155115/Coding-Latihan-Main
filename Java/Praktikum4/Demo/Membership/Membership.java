@@ -6,7 +6,6 @@ public interface Membership {
     public double SILVER_DISC = 0.05;
 
     public default double getMembershipDiscount() {
-
         return 0;
     }
 }
