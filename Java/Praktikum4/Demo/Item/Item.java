@@ -12,6 +12,7 @@ public abstract class Item {
     public boolean onSale;
     public double discount;
 
+
     Locale locale = new Locale.Builder().setLanguage("id").setRegion("ID").build();
     NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
 
