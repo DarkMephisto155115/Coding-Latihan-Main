@@ -104,8 +104,35 @@ public class Main {
             case 1:
                 System.out.print("Masukkan Nama : ");
                 setNama(sc.next());
-                System.out.print("Masukkan Tipe Member : ");
-                setMemberType(sc.next());
+                System.out.print("Punya Member? (y/n) : ");
+                setPilihanStr(sc.next());
+                if(getPilihanStr().equalsIgnoreCase("y")){
+                    System.out.println("Masukkan Tipe Member : ");
+                    System.out.println("1. Premium");
+                    System.out.println("2. Gold");
+                    System.out.println("3. Silver");
+                    System.out.println("Pilih salah satu : ");
+                    setPilihan(sc.nextInt());
+                    switch (getPilihan()) {
+                        case 1:
+                            setMemberType("Premium");
+                            break;
+                        case 2:
+                            setMemberType("Gold");
+                            break;
+                        case 3:
+                            setMemberType("Silver");
+                            break;
+
+                        default:
+                        System.out.println("Input Salah!!!");
+                        loginMenu();
+                            break;
+                    }
+                }else{
+                    setMemberType("-");
+                }
+
                 Pelanggan pelanggan = new Pelanggan(getNama(), getMemberType());
                 setMemberDisc(pelanggan.getMembershipDiscount());
                 break;
@@ -125,6 +152,7 @@ public class Main {
                 loginMenu();
                 break;
         }
+        mainMenu();
     }
 
     public void mainMenu() {
@@ -378,7 +406,7 @@ public class Main {
                     System.out.println("|\t\t\t\t\t  |");
                     System.out.println("===========================================");
                     System.out.println("Nama Pembeli : " + getNama());
-                    System.out.println("Tier Membreship : " + getMemberType());
+                    System.out.println("Tier Membership : " + getMemberType());
                     System.out.println("Banyak barang dibeli : " + getI());
                     System.out.println("Barang yang dibeli : " + getListBarang());
                     System.out.println("Total Harga : " + currencyFormatter.format(cashier.getTotal()));
@@ -412,7 +440,7 @@ public class Main {
             System.out.println("|\t\t\t\t\t  |");
             System.out.println("===========================================");
             System.out.println("Nama Pembeli : " + getNama());
-            System.out.println("Tier Membreship : " + getMemberType());
+            System.out.println("Tier Membership : " + getMemberType());
             System.out.println("Banyak barang dibeli : " + getI());
             System.out.println("Barang yang dibeli : " + getListBarang());
             System.out.println("Total Harga : " + currencyFormatter.format(cashier.getTotal()));

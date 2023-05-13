@@ -6,7 +6,7 @@ public class User {
     Scanner sc = new Scanner(System.in);
     private boolean admin;
     private int userIndex;
-    public Object[][] userDB = { { "admin", "admin", 0, true }, { "202110370311147", "UMM_a2021", 1, true },
+    public Object[][] userDB = { { "admin", "admin", 0, true }, { "202210370311147", "UMM_a2021", 1, true },
             { "202110370311145", "UMM_a2021", 1, false } };
     private String username;
     private String password;
@@ -132,6 +132,7 @@ public class User {
 
     // Feature / Method
     public void login() {
+        System.out.println("Login Sistem Akademik UMM");
         System.out.print("Masukkan username : ");
         setUsername(sc.next());
         System.out.print("Masukkan password : ");
