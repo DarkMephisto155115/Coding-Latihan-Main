@@ -1,4 +1,4 @@
-package Java.Praktikum4.Demo;
+package Java.Praktikum4.Demo.KasirSistem;
 
 public class Cashier {
     public double currentPrice;

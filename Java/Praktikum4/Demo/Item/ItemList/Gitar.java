@@ -8,7 +8,7 @@ public class Gitar extends Item implements AlatMusik {
         setNamaBarang("Gitar");
         setBrand("Yamaho");
         setModel("asw-g-08");
-        setPrice(1_000_000);
+        setPrice(500_000);
         setOnSale(false);
         setDiscount(MAX_DISCOUNT);
     }

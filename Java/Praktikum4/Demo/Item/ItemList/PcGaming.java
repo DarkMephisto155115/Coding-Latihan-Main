@@ -9,7 +9,7 @@ public class PcGaming extends Item implements AlatElektronik {
         setBrand("Ares");
         setModel("Ares-01 (i5 13400f, RTX 4070)");
         setPrice(1_000_000);
-        setOnSale(false);
+        setOnSale(true);
         setDiscount(MAX_DISCOUNT);
     }
 

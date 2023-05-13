@@ -6,10 +6,10 @@ import Java.Praktikum4.Demo.Item.Item;
 public class Televisi extends Item implements AlatElektronik {
     public void innit() {
         setNamaBarang("Televisi");
-        setBrand("Yamaho");
-        setModel("Yamaho Gitar Akustik F310");
+        setBrand("Panasonac");
+        setModel("PLD 32D1852");
         setPrice(1_000_000);
-        setOnSale(false);
+        setOnSale(true);
         setDiscount(MAX_DISCOUNT);
     }
 
