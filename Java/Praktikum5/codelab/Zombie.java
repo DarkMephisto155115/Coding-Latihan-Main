@@ -17,4 +17,8 @@ public class Zombie implements Destroyable {
     public void destroyed() {
         System.out.println("Zombie is destroyed!");
     }
+
+    public void getZombieInfo() {
+
+    }
 }

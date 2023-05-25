@@ -12,12 +12,25 @@ public class WalkingZombie extends Zombie {
         return health;
     }
 
+    @Override
+    public void getZombieInfo() {
+        System.out.println("------ Zombie Info ------");
+        System.out.println("Zombie : Walking Zombie");
+        System.out.println("Health : " + getHealth());
+    }
+
     public void attacked() {
+        System.out.println("\n------ Plant menyerang Walking Zombie ------");
+        getZombieInfo();
         double damage = (double) (health * 0.04);
         damage = Math.ceil(damage);
-        System.out.println("Damage : " + (int) damage);
         health = health - (int) damage;
-        System.out.println("Walking Zombie health: " + getHealth());
+        System.out.println("\nWalking Zombie received " + (int) damage + " damage");
+    }
+
+    @Override
+    public void destroyed() {
+        System.out.println("\nPlant berhasil mengalahkan Walking Zombie");
     }
 
 }

@@ -15,4 +15,9 @@ public class Karyawan extends Person implements Membership {
     public String getMemberType() {
         return memberType;
     }
+
+    @Override
+    public double getMembershipDiscount() {
+        throw new UnsupportedOperationException("Unimplemented method 'getMembershipDiscount'");
+    }
 }

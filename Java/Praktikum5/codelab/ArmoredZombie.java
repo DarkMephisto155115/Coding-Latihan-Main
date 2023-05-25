@@ -23,21 +23,41 @@ public class ArmoredZombie extends Zombie {
     }
 
     @Override
+    public void getZombieInfo() {
+        System.out.println("------ Zombie Info ------");
+        System.out.println("Zombie : Armored Zombie");
+        System.out.println("Health : " + getHealth());
+        armor.getArmorInfo();
+    }
+
+    @Override
     public void attacked() {
+        System.out.println("\n------ Plant menyerang Armored Zombie ------");
+
         if (armor.getStrength() > 0) {
-            armor.damagedArmor(5);
-            System.out.println("Armored Zombie armor strength: " + armor.getStrength());
+            armor.damagedArmor(2);
+            if (armor.getStrength() == 0) {
+                health = health + armor.getExcessDamage();
+                getZombieInfo();
+                System.out
+                        .println("\nArmored Zombie armor is depleted by  " + (int) armor.getArmorDamage() + " damage");
+                System.out.println("\n------ The armor has been broken!!! ------");
+            } else {
+                getZombieInfo();
+                System.out.println("\nArmored Zombie armor is depleted by " + (int) armor.getArmorDamage() + " damage");
+            }
+
         } else {
             double damage = (health * 0.02);
             damage = Math.ceil(damage);
-            System.out.println("Damage : " + (int) damage);
             health = health - (int) damage;
-            System.out.println("Armored Zombie health: " + getHealth());
+            getZombieInfo();
+            System.out.println("\nArmored Zombie received " + (int) damage + " damage");
         }
     }
 
     @Override
     public void destroyed() {
-        System.out.println("Armored Zombie is destroyed!");
+        System.out.println("\nPlant berhasil mengalahkan Armored Zombie");
     }
 }

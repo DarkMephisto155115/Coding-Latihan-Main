@@ -26,7 +26,7 @@ public class Main {
     public void mainMenu() {
         System.out.println("===========================================");
         System.out.println("|\t\t\t\t\t  |");
-        System.out.println("| \t    Plant Vs Zombie\t  |");
+        System.out.println("| \t    Plant Vs Zombie\t\t  |");
         System.out.println("|\t\t\t\t\t  |");
         System.out.println("===========================================");
         System.out.println("1. Main");
@@ -48,7 +48,7 @@ public class Main {
     }
 
     void mainCaller() {
-        // Calling the main() method
+        // untuk call main() method
         main(null);
     }
 
@@ -59,10 +59,11 @@ public class Main {
         Zombie armoredZombie = new ArmoredZombie(200, 50);
         main.mainMenu();
         while (true) {
-            System.out.println("===========================================");
+            System.out.println("\n===========================================");
             System.out.println("|\t\t\t\t\t  |");
-            System.out.println("| \t    Plant Vs Zombie\t  |");
-            System.out.println("| \t    Pilih zombie yang ingin dilawan\t  |");
+            System.out.println("|          Plant Vs Zombie KW 2000\t  |");
+            System.out.println("|      Pilih zombie yang ingin dilawan    |");
+            System.out.println("|\t\t\t\t\t  |");
             System.out.println("===========================================");
             System.out.println("1. Walking Zombie");
             System.out.println("2. Armored Zombie");
@@ -72,19 +73,22 @@ public class Main {
 
             switch (main.getPilihan()) {
                 case 1:
-                    System.out.println("Plant attacks Walking Zombie:");
+                    System.out.println("------ Walking Zombie sebelum diserang ------");
+                    walkingZombie.getZombieInfo();
                     while (walkingZombie.getHealth() > 0) {
                         plant.attack(walkingZombie);
 
                     }
-
+                    walkingZombie.destroyed();
                     break;
                 case 2:
-                    System.out.println("Plant attacks Armored Zombie:");
+                    System.out.println("------ Armored Zombie sebelum diserang ------");
+                    armoredZombie.getZombieInfo();
                     while (armoredZombie.getHealth() > 0) {
                         plant.attack(armoredZombie);
 
                     }
+                    armoredZombie.destroyed();
                     break;
                 case 0:
                     System.exit(0);
@@ -99,7 +103,8 @@ public class Main {
                 main.mainCaller();
             } else {
                 System.out.println("\nTerima Kasih Telah Bermain");
-                System.exit(0);
+                sc.close();
+                break;
             }
         }
     }
