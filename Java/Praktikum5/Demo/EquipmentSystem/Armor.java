@@ -7,6 +7,14 @@ public class Armor {
     private double realDefensePoint;
     Element element;
 
+    public double getDefensePoint() {
+        return defensePoint;
+    }
+
+    public double getRealDefensePoint() {
+        return realDefensePoint;
+    }
+
     public Armor(double defensePoint, Element e) {
         this.defensePoint = defensePoint;
         this.element = e;

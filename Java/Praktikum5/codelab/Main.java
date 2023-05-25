@@ -104,7 +104,7 @@ public class Main {
             } else {
                 System.out.println("\nTerima Kasih Telah Bermain");
                 sc.close();
-                break;
+                System.exit(0);
             }
         }
     }

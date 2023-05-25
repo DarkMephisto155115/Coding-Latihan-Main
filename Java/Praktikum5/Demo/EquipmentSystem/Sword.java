@@ -3,6 +3,7 @@ package Java.Praktikum5.Demo.EquipmentSystem;
 import Java.Praktikum5.Demo.BattleSystem.ElementSystem.Element;
 
 public class Sword extends Weapon {
+
     public Sword(String name, Element e, double damage) {
         this.name = name;
         this.element = e;
@@ -13,4 +14,5 @@ public class Sword extends Weapon {
         this.name = name;
         this.damage = damage;
     }
+
 }
