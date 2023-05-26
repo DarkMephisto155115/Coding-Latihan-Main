@@ -13,9 +13,9 @@ public class Tank extends Hero implements Armorable {
     public Tank(int level) {
         super(level);
         if (level > 0) {
-            this.healthPoint = (int) (6000 + ((int_random + int_random) * 200));// Min 6000 Max 10000
-            this.defense = (int) (400 + (int_random * 20));// Min 400 Max 600
-            this.attackDamage = (int) (400 + (int_random * 20));// Min 400 Max 600
+            this.healthPoint = (int) (6000 + ((rand.nextInt(11)) * 400));// Min 6000 Max 10000
+            this.defense = (int) (600 + (rand.nextInt(11) * 30));// Min 600 Max 900
+            this.attackDamage = (int) (500 + (rand.nextInt(11) * 20));// Min 500 Max 700
             for (int i = 1; i <= level; i++) {
                 this.healthPoint += 200;
                 this.defense += 15;
@@ -23,15 +23,15 @@ public class Tank extends Hero implements Armorable {
             }
 
         } else {
-            this.healthPoint = (int) (6000 + ((int_random + int_random) * 200));// Min 6000 Max 10000
-            this.defense = (int) (400 + (int_random * 20));// Min 400 Max 600
-            this.attackDamage = (int) (400 + (int_random * 20));// Min 400 Max 600
+            this.healthPoint = (int) (6000 + ((rand.nextInt(11) + rand.nextInt(11)) * 200));// Min 6000 Max 10000
+            this.defense = (int) (600 + (rand.nextInt(11) * 30));// Min 600 Max 900
+            this.attackDamage = (int) (500 + (rand.nextInt(11) * 20));// Min 500 Max 700
         }
     }
 
     @Override
     public void checkStatus() {
-        System.out.println("Class : Tank");
+        System.out.println("\nClass : Tank");
         super.checkStatus();
         if (armor != null) {
             System.out.println("Tank is Armored");

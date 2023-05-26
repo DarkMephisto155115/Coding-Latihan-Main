@@ -18,7 +18,7 @@ public class Main {
         Mage Player3 = new Mage(0);
         Element fire = new Fire();
         Weapon gun1 = new Gun("Glock", fire, 150);
-        Armor armor1 = new Armor(1000, fire);
+        Armor armor1 = new Armor(2000, fire);
         Player1.useWeapon(gun1);
         Player2.useArmor(armor1);
         System.out.println("Player 1 :");
@@ -49,11 +49,6 @@ public class Main {
                 break;
             }
         }
-
-        System.out.println("\nPlayer 1 :");
-        Player1.checkStatus();
-        System.out.println("Player 2 :");
-        Player2.checkStatus();
 
     }
 }

@@ -11,9 +11,9 @@ public class Mage extends Hero implements MagicalDamage {
     public Mage(int level) {
         super(level);
         if (level > 0) {
-            this.healthPoint = (int) (2000 + ((int_random + int_random) * 100));// Min 2000 Max 4000
-            this.defense = (int) (200 + ((int_random) * 20));// Min 200 Max 400
-            this.attackDamage = (int) (800 + (int_random * 50));// Min 800 Max 1300
+            this.healthPoint = (int) (2000 + ((rand.nextInt(11) + rand.nextInt(11)) * 100));// Min 2000 Max 4000
+            this.defense = (int) (300 + ((rand.nextInt(11) + rand.nextInt(11)) * 10));// Min 300 Max 400
+            this.attackDamage = (int) (700 + (rand.nextInt(11) * 20));// Min 700 Max 900
             for (int i = 1; i <= level; i++) {
                 this.healthPoint += 85;
                 this.defense += 10;
@@ -21,16 +21,16 @@ public class Mage extends Hero implements MagicalDamage {
             }
 
         } else {
-            this.healthPoint = (int) (2000 + ((int_random + int_random) * 100));// Min 2000 Max 4000
-            this.defense = (int) (200 + ((int_random + int_random) * 20));// Min 200 Max 400
-            this.attackDamage = (int) (800 + (int_random * 50));// Min 800 Max 1300
+            this.healthPoint = (int) (2000 + ((rand.nextInt(11) + rand.nextInt(11)) * 100));// Min 2000 Max 4000
+            this.defense = (int) (300 + ((rand.nextInt(11) + rand.nextInt(11)) * 10));// Min 300 Max 400
+            this.attackDamage = (int) (700 + (rand.nextInt(11) * 20));// Min 700 Max 900
         }
         this.attackDamage += (this.attackDamage * MAGIC_DMG_BONUS);
     }
 
     @Override
     public void checkStatus() {
-        System.out.println("Class : Mage");
+        System.out.println("\nClass : Mage");
         super.checkStatus();
     }
 

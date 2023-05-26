@@ -15,9 +15,12 @@ public class Assasin extends Hero implements CrtiticalDamage, Weaponable {
     public Assasin(int level) {
         super(level);
         if (level > 0) {
-            this.healthPoint = (int) (2000 + (int_random * 300));// Min 2000 Max 5000
-            this.defense = (int) (200 + (int_random * 20));// Min 200 Max 400
-            this.attackDamage = (int) (700 + (int_random * 50));// Min 700 Max 1200
+            this.healthPoint = (int) (2000 + ((rand.nextInt(11) + rand.nextInt(11) + rand.nextInt(11)) * 100));// Min
+                                                                                                               // 2000
+                                                                                                               // Max
+                                                                                                               // 5000
+            this.defense = (int) (200 + (rand.nextInt(11) * 30));// Min 200 Max 500
+            this.attackDamage = (int) (700 + (rand.nextInt(11) * 50));// Min 700 Max 1200
             for (int i = 1; i <= level; i++) {
                 this.healthPoint += 90;
                 this.defense += 15;
@@ -25,16 +28,16 @@ public class Assasin extends Hero implements CrtiticalDamage, Weaponable {
             }
 
         } else {
-            this.healthPoint = (int) (2000 + (int_random * 300));// Min 2000 Max 5000
-            this.defense = (int) (200 + (int_random * 30));// Min 200 Max 500
-            this.attackDamage = (int) (700 + (int_random * 50));// Min 700 Max 1200
+            this.healthPoint = (int) (2000 + (rand.nextInt(11) * 300));// Min 2000 Max 5000
+            this.defense = (int) (200 + (rand.nextInt(11) * 30));// Min 200 Max 500
+            this.attackDamage = (int) (700 + (rand.nextInt(11) * 50));// Min 700 Max 1200
         }
         this.attackDamage += (this.attackDamage * ATK_DMG_BONUS);
     }
 
     @Override
     public void checkStatus() {
-        System.out.println("Class : Assasin");
+        System.out.println("\nClass : Assasin");
         super.checkStatus();
         if (w != null) {
             w.weaponType();
