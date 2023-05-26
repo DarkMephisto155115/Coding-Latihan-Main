@@ -1,7 +1,5 @@
 package Java.Praktikum5.Demo.ClassSystem;
 
-import Java.Praktikum5.Demo.EquipmentSystem.Weapon;
-
 public abstract class Hero {
     protected int healthPoint;
     protected int attackDamage;
@@ -16,12 +14,15 @@ public abstract class Hero {
 
     public abstract void spawnIntro();
 
+    public abstract void attackIntro();
+
     public void attack(Hero target) {
         target.reviewDamage(calculateRealDamage());
     }
 
     public void reviewDamage(int damage) {
         int realDamage = damage - defense;
+        System.out.println("Recived damage : " + realDamage);
         if (realDamage > 0) {
             healthPoint -= realDamage;
         }
@@ -39,6 +40,17 @@ public abstract class Hero {
         System.out.println("Life Status: " + (isDefeated ? "Defeated" : "Alive"));
     }
 
+    public boolean lifeStatus() {
+        if (this.isDefeated == true) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     protected abstract int calculateRealDamage();
 
+    public int getHealthPoint() {
+        return healthPoint;
+    }
 }

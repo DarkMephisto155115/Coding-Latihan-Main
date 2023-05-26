@@ -1,17 +1,13 @@
 package Java.Praktikum5.Demo.EquipmentSystem;
 
-import javax.lang.model.element.ElementKind;
-
-import Java.Praktikum5.Demo.BattleSystem.ElementSystem.Earth;
-import Java.Praktikum5.Demo.BattleSystem.ElementSystem.Element;
-import Java.Praktikum5.Demo.BattleSystem.ElementSystem.Fire;
-import Java.Praktikum5.Demo.BattleSystem.ElementSystem.Water;
-import Java.Praktikum5.Demo.BattleSystem.ElementSystem.Wind;
+import Java.Praktikum5.Demo.BattleSystem.ElementSystem.*;
 
 public abstract class Weapon {
     protected String name;
     protected double damage;
     protected Element element;
+    protected double elementDamage;
+    protected double totalDamage;
 
     public double getDamage() {
         return damage;
@@ -27,17 +23,28 @@ public abstract class Weapon {
 
     public void elementType() {
         if (element instanceof Fire) {
-
-        } else if (element instanceof Fire) {
-
+            System.out.println("Element : Fire");
         } else if (element instanceof Water) {
-
+            System.out.println("Element : Water");
         } else if (element instanceof Earth) {
-
+            System.out.println("Element : Earth");
         } else if (element instanceof Wind) {
-
+            System.out.println("Element : Wind");
         } else {
-            System.out.println("GATAU MALES PINGIN BELI TRUCK");
+            System.out.println("Element : -");
         }
     }
+
+    public void weaponType() {
+
+    }
+
+    public double getTotalDamage() {
+        return totalDamage;
+    }
+
+    public double getElementDamage() {
+        return elementDamage;
+    }
+
 }
