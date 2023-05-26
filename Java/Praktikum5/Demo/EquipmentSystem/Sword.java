@@ -21,7 +21,7 @@ public class Sword extends Weapon {
 
     @Override
     public void weaponType() {
-        System.out.println("Weapon : Sword");
+        System.out.println("Weapon Type : Sword");
     }
 
 }
