@@ -3,19 +3,20 @@ package Java.Praktikum5.Demo.ClassSystem;
 import java.util.Random;
 
 import Java.Praktikum5.Demo.BattleSystem.Armorable;
+import Java.Praktikum5.Demo.BattleSystem.MagicalDamage;
 import Java.Praktikum5.Demo.EquipmentSystem.Armor;
 
-public class Tank extends Hero implements Armorable {
+public class DarkKnight extends Hero implements Armorable, MagicalDamage {
     public Armor armor;
     Random rand = new Random();
     int int_random = rand.nextInt(11);
 
-    public Tank(int level) {
+    public DarkKnight(int level) {
         super(level);
         if (level > 0) {
             this.healthPoint = (int) (6000 + ((rand.nextInt(11)) * 400));// Min 6000 Max 10000
             this.defense = (int) (600 + (rand.nextInt(11) * 30));// Min 600 Max 900
-            this.attackDamage = (int) (500 + (rand.nextInt(11) * 20));// Min 500 Max 700
+            this.attackDamage = (int) (600 + (rand.nextInt(11) * 20));// Min 600 Max 800
             for (int i = 1; i <= level; i++) {
                 this.healthPoint += 200;
                 this.defense += 15;
@@ -25,16 +26,17 @@ public class Tank extends Hero implements Armorable {
         } else {
             this.healthPoint = (int) (6000 + ((rand.nextInt(11) + rand.nextInt(11)) * 200));// Min 6000 Max 10000
             this.defense = (int) (600 + (rand.nextInt(11) * 30));// Min 600 Max 900
-            this.attackDamage = (int) (500 + (rand.nextInt(11) * 20));// Min 500 Max 700
+            this.attackDamage = (int) (600 + (rand.nextInt(11) * 20));// Min 600 Max 800
         }
+        this.attackDamage += (this.attackDamage * MAGIC_DMG_BONUS);
     }
 
     @Override
     public void checkStatus() {
-        System.out.println("\nClass : Tank");
+        System.out.println("\nClass : Dark Knight");
         super.checkStatus();
         if (armor != null) {
-            System.out.println("Tank is Armored");
+            System.out.println("Dark Knight is Armored");
             armor.elementType();
             System.out.println("Armor defense : " + armor.getDefensePoint());
             System.out.println("Element defense : " + armor.getElementDefensePoint());
@@ -53,12 +55,12 @@ public class Tank extends Hero implements Armorable {
 
     @Override
     public void spawnIntro() {
-        System.out.println("\nI mean no harm, but you leave me no choices!!!");
+        System.out.println("\nSo..., you have chosen DEATH!!!");
     }
 
     @Override
     public void attackIntro() {
-        System.out.println("My sword is used to protect others!!!");
+        System.out.println("SUFFER!!! as i have....");
 
     }
 
@@ -78,7 +80,7 @@ public class Tank extends Hero implements Armorable {
             if (armor.getRealDefensePoint() == 0) {
                 realDamage = (int) armor.getExcessDamage();
 
-            } else if (armor.getRealDefensePoint() > 0) {
+            } else if (getRealDefensePoint() > 0) {
 
                 realDamage = 0;
             }

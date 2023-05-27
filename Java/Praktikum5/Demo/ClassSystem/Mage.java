@@ -23,7 +23,7 @@ public class Mage extends Hero implements MagicalDamage {
         } else {
             this.healthPoint = (int) (2000 + ((rand.nextInt(11) + rand.nextInt(11)) * 100));// Min 2000 Max 4000
             this.defense = (int) (300 + ((rand.nextInt(11) + rand.nextInt(11)) * 10));// Min 300 Max 400
-            this.attackDamage = (int) (700 + (rand.nextInt(11) * 20));// Min 700 Max 900
+            this.attackDamage = (int) (600 + (rand.nextInt(11) * 30));// Min 600 Max 900
         }
         this.attackDamage += (this.attackDamage * MAGIC_DMG_BONUS);
     }
@@ -36,7 +36,7 @@ public class Mage extends Hero implements MagicalDamage {
 
     @Override
     public void spawnIntro() {
-        System.out.println("Let me teach you the final Magecraft of the Grand Caster");
+        System.out.println("\nLet me teach you the final Magecraft of the Grand Caster");
     }
 
     @Override
@@ -45,9 +45,20 @@ public class Mage extends Hero implements MagicalDamage {
     }
 
     @Override
-    protected int calculateRealDamage() {
-        int realDamage = attackDamage;
+    protected double calculateRealDamage() {
+        double realDamage = attackDamage;
         return realDamage;
+    }
+
+    @Override
+    public void damagedNotification(String player) {
+        System.out.println("\n" + player + " Received " + getReceivedDamage() + " Damage");
+    }
+
+    @Override
+    public void attackNotification(String player) {
+
+        System.out.println("\n" + player + " attack for " + this.attackDamage + " Damage\n");
     }
 
 }

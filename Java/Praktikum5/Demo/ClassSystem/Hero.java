@@ -1,11 +1,13 @@
 package Java.Praktikum5.Demo.ClassSystem;
 
 public abstract class Hero {
-    protected int healthPoint;
-    protected int attackDamage;
-    protected int defense;
+    protected double healthPoint;
+    protected double attackDamage;
+    protected double defense;
     protected int level;
     protected boolean isDefeated;
+
+    protected double receivedDamage;
 
     public Hero(int level) {
         this.level = level;
@@ -16,13 +18,17 @@ public abstract class Hero {
 
     public abstract void attackIntro();
 
+    public abstract void attackNotification(String player);
+
+    public abstract void damagedNotification(String player);
+
     public void attack(Hero target) {
         target.reviewDamage(calculateRealDamage());
     }
 
-    public void reviewDamage(int damage) {
-        int realDamage = damage - defense;
-        System.out.println("Recived damage : " + realDamage);
+    public void reviewDamage(Double damage) {
+        double realDamage = damage - defense;
+        this.receivedDamage = realDamage;
         if (realDamage > 0) {
             healthPoint -= realDamage;
         }
@@ -48,9 +54,17 @@ public abstract class Hero {
         }
     }
 
-    protected abstract int calculateRealDamage();
+    public void checkBattleStat(String player) {
+        System.out.println(player + " HP : " + getHealthPoint());
+    }
 
-    public int getHealthPoint() {
+    protected abstract double calculateRealDamage();
+
+    public double getHealthPoint() {
         return healthPoint;
+    }
+
+    public double getReceivedDamage() {
+        return receivedDamage;
     }
 }

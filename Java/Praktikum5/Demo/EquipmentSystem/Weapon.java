@@ -21,14 +21,14 @@ public abstract class Weapon {
         return element;
     }
 
-    public void elementType() {
-        if (element instanceof Fire) {
+    public void elementType() {// Polymorphic Arguments
+        if (this.element instanceof Fire) {
             System.out.println("Element : Fire");
-        } else if (element instanceof Water) {
+        } else if (this.element instanceof Water) {
             System.out.println("Element : Water");
-        } else if (element instanceof Earth) {
+        } else if (this.element instanceof Earth) {
             System.out.println("Element : Earth");
-        } else if (element instanceof Wind) {
+        } else if (this.element instanceof Wind) {
             System.out.println("Element : Wind");
         } else {
             System.out.println("Element : -");
