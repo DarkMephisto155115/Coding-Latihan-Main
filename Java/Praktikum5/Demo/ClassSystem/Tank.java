@@ -24,7 +24,8 @@ public class Tank extends Hero implements Armorable {
 
         } else {
             this.healthPoint = (int) (6000 + ((rand.nextInt(11) + rand.nextInt(11)) * 200));// Min 6000 Max 10000
-            this.defense = (int) (600 + (rand.nextInt(11) * 30));// Min 600 Max 900
+            this.defense = (int) (600 + ((rand.nextInt(11) + rand.nextInt(11) + rand.nextInt(11)) * 30));// Min 600 Max
+                                                                                                         // 900
             this.attackDamage = (int) (500 + (rand.nextInt(11) * 20));// Min 500 Max 700
         }
     }
@@ -71,7 +72,17 @@ public class Tank extends Hero implements Armorable {
 
     @Override
     public void reviewDamage(Double damage) {
-        double realDamage = damage - this.defense;
+        double realDamage = damage;
+        if (this.defense < realDamage) {
+            realDamage = damage - this.defense;
+        }
+
+        if (this.defense > realDamage) {
+            realDamage = realDamage * 0.2;
+        }
+        if (realDamage <= 0) {
+            realDamage = 0;
+        }
         this.receivedDamage = realDamage;
         if (armor != null && armor.getRealDefensePoint() > 0) {
             armor.reduceRealDefensePoint(realDamage);

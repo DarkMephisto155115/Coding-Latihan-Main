@@ -12,8 +12,6 @@ public class GrandAssasin extends Hero implements Armorable, MagicalDamage, Crti
     public Weapon w;
     public Armor armor;
 
-    private double attackDamageNotification;
-
     public GrandAssasin(int level) {
         super(level);
         if (level > 0) {
@@ -34,8 +32,7 @@ public class GrandAssasin extends Hero implements Armorable, MagicalDamage, Crti
             this.defense = (int) (200 + (rand.nextInt(11) * 30));// Min 200 Max 500
             this.attackDamage = (int) (700 + (rand.nextInt(11) * 50));// Min 700 Max 1200
         }
-        this.attackDamage += (this.attackDamage * ATK_DMG_BONUS);
-        this.attackDamage += (this.attackDamage * MAGIC_DMG_BONUS);
+
     }
 
     @Override
@@ -90,12 +87,10 @@ public class GrandAssasin extends Hero implements Armorable, MagicalDamage, Crti
             }
             realDamage += w.getDamage();
         }
-        this.attackDamageNotification = realDamage;
+        realDamage += (realDamage * ATK_DMG_BONUS);
+        realDamage += (realDamage * MAGIC_DMG_BONUS);
+        setAttackDamageNotification(realDamage);
         return realDamage;
-    }
-
-    public double getAttackDamageNotification() {
-        return attackDamageNotification;
     }
 
     @Override
@@ -119,7 +114,10 @@ public class GrandAssasin extends Hero implements Armorable, MagicalDamage, Crti
     @Override
     public void reviewDamage(Double damage) {
         double realDamage = damage - this.defense;
-        this.receivedDamage = realDamage;
+        if (realDamage <= 0) {
+            realDamage = 0;
+        }
+        setReceivedDamage(realDamage);
         if (armor != null && armor.getRealDefensePoint() > 0) {
             armor.reduceRealDefensePoint(realDamage);
             if (armor.getRealDefensePoint() == 0) {
@@ -139,6 +137,15 @@ public class GrandAssasin extends Hero implements Armorable, MagicalDamage, Crti
             healthPoint = 0;
             isDefeated = true;
         }
+    }
+
+    @Override
+    public void checkBattleStat(String player) {
+        super.checkBattleStat(player);
+        if (armor != null) {
+            System.out.println(player + " Defense : " + armor.getRealDefensePoint());
+        }
+
     }
 
 }

@@ -16,7 +16,7 @@ public class DarkKnight extends Hero implements Armorable, MagicalDamage {
         if (level > 0) {
             this.healthPoint = (int) (6000 + ((rand.nextInt(11)) * 400));// Min 6000 Max 10000
             this.defense = (int) (600 + (rand.nextInt(11) * 30));// Min 600 Max 900
-            this.attackDamage = (int) (600 + (rand.nextInt(11) * 20));// Min 600 Max 800
+            this.attackDamage = (int) (700 + (rand.nextInt(11) * 30));// Min 700 Max 1000
             for (int i = 1; i <= level; i++) {
                 this.healthPoint += 200;
                 this.defense += 15;
@@ -28,7 +28,7 @@ public class DarkKnight extends Hero implements Armorable, MagicalDamage {
             this.defense = (int) (600 + (rand.nextInt(11) * 30));// Min 600 Max 900
             this.attackDamage = (int) (600 + (rand.nextInt(11) * 20));// Min 600 Max 800
         }
-        this.attackDamage += (this.attackDamage * MAGIC_DMG_BONUS);
+
     }
 
     @Override
@@ -67,14 +67,18 @@ public class DarkKnight extends Hero implements Armorable, MagicalDamage {
     @Override
     protected double calculateRealDamage() {
         double realDamage = attackDamage;
-
+        realDamage += (realDamage * MAGIC_DMG_BONUS);
+        setAttackDamageNotification(realDamage);
         return realDamage;
     }
 
     @Override
     public void reviewDamage(Double damage) {
         double realDamage = damage - this.defense;
-        this.receivedDamage = realDamage;
+        if (realDamage <= 0) {
+            realDamage = 0;
+        }
+        setReceivedDamage(realDamage);
         if (armor != null && armor.getRealDefensePoint() > 0) {
             armor.reduceRealDefensePoint(realDamage);
             if (armor.getRealDefensePoint() == 0) {
@@ -111,7 +115,7 @@ public class DarkKnight extends Hero implements Armorable, MagicalDamage {
 
     @Override
     public void attackNotification(String player) {
-        System.out.println(player + " attack for " + this.attackDamage + " Damage\n");
+        System.out.println(player + " attack for " + getAttackDamageNotification() + " Damage\n");
     }
 
     @Override

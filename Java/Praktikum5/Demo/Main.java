@@ -110,6 +110,11 @@ public class Main {
                 System.out.println("\nPlayer 1 WIN");
                 break;
             }
+
+            if (player1 instanceof Tank && player2 instanceof Tank) {
+
+            }
+
         }
     }
 
@@ -123,7 +128,7 @@ public class Main {
         Element wind = new Wind();
         Element earth = new Earth();
         Element water = new Water();
-
+        Element imaginary = new Imaginary();
         main.MainMenu();
 
         // Dynamic Polymorphism (virtual method invocation)
@@ -131,10 +136,16 @@ public class Main {
         Weapon gun2 = new Gun("D. Eagle (Fire)", fire, 200);
 
         Weapon sword1 = new Sword("Gram", 250);
-        Weapon sword2 = new Sword("Gram (Full Power)", fire, 300);
+        Weapon sword2 = new Sword("Bölverk Gram (Full Power)", fire, 300);
+
+        Weapon noblePhatasmn1 = new Sword("Enuma Elish", imaginary, 999);
+        Weapon noblePhatasmn2 = new Gun("Mathematical Malignant Anihilation", imaginary, 999);
 
         Armor armor1 = new Armor(2000);
         Armor armor2 = new Armor(2000, fire);
+
+        Armor nobleArmor = new Armor(20000, imaginary);
+        Armor nobleArmor2 = new Armor(20000);
 
         // Player Selection
         // Start
@@ -156,7 +167,9 @@ public class Main {
                 System.out.println("1. D. Eagle");
                 System.out.println("2. D. Eagle (Fire)");
                 System.out.println("3. Gram");
-                System.out.println("4. Gram (Full Power)");
+                System.out.println("4. Bölverk Gram (Full Power)");
+                System.out.println("5. Enuma Elish (Imaginary)");
+                System.out.println("6. Mathematical Malignant Anihilation (Imaginary)");
                 System.out.println("0. None");
                 System.out.print("Pilih senjata yang ingin digunakan : ");
                 main.setPilihan(sc.nextInt());
@@ -173,9 +186,17 @@ public class Main {
                     case 4:
                         Player1ASS.useWeapon(sword2);
                         break;
+                    case 5:
+                        Player1ASS.useWeapon(noblePhatasmn1);
+                        break;
+                    case 6:
+                        Player1ASS.useWeapon(noblePhatasmn2);
+                        break;
                     case 0:
                         break;
                     default:
+                        System.out.println("Input Salah");
+                        main(args);
                         break;
                 }
                 main.setPlayer1(Player1ASS);
@@ -192,6 +213,8 @@ public class Main {
                 Tank Player1TNK = new Tank(sc.nextInt());
                 System.out.println("1. Armored");
                 System.out.println("2. Armored (Fire)");
+                System.out.println("3. Noble Armor");
+                System.out.println("4. Noble Armor (Imaginary)");
                 System.out.println("0. None");
                 System.out.print("Pilih Armor yang ingin digunakan : ");
                 main.setPilihan(sc.nextInt());
@@ -202,10 +225,18 @@ public class Main {
                     case 2:
                         Player1TNK.useArmor(armor2);
                         break;
+                    case 3:
+                        Player1TNK.useArmor(nobleArmor2);
+                        break;
+                    case 4:
+                        Player1TNK.useArmor(nobleArmor);
+                        break;
                     case 0:
 
                         break;
                     default:
+                        System.out.println("Input Salah");
+                        main(args);
                         break;
                 }
                 main.setPlayer1(Player1TNK);
@@ -215,6 +246,8 @@ public class Main {
                 DarkKnight Player1DRK = new DarkKnight(sc.nextInt());
                 System.out.println("1. Armored");
                 System.out.println("2. Armored (Fire)");
+                System.out.println("3. Noble Armor");
+                System.out.println("4. Noble Armor (Imaginary)");
                 System.out.println("0. None");
                 System.out.print("Pilih Armor yang ingin digunakan : ");
                 main.setPilihan(sc.nextInt());
@@ -225,15 +258,25 @@ public class Main {
                     case 2:
                         Player1DRK.useArmor(armor2);
                         break;
+                    case 3:
+                        Player1DRK.useArmor(nobleArmor2);
+                        break;
+                    case 4:
+                        Player1DRK.useArmor(nobleArmor);
+                        break;
                     case 0:
 
                         break;
                     default:
+                        System.out.println("Input Salah");
+                        main(args);
                         break;
                 }
                 main.setPlayer1(Player1DRK);
                 break;
             default:
+                System.out.println("Input Salah");
+                main(args);
                 break;
         }
 
@@ -255,7 +298,9 @@ public class Main {
                 System.out.println("1. D. Eagle");
                 System.out.println("2. D. Eagle (Fire)");
                 System.out.println("3. Gram");
-                System.out.println("4. Gram (Full Power)");
+                System.out.println("4. Bölverk Gram (Full Power)");
+                System.out.println("5. Enuma Elish (Imaginary)");
+                System.out.println("6. Mathematical Malignant Anihilation (Imaginary)");
                 System.out.println("0. None");
                 System.out.print("Pilih senjata yang ingin digunakan : ");
                 main.setPilihan(sc.nextInt());
@@ -272,9 +317,17 @@ public class Main {
                     case 4:
                         Player2ASS.useWeapon(sword2);
                         break;
+                    case 5:
+                        Player2ASS.useWeapon(noblePhatasmn1);
+                        break;
+                    case 6:
+                        Player2ASS.useWeapon(noblePhatasmn2);
+                        break;
                     case 0:
                         break;
                     default:
+                        System.out.println("Input Salah");
+                        main(args);
                         break;
                 }
                 main.setPlayer2(Player2ASS);
@@ -291,6 +344,8 @@ public class Main {
                 Tank Player2TNK = new Tank(sc.nextInt());
                 System.out.println("1. Armored");
                 System.out.println("2. Armored (Fire)");
+                System.out.println("3. Noble Armor");
+                System.out.println("4. Noble Armor (Imaginary)");
                 System.out.println("0. None");
                 System.out.print("Pilih Armor yang ingin digunakan : ");
                 main.setPilihan(sc.nextInt());
@@ -301,10 +356,18 @@ public class Main {
                     case 2:
                         Player2TNK.useArmor(armor2);
                         break;
+                    case 3:
+                        Player2TNK.useArmor(nobleArmor2);
+                        break;
+                    case 4:
+                        Player2TNK.useArmor(nobleArmor);
+                        break;
                     case 0:
 
                         break;
                     default:
+                        System.out.println("Input Salah");
+                        main(args);
                         break;
                 }
                 main.setPlayer2(Player2TNK);
@@ -315,7 +378,9 @@ public class Main {
                 System.out.println("1. D. Eagle");
                 System.out.println("2. D. Eagle (Fire)");
                 System.out.println("3. Gram");
-                System.out.println("4. Gram (Full Power)");
+                System.out.println("4. Bölverk Gram (Full Power)");
+                System.out.println("5. Enuma Elish (Imaginary)");
+                System.out.println("6. Mathematical Malignant Anihilation (Imaginary)");
                 System.out.println("0. None");
                 System.out.print("Pilih senjata yang ingin digunakan : ");
                 main.setPilihan(sc.nextInt());
@@ -332,15 +397,25 @@ public class Main {
                     case 4:
                         Player2GAS.useWeapon(sword2);
                         break;
+                    case 5:
+                        Player2GAS.useWeapon(noblePhatasmn1);
+                        break;
+                    case 6:
+                        Player2GAS.useWeapon(noblePhatasmn2);
+                        break;
                     case 0:
                         break;
                     default:
+                        System.out.println("Input Salah");
+                        main(args);
                         break;
                 }
                 System.out.println("1. Armored");
                 System.out.println("2. Armored (Fire)");
+                System.out.println("3. Noble Armor");
+                System.out.println("4. Noble Armor (Imaginary)");
                 System.out.println("0. None");
-                System.out.print("Pilih senjata yang ingin digunakan : ");
+                System.out.print("Pilih Armor yang ingin digunakan : ");
                 main.setPilihan(sc.nextInt());
                 switch (main.getPilihan()) {
                     case 1:
@@ -349,8 +424,15 @@ public class Main {
                     case 2:
                         Player2GAS.useArmor(armor2);
                         break;
+                    case 3:
+                        Player2GAS.useArmor(nobleArmor2);
+                        break;
+                    case 4:
+                        Player2GAS.useArmor(nobleArmor);
+                        break;
                     case 0:
-
+                        System.out.println("Input Salah");
+                        main(args);
                         break;
                     default:
                         break;
@@ -358,6 +440,8 @@ public class Main {
                 main.setPlayer2(Player2GAS);
                 break;
             default:
+                System.out.println("Input Salah");
+                main(args);
                 break;
         }
         // End

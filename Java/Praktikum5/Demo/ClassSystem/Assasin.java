@@ -12,8 +12,6 @@ public class Assasin extends Hero implements CrtiticalDamage, Weaponable {
     int int_random = rand.nextInt(11);
     public Weapon w;
 
-    private double attackDamageNotification;
-
     public Assasin(int level) {
         super(level);
         if (level > 0) {
@@ -34,7 +32,7 @@ public class Assasin extends Hero implements CrtiticalDamage, Weaponable {
             this.defense = (int) (200 + (rand.nextInt(11) * 30));// Min 200 Max 500
             this.attackDamage = (int) (700 + (rand.nextInt(11) * 50));// Min 700 Max 1200
         }
-        this.attackDamage += (this.attackDamage * ATK_DMG_BONUS);
+
     }
 
     @Override
@@ -77,12 +75,9 @@ public class Assasin extends Hero implements CrtiticalDamage, Weaponable {
             }
             realDamage += w.getDamage();
         }
-        this.attackDamageNotification = realDamage;
+        realDamage += (realDamage * ATK_DMG_BONUS);
+        setAttackDamageNotification(realDamage);
         return realDamage;
-    }
-
-    public double getAttackDamageNotification() {
-        return attackDamageNotification;
     }
 
     @Override

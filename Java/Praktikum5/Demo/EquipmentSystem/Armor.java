@@ -29,6 +29,8 @@ public class Armor {
         return elementDefensePoint;
     }
 
+    // Static Polymorphism (Polimorfisme statis)
+
     public Armor(double defensePoint, Element e) {
         this.defensePoint = defensePoint;
         this.element = e;
@@ -52,15 +54,17 @@ public class Armor {
 
     public void elementType() {// Polymorphic Arguments
         if (this.element instanceof Fire) {
-            System.out.println("Armor element : Fire");
+            System.out.println("Element : Fire");
         } else if (this.element instanceof Water) {
-            System.out.println("Armor element : Water");
+            System.out.println("Element : Water");
         } else if (this.element instanceof Earth) {
-            System.out.println("Armor element : Earth");
+            System.out.println("Element : Earth");
         } else if (this.element instanceof Wind) {
-            System.out.println("Armor element : Wind");
+            System.out.println("Element : Wind");
+        } else if (this.element instanceof Imaginary) {
+            System.out.println("Element : Imaginary");
         } else {
-            System.out.println("Armor element : -");
+            System.out.println("Element : -");
         }
     }
 

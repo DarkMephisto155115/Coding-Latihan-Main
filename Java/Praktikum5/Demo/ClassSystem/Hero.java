@@ -8,6 +8,7 @@ public abstract class Hero {
     protected boolean isDefeated;
 
     protected double receivedDamage;
+    protected double attackDamageNotification;
 
     public Hero(int level) {
         this.level = level;
@@ -28,7 +29,11 @@ public abstract class Hero {
 
     public void reviewDamage(Double damage) {
         double realDamage = damage - defense;
-        this.receivedDamage = realDamage;
+
+        if (realDamage <= 0) {
+            realDamage = 0;
+        }
+        setReceivedDamage(realDamage);
         if (realDamage > 0) {
             healthPoint -= realDamage;
         }
@@ -66,5 +71,17 @@ public abstract class Hero {
 
     public double getReceivedDamage() {
         return receivedDamage;
+    }
+
+    public void setAttackDamageNotification(double attackDamageNotification) {
+        this.attackDamageNotification = attackDamageNotification;
+    }
+
+    public double getAttackDamageNotification() {
+        return attackDamageNotification;
+    }
+
+    public void setReceivedDamage(double receivedDamage) {
+        this.receivedDamage = receivedDamage;
     }
 }

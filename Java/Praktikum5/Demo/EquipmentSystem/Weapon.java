@@ -30,6 +30,8 @@ public abstract class Weapon {
             System.out.println("Element : Earth");
         } else if (this.element instanceof Wind) {
             System.out.println("Element : Wind");
+        } else if (this.element instanceof Imaginary) {
+            System.out.println("Element : Imaginary");
         } else {
             System.out.println("Element : -");
         }
