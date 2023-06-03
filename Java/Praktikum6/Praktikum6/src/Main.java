@@ -2,7 +2,8 @@ package Java.Praktikum6.Praktikum6.src;
 
 import Java.Praktikum6.Praktikum6.src.Mahasiswa.EmailException;
 import Java.Praktikum6.Praktikum6.src.Mahasiswa.NameException;
-import Java.Praktikum6.Praktikum6.src.Mahasiswa.NimException;
+import Java.Praktikum6.Praktikum6.src.Mahasiswa.NimFormatException;
+import Java.Praktikum6.Praktikum6.src.Mahasiswa.NimLengthException;
 
 import java.util.Scanner;
 
@@ -26,16 +27,17 @@ public class Main {
                 mantap = false;
             } catch (NameException e) {
                 System.out.println("Error: " + e.getMessage());
-            } catch (NimException e) {
+            } catch (NimFormatException | NimLengthException e) {
                 System.out.println("Error: " + e.getMessage());
             } catch (EmailException e) {
                 System.out.println("Error: " + e.getMessage());
-            } // tidak memakai finally karena di source code saya tidak ada block code yang
-              // harus dijalankan baik muncul exception ataupun tidak.
+            }
+            // tidak memakai finally karena di source code saya tidak ada block code yang
+            // harus dijalankan baik muncul exception ataupun tidak.
         }
 
         System.out.println("\nData berhasi di input!!!");
         mahasiswa.printDataDiri();
-
+        sc.close();
     }
 }

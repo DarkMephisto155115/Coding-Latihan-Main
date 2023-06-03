@@ -8,8 +8,14 @@ public class Mahasiswa {
     private String nim;
     private String email;
 
-    class NimException extends Exception {
-        public NimException(String message) {
+    class NimLengthException extends Exception {
+        public NimLengthException(String message) {
+            super(message);
+        }
+    }
+
+    class NimFormatException extends Exception {
+        public NimFormatException(String message) {
             super(message);
         }
     }
@@ -27,6 +33,18 @@ public class Mahasiswa {
     }
 
     public void setNama(String nama) throws NameException {
+        cekNama(nama);
+    }
+
+    public void setNim(String nim) throws NimFormatException, NimLengthException {
+        cekNIM(nim);
+    }
+
+    public void setEmail(String email) throws EmailException {
+        cekEmail(email);
+    }
+
+    private void cekNama(String nama) throws NameException {
         if (nama.matches("[a-zA-Z]+")) {
             this.nama = nama;
         } else {
@@ -34,17 +52,23 @@ public class Mahasiswa {
         }
     }
 
-    public void setNim(String nim) throws NimException {
+    private void cekNIM(String nim) throws NimFormatException, NimLengthException {
         String subString = "10370311";
-        if (nim.contains(subString) && nim.length() == 15 && nim.matches("[0-9]+")) {
-            this.nim = nim;
+        if (nim.contains(subString) && nim.matches("[0-9]+")) {
+            if (nim.length() == 15) {
+                this.nim = nim;
+            } else {
+                throw new NimLengthException(
+                        "NIM harus terdiri dari 15 angka.");
+            }
+
         } else {
-            throw new NimException(
-                    "NIM harus terdiri dari 15 digit angka dan memiliki kode 10370311 (Ex. 202210370311402)");
+            throw new NimFormatException(
+                    "NIM harus terdiri dari angka dan memiliki kode 10370311 (Ex. 202210370311402)");
         }
     }
 
-    public void setEmail(String email) throws EmailException {
+    private void cekEmail(String email) throws EmailException {
         if (Pattern.matches(
                 "^[\\w!#$%&amp;'+/=?`{|}~^-]+(?:\\.[\\w!#$%&amp;'+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$",
                 email)) {
@@ -52,18 +76,6 @@ public class Mahasiswa {
         } else {
             throw new EmailException("Format email salah");
         }
-    }
-
-    private void cekNama(String nama) {
-
-    }
-
-    private void cekNIM(String NIM) {
-
-    }
-
-    private void cekEmail(String email) {
-
     }
 
     public void printDataDiri() {
