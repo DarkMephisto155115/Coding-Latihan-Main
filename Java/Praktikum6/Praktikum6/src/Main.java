@@ -1,10 +1,10 @@
-package Java.Praktikum;
+package Java.Praktikum6.Praktikum6.src;
+
+import Java.Praktikum6.Praktikum6.src.Mahasiswa.EmailException;
+import Java.Praktikum6.Praktikum6.src.Mahasiswa.NameException;
+import Java.Praktikum6.Praktikum6.src.Mahasiswa.NimException;
 
 import java.util.Scanner;
-import Java.Praktikum.Mahasiswa;
-import Java.Praktikum.Mahasiswa.EmailException;
-import Java.Praktikum.Mahasiswa.NimException;
-import Java.Praktikum.Mahasiswa.NameException;
 
 public class Main {
     public static void main(String[] args) {

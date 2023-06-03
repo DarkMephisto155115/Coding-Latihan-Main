@@ -1,7 +1,6 @@
-package Java.Praktikum;
+package Java.Praktikum6.Praktikum6.src;
 
 import java.lang.Exception;
-import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Mahasiswa {
@@ -55,15 +54,15 @@ public class Mahasiswa {
         }
     }
 
-    private void cekNama() {
+    private void cekNama(String nama) {
 
     }
 
-    private void cekNIM() {
+    private void cekNIM(String NIM) {
 
     }
 
-    private void cekEmail() {
+    private void cekEmail(String email) {
 
     }
 
