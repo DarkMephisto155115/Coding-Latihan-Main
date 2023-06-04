@@ -45,7 +45,7 @@ public class Mahasiswa {
     }
 
     private void cekNama(String nama) throws NameException {
-        if (nama.matches("[a-zA-Z]+")) {
+        if (nama.matches("[a-zA-Z_ ]+")) {
             this.nama = nama;
         } else {
             throw new NameException("Nama hanya boleh mengandung huruf saja!!!");
