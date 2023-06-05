@@ -26,13 +26,19 @@ public class Mahasiswa {
         }
     }
 
+    class NameSpaceException extends Exception {
+        public NameSpaceException(String message) {
+            super(message);
+        }
+    }
+
     class EmailException extends Exception {
         public EmailException(String message) {
             super(message);
         }
     }
 
-    public void setNama(String nama) throws NameException {
+    public void setNama(String nama) throws NameException, NameSpaceException {
         cekNama(nama);
     }
 
@@ -44,11 +50,15 @@ public class Mahasiswa {
         cekEmail(email);
     }
 
-    private void cekNama(String nama) throws NameException {
-        if (nama.matches("[a-zA-Z_ ]+")) {
-            this.nama = nama;
+    private void cekNama(String nama) throws NameException, NameSpaceException {
+        if (nama.matches("^\\S+(\\s+\\S+)*$")) {
+            if (nama.matches("[a-zA-Z ]+")) {
+                this.nama = nama;
+            } else {
+                throw new NameException("Nama hanya boleh mengandung huruf saja!!!");
+            }
         } else {
-            throw new NameException("Nama hanya boleh mengandung huruf saja!!!");
+            throw new NameSpaceException("Tidak boleh ada spasi didepan");
         }
     }
 
