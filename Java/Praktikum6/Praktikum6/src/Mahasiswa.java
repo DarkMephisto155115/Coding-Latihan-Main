@@ -3,40 +3,40 @@ package Java.Praktikum6.Praktikum6.src;
 import java.lang.Exception;
 import java.util.regex.Pattern;
 
+class NimLengthException extends Exception {
+    public NimLengthException(String message) {
+        super(message);
+    }
+}
+
+class NimFormatException extends Exception {
+    public NimFormatException(String message) {
+        super(message);
+    }
+}
+
+class NameException extends Exception {
+    public NameException(String message) {
+        super(message);
+    }
+}
+
+class NameSpaceException extends Exception {
+    public NameSpaceException(String message) {
+        super(message);
+    }
+}
+
+class EmailException extends Exception {
+    public EmailException(String message) {
+        super(message);
+    }
+}
+
 public class Mahasiswa {
     private String nama;
     private String nim;
     private String email;
-
-    class NimLengthException extends Exception {
-        public NimLengthException(String message) {
-            super(message);
-        }
-    }
-
-    class NimFormatException extends Exception {
-        public NimFormatException(String message) {
-            super(message);
-        }
-    }
-
-    class NameException extends Exception {
-        public NameException(String message) {
-            super(message);
-        }
-    }
-
-    class NameSpaceException extends Exception {
-        public NameSpaceException(String message) {
-            super(message);
-        }
-    }
-
-    class EmailException extends Exception {
-        public EmailException(String message) {
-            super(message);
-        }
-    }
 
     public void setNama(String nama) throws NameException, NameSpaceException {
         cekNama(nama);
