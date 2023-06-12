@@ -36,6 +36,9 @@ public class Main {
                 System.out.println("\nWaduh : " + e.getMessage());
             } catch (InputMismatchException | NumberFormatException e) {
                 System.out.println("\nWaduh : Input harus Integer !!!");
+            } catch (Exception e) {
+                System.out.println(e.getClass());
+                System.out.println(e.getMessage());
             }
         }
 

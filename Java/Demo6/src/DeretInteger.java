@@ -35,6 +35,7 @@ public class DeretInteger {
 
     public void setJumlahSuku(int jumlahSuku) {
         this.jumlahSuku = jumlahSuku;
+        this.deretInteger = new int[jumlahSuku];
     }
 
     public int getJumlahSuku() {
@@ -78,6 +79,9 @@ public class DeretInteger {
                     System.out.println("\nWaduh : " + e.getMessage());
                 } catch (InputMismatchException | NumberFormatException e) {
                     System.out.println("\nWaduh : Input harus Integer !!!");
+                } catch (Exception e) {
+                    System.out.println(e.getClass());
+                    System.out.println(e.getMessage());
                 }
             }
 
@@ -88,28 +92,45 @@ public class DeretInteger {
     }
 
     public void sortAscending() {
-        Arrays.sort(getDeretInteger());
-        System.out.println("\nDisplay angka dari terkecil ke terbesar : ");
-        displayInteger(getDeretInteger());
+        try {
+            Arrays.sort(getDeretInteger());
+            System.out.println("\nDisplay angka dari terkecil ke terbesar : ");
+            displayInteger(getDeretInteger());
+        } catch (Exception e) {
+            System.out.println(e.getClass());
+            System.out.println(e.getMessage());
+        }
+
     }
 
     public void sortDescending() {
         Integer[] deretInt = new Integer[getDeretInteger().length];
         int i = 0;
-        for (int value : deretInteger) {
-            deretInt[i++] = Integer.valueOf(value);
+        try {
+            for (int value : deretInteger) {
+                deretInt[i++] = Integer.valueOf(value);
+            }
+            Arrays.sort(deretInt, Collections.reverseOrder());
+            System.out.println("\nDisplay angka dari terbesar ke terkecil : ");
+            displayInteger(deretInt);
+        } catch (Exception e) {
+            System.out.println(e.getClass());
+            System.out.println(e.getMessage());
         }
-        Arrays.sort(deretInt, Collections.reverseOrder());
-        System.out.println("\nDisplay angka dari terbesar ke terkecil : ");
-        displayInteger(deretInt);
+
     }
 
     public int getMax() {
         int max = getDeretInteger()[0];
-        for (int i = 1; i < this.deretInteger.length; i++) {
-            if (max < this.getDeretInteger()[i]) {
-                max = this.getDeretInteger()[i];
+        try {
+            for (int i = 1; i < this.deretInteger.length; i++) {
+                if (max < getDeretInteger()[i]) {
+                    max = getDeretInteger()[i];
+                }
             }
+        } catch (Exception e) {
+            System.out.println(e.getClass());
+            System.out.println(e.getMessage());
         }
 
         return max;
@@ -117,38 +138,53 @@ public class DeretInteger {
 
     public int getMin() {
         int min = getDeretInteger()[0];
-        for (int i = 1; i < getDeretInteger().length; i++) {
-            if (min > getDeretInteger()[i]) {
-                min = getDeretInteger()[i];
+        try {
+            for (int i = 1; i < getDeretInteger().length; i++) {
+                if (min > getDeretInteger()[i]) {
+                    min = getDeretInteger()[i];
+                }
             }
-        }
 
+        } catch (Exception e) {
+            System.out.println(e.getClass());
+            System.out.println(e.getMessage());
+        }
         return min;
     }
 
     public void displayInteger(int[] deretInt) {
+        try {
+            for (int i = 0; i < deretInt.length; i++) {
+                if (i == deretInt.length - 1) {
+                    System.out.print(deretInt[i] + ".");
+                } else {
+                    System.out.print(deretInt[i] + ", ");
+                }
 
-        for (int i = 0; i < deretInt.length; i++) {
-            if (i == deretInt.length - 1) {
-                System.out.print(deretInt[i] + ".");
-            } else {
-                System.out.print(deretInt[i] + ", ");
             }
-
+            System.out.println("");
+        } catch (Exception e) {
+            System.out.println(e.getClass());
+            System.out.println(e.getMessage());
         }
-        System.out.println("");
+
     }
 
     public void displayInteger(Integer[] deretInt) {
+        try {
+            for (int i = 0; i < deretInt.length; i++) {
+                if (i == deretInt.length - 1) {
+                    System.out.print(deretInt[i] + ".");
+                } else {
+                    System.out.print(deretInt[i] + ", ");
+                }
 
-        for (int i = 0; i < deretInt.length; i++) {
-            if (i == deretInt.length - 1) {
-                System.out.print(deretInt[i] + ".");
-            } else {
-                System.out.print(deretInt[i] + ", ");
             }
-
+            System.out.println("");
+        } catch (Exception e) {
+            System.out.println(e.getClass());
+            System.out.println(e.getMessage());
         }
-        System.out.println("");
+
     }
 }
