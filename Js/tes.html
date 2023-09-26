@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #myButton {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var button = document.getElementById("myButton");
+
+        button.addEventListener("mouseover", function () {
+          var input = document.getElementById("myInput").value;
+          if (input === "satisfied") {
+            button.style.left = 295 + "px";
+            button.style.top = 18 + "px";
+          } else {
+            var width = window.innerWidth;
+            var height = window.innerHeight;
+            var x = Math.random() * (width - button.offsetWidth);
+            var y = Math.random() * (height - button.offsetHeight);
+
+            button.style.left = x + "px";
+            button.style.top = y + "px";
+          }
+        });
+
+        function validateInput() {
+          var input = document.getElementById("myInput").value;
+          if (input === "satisfied") {
+            alert("Input is satisfied!");
+          } else {
+            alert("Input is not satisfied!");
+          }
+        }
+
+        var submitButton = document.getElementById("submitButton");
+        submitButton.addEventListener("click", validateInput);
+      });
+    </script>
+  </head>
+  <body>
+    <input type="text" id="myInput" placeholder="Enter input" />
+    <button id="submitButton">Submit</button>
+    <button id="myButton">Move away</button>
+  </body>
+</html>

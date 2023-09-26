@@ -56,6 +56,7 @@ pygame.mixer.music.load(
     "C:\\Users\\Dark_Mephisto\\Documents\\GitHub\\Coding-PraktikumS1\\Python\\GamePVP\\TUBES_3_street_fighter\\TUBES 3 street fighter\\assets\\audio\\music.mp3")
 pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(-1, 0.0, 5000)
+
 sword_fx = pygame.mixer.Sound(
     "C:\\Users\\Dark_Mephisto\\Documents\\GitHub\\Coding-PraktikumS1\\Python\\GamePVP\\TUBES_3_street_fighter\\TUBES 3 street fighter\\assets\\audio\\sword.wav")
 sword_fx.set_volume(0.5)
@@ -116,6 +117,7 @@ fighter_1 = Fighter(1, 200, 310, False, WARRIOR_DATA,
                     warrior_sheet, WARRIOR_ANIMATION_STEPS, sword_fx)
 fighter_2 = Fighter(2, 700, 310, True, WIZARD_DATA,
                     wizard_sheet, WIZARD_ANIMATION_STEPS, magic_fx)
+
 # fungsi loncat ke menu
 
 
