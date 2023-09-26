@@ -1,176 +1,36 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Website Konversi Suhu</title>
+    <title>Temperature Converter</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="script.js" />
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-    ></script>
-    <style>
-      body {
-        background-color: #0f0f0fdc;
-      }
-      p {
-        color: white;
-      }
-      .Top {
-        width: 50%;
-      }
-      input::-webkit-outer-spin-button,
-      input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      .Input-div {
-        position: relative;
-        height: 40px;
-        width: 100%;
-      }
-      .Input-div input[type="number"] {
-        position: absolute;
-        background: white;
-        border: hsl(0, 0%, 18.82%);
-        box-shadow: black;
-        width: 40%;
-        height: 50px;
-
-        -moz-appearance: textfield;
-      }
-
-      .kotak-ajaib {
-        display: block;
-        position: relative;
-        height: 40px;
-        width: 100%;
-      }
-      .kotak {
-        display: block;
-        position: absolute;
-        background: white;
-        border: hsl(0, 0%, 18.82%);
-        box-shadow: black;
-        width: 40%;
-        height: 50px;
-        z-index: 1;
-      }
-      .kotak-ajaib-hasil {
-        display: block;
-        position: relative;
-        height: 40px;
-        width: 100%;
-        margin-top: 60px;
-      }
-      .kotak-hasil {
-        display: block;
-        position: absolute;
-        background: white;
-        border: hsl(0, 0%, 18.82%);
-        box-shadow: black;
-        width: 40%;
-        height: 50px;
-        z-index: 1;
-      }
-
-      .kotak-p {
-        color: black;
-        z-index: 998;
-      }
-      .kotak-p-hasil {
-        color: black;
-        z-index: 998;
-      }
-      .display-rumus {
-        display: block;
-        margin-top: 70px;
-      }
-      .display-rumus h1 {
-        color: white;
-      }
-
-      .display-rumus p {
-        color: white;
-      }
-      #myButton {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 999;
-      }
-    </style>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var button = document.getElementById("myButton");
-
-        button.addEventListener("mouseover", function () {
-          var input = document.getElementById("myInput").value;
-          if (input == null) {
-            var width = window.innerWidth;
-            var height = window.innerHeight;
-            var x = Math.random() * (width - button.offsetWidth);
-            var y = Math.random() * (height - button.offsetHeight);
-
-            button.style.left = x + "px";
-            button.style.top = y + "px";
-          } else {
-            button.style.left = 295 + "px";
-            button.style.top = 18 + "px";
-          }
-        });
-      });
-    </script>
+    <script src="script.js"></script>
   </head>
   <body>
-    <div class="Top">
-      <p>
-        Masukkan suhu derajat Celcius (&degC) ke kotak dibawah, lalu klik tombol
-        konversi untuk mendapatkan hasil konversi dalam bentuk Farenheit (&degF)
-      </p>
-    </div>
-    <div class="Form-div">
-      <p>Celcius (&degC)</p>
-      <form action="" id="my-form">
-        <div class="input-div">
-          <input
-            type="number"
-            name="input"
-            id="myInput"
-            placeholder="Enter temperature"
-          />
-        </div>
-        <br />
-        <div class="Button-div">
-          <button id="myButton" onclick="">Konversi</button>
-          <button>Reset</button>
-          <button>Reverse</button>
-        </div>
-      </form>
-    </div>
-    <div class="kotak-ajaib">
-      <p>Farenheit (&degF)</p>
-      <div class="kotak"><p class="kotak-p"></p></div>
-    </div>
-    <div class="kotak-ajaib-hasil">
-      <p>Cara Kalkulasi :</p>
-      <div class="kotak-hasil"><p class="kotak-p-hasil"></p></div>
-    </div>
+    <h1>Temperature Calculator</h1>
+    <div class="container">
+      <label for="input">Celsius:</label>
+      <div class="input-group">
+        <input
+          type="number"
+          id="input"
+          placeholder="Masukkan temperature dalam Celcius"
+        />
+        <button onclick="convertCelcius()">Convert</button>
+        <button onclick="resetButton()">Reset</button>
+        <button onclick="reverseButtonF()">Reverse</button>
+      </div>
 
-    <div class="display-rumus">
-      <h1>Cara Konversi Dari Celcius (&degC) ke Farenheit (&degF)</h1>
-      <p>
-        Suhu S dalam derajat Farenheit (&degF) sama dengan suhu S dalam derajat
-        Celcius (&degC) 9/5 tambah 32
-      </p>
-      <p>\(S_{(&degF)} = ({S_{(&degC)}} \times 9/5) + 32 \)</p>
-      <p>atau</p>
-      <p>\(S_{(&degF)} = ({S_{(&degC)}} \times 1.8) + 32 \)</p>
+      <div id="hasil"></div>
+      <div id="rumus"></div>
+    </div>
+    <div class="footer">
+      <h2>
+        Totally Not Created By
+        <a href="https://github.com/DarkMephisto155115">Dark_Mephisto</a>
+      </h2>
     </div>
   </body>
 </html>
