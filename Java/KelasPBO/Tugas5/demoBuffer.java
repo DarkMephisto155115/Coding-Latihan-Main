@@ -24,30 +24,28 @@ public class demoBuffer {
 
     public void ubahKata(char c) {
         this.buf.setLength(0);
+        this.buf = new StringBuffer(this.kata);
         System.out.println("Sebelum diubah : " + kata);
-        for (int i = 0; i < kata.length(); i++) {
-            char hurufIni = kata.charAt(i);
+        for (int i = 0; i < this.buf.length(); i++) {
+            char hurufIni = getBuf().charAt(i);
             if (hurufIni == c) {
-                getBuf().append('*');
-            } else {
-                getBuf().append(hurufIni);
+                getBuf().setCharAt(i, '*');
             }
         }
-        System.out.println("Sebelum diubah : " + getBuf());
+        System.out.println("sesudah diubah : " + getBuf());
     }
 
     public void deleteKata(char c) {
         this.buf.setLength(0);
+        this.buf = new StringBuffer(this.kata);
         System.out.println("Sebelum diubah : " + kata);
-        for (int i = 0; i < kata.length(); i++) {
-            char hurufIni = kata.charAt(i);
-            if (kata.charAt(i) == c) {
-
-            } else {
-                getBuf().append(hurufIni);
+        for (int i = 0; i < this.buf.length(); i++) {
+            char hurufIni = getBuf().charAt(i);
+            if (hurufIni == c) {
+                getBuf().deleteCharAt(i);
             }
         }
-        System.out.println("Sebelum diubah : " + getBuf());
+        System.out.println("sesudah diubah : " + getBuf());
     }
 
     public static void main(String[] args) {
