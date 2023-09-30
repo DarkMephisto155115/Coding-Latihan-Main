@@ -13,6 +13,10 @@ public class latihan3 {
 
         int sum2 = add(61, 8);
         System.out.println("61 + 8 = " + sum2);// Expected Output 69 (NICE)
+
+        // Peningkatan dapat dilakukan dengan penambahan exception handling dan nama
+        // yang lebih deskriptif
+
     }
 
     public static int add(int a, int b) {
