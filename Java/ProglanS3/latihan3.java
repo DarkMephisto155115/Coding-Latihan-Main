@@ -2,7 +2,7 @@ package Java.ProglanS3;
 
 public class latihan3 {
     public static void main(String[] args) {
-        System.out.println(add(5, 3));
+        System.out.println(add(5, 3));// Awalnya tidak ada ;
 
         // review code or something idk tho
 
@@ -14,12 +14,9 @@ public class latihan3 {
         int sum2 = add(61, 8);
         System.out.println("61 + 8 = " + sum2);// Expected Output 69 (NICE)
 
-        // Peningkatan dapat dilakukan dengan penambahan exception handling dan nama
-        // yang lebih deskriptif
-
     }
 
-    public static int add(int a, int b) {
+    public static int add(int a, int b) { // code sudah paling sederhana
         return a + b;
     }
 }

@@ -1,5 +1,6 @@
 package Java.ProglanS3;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class latihan2 {
@@ -11,9 +12,10 @@ public class latihan2 {
             int number = sc.nextInt();
             System.out.println("Angka yang dimasukkan : " + number);
 
+        } catch (InputMismatchException e) {
+            System.out.println("Input bukan angka atau mengandung bukan angka !!!");
         } catch (Exception e) {
-            System.out.println("Input bukan angka !!!");
-            sc.nextLine();
+            System.out.println("Error : " + e.getMessage());
         } finally {
             sc.close();
         }
